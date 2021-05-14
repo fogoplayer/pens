@@ -10,9 +10,9 @@ Some my projects involve HTML. They are:
 
 ### [Bookmarklets](./bookmarklets)
 
-### [Buc-ee's Animation](./buccees)
+### [Buc-ee's Animation](./bucees)
 
-### [PowerOfTwo](./power-of-two)
+### [Power Of Two](./power-of-two)
 
 ### [Snow](./snow)
 
