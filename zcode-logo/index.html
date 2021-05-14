@@ -1,0 +1,66 @@
+<html>
+  <body>
+    <style>
+      .logo {
+        width: 200px;
+        margin: 0;
+        position: relative;
+        padding: 0;
+        transition-duration: 5s;
+      }
+    </style>
+    <center style="margin-top: 50px;">
+      <div
+        style="
+          min-width: 500px;
+          border: 1px solid black;
+          width: fit-content;
+          padding: 50px;
+        "
+      >
+        <img src="Z2.png" id="left" class="logo" /><img
+          src="Z2.png"
+          id="right"
+          class="logo"
+          style="transform: scaleX(-1);"
+        />
+      </div>
+    </center>
+  </body>
+  <script>
+    setInterval(function () {
+      setTimeout(function triangleToZ() {
+        document.getElementById("left").style.transform =
+          "scaleY(-1) rotate(60deg) translateX(" +
+          (-1.22 * 200) / 4 +
+          "px) translateY(" +
+          (-3.95 * 200) / 4 +
+          "px)";
+        document.getElementById("right").style.transform =
+          "scaleX(-1) rotate(60deg) translateX(" +
+          (-1.22 * 200) / 4 +
+          "px) translateY(" +
+          (-3.95 * 200) / 4 +
+          "px)";
+      }, 2000);
+      setTimeout(function clickIn() {
+        document.getElementById("left").style.transitionDuration = ".3s";
+        document.getElementById("right").style.transitionDuration = ".3s";
+        document.getElementById("left").style.transform += " translateX(25px)";
+        document.getElementById("right").style.transform += " translateX(25px)";
+      }, 3200);
+      setTimeout(function colorChange() {
+        document.getElementById("left").src = "Z3.png";
+        document.getElementById("right").src = "Z3.png";
+      }, 3280);
+      setTimeout(function reset() {
+        document.getElementById("left").style.transitionDuration = ".9s";
+        document.getElementById("right").style.transitionDuration = ".9s";
+        document.getElementById("left").src = "Z2.png";
+        document.getElementById("right").src = "Z2.png";
+        document.getElementById("left").style.transform = "";
+        document.getElementById("right").style.transform = "scaleX(-1)";
+      }, 5000);
+    }, 5000);
+  </script>
+</html>

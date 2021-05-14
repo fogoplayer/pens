@@ -10,10 +10,10 @@ Some my projects involve HTML. They are:
 
 ### [Bookmarklets](./bookmarklets)
 
-### [Buc-ee's Animation](./buccees/bucees.html)
+### [Buc-ee's Animation](./buccees)
 
-### [PowerOfTwo](./power-of-two/power-of-two.html)
+### [PowerOfTwo](./power-of-two)
 
-### [Snow](./snow/snow.html)
+### [Snow](./snow)
 
-### [ZCode Logo](./zcode-logo/logo.html)
+### [ZCode Logo](./zcode-logo)
