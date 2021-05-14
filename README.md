@@ -4,16 +4,16 @@ A series of snippets and scripts that I made for my own use. Due to their small 
 
 ## Pages
 
-Some my projects have their own pages. They are:
+Some my projects involve HTML. They are:
 
 ### [AirOS Desktop](./air-os)
 
 ### [Bookmarklets](./bookmarklets)
 
-### [Buc-ee's Animation](./buccees)
+### [Buc-ee's Animation](./buccees/bucees.html)
 
-### [PowerOfTwo](./power-of-two)
+### [PowerOfTwo](./power-of-two/power-of-two.html)
 
-### [Snow](./snow)
+### [Snow](./snow/snow.html)
 
-### [ZCode Logo](./zcode-logo)
+### [ZCode Logo](./zcode-logo/logo.html)
