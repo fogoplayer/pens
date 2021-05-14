@@ -50,7 +50,6 @@ A script that pings a router frequently and indefinitely and logs outages to a t
 </script>
 
 Finds the first `video` element on a page and prompts the user to set a playback speed (helpful for default video players that don't have playback speed controls, as well as for going beyond the max speed of players like Youtube and Vimeo).
-TODO: automatically import bookmarklet from file?
 
 ---
 
@@ -69,7 +68,6 @@ A response to a challenge to find a power of two that does not have a power of t
 ### [Snow](./snow)
 
 A simple snowfall animation. Scales to viewport.
-TODO: Redraw text on window resize
 
 ---
 
