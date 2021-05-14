@@ -22,7 +22,9 @@ Syncs up ranges in a Google Sheet (so, for example, a header is kept constant ac
 
 #### [Table of Contents](https://github.com/fogoplayer/pens/tree/main/apps-script/table-of-contents)
 
-## Creates a custom sidebar that lists the names of each sheet in a workbook.
+Creates a custom sidebar that lists the names of each sheet in a workbook.
+
+---
 
 ### [Bash Scripts](https://github.com/fogoplayer/pens/tree/main/bash-scripts)
 
@@ -32,11 +34,14 @@ A script to ping all IP addresses on a network and return the successful ones. H
 
 #### [Router Test](https://github.com/fogoplayer/pens/tree/main/bash-scripts/router_test.sh)
 
-## A script that pings a router frequently and indefinitely and logs outages to a text file.
+A script that pings a router frequently and indefinitely and logs outages to a text file.
+
+---
 
 ### [Bookmarklets](https://github.com/fogoplayer/pens/tree/main/bookmarklets)
 
-<h4><a href='javascript: (function () {var speed = prompt("Enter new playback speed"); document.querySelector("video").playbackRate = parseFloat(speed); })();'>Playback Speed</a></h4>
+<script src="https://fogoplayer.github.io/pens/bookmarklets/playbackspeed.js"></script>
+<h4><a href='javascript: changeSpeed();'>Playback Speed</a></h4>
 
 Finds the first `video` element on a page and prompts the user to set a playback speed (helpful for default video players that don't have playback speed controls, as well as for going beyond the max speed of players like Youtube and Vimeo).
 TODO: automatically import bookmarklet from file?
@@ -45,11 +50,15 @@ TODO: automatically import bookmarklet from file?
 
 ### [Buc-ee's Animation](./bucees)
 
-## A simple puppet of Texas legend Buc-ee.
+A simple puppet of Texas legend Buc-ee.
+
+---
 
 ### [Power Of Two](./power-of-two)
 
-## A response to a challenge to find a power of two that does not have a power of two as one of its digits. Has both [webpage](https://fogoplayer.github.io/pens/power-of-two/) and [node.js](https://github.com/fogoplayer/pens/tree/main/power-of-two/powerOfTwoNode.js) versions.
+A response to a challenge to find a power of two that does not have a power of two as one of its digits. Has both [webpage](https://fogoplayer.github.io/pens/power-of-two/) and [node.js](https://github.com/fogoplayer/pens/tree/main/power-of-two/powerOfTwoNode.js) versions.
+
+---
 
 ### [Snow](./snow)
 
