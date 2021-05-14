@@ -43,7 +43,7 @@ A script that pings a router frequently and indefinitely and logs outages to a t
 <script src="https://fogoplayer.github.io/pens/bookmarklets/playbackspeed.js"></script>
 <h4><a id="playbackspeed" href=''>Playback Speed</a></h4>
 <script>
-  changeSpeed = changeSpeed.toString());
+  changeSpeed = changeSpeed.toString();
   document.querySelector('#playbackspeed').href = "javascript: (" + changeSpeed + ")();";
 </script>
 
