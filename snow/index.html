@@ -1,77 +1,101 @@
 <html>
+  <head>
+    <title>Snowfall</title>
+  </head>
+  <body style="margin: 0;">
+    <div
+      id="title"
+      style="
+        position: fixed;
+        font-family: sans-serif;
+        font-weight: 1000;
+        color: white;
+        text-shadow: 0 0 15px lightblue;
+        z-index: 1000;
+        transition: opacity 3s;
+        opacity: 0;
+      "
+    >
+      SNOWFALL
+    </div>
+    <div
+      id="background"
+      style="background-color: lightblue; width: 100%; height: 100%;"
+    ></div>
+  </body>
 
-<body style="margin:0">
-    <div id="title" style="position:fixed; font-family:sans-serif; font-weight:1000; color:white; text-shadow:0 0 15px lightblue; z-index:1000; transition: opacity 3s; opacity:0">SNOWFALL</div>
-    <div id="background" style="background-color:lightblue; width:100%; height: 100%"></div>
-</body>
-
-<script>
+  <script>
     let createInt;
     let background = document.querySelector("#background");
     window.onresize = onWindowResize;
     window.onresize();
     displayTitle();
-    
+
     //Title
-    function displayTitle(){
-        const title = document.getElementById("title");
-        
-        title.style.fontSize = background.offsetHeight < background.offsetWidth ? "20vh" : "15vw";
-        title.style.top = background.offsetHeight / 2 - title.offsetHeight / 2;
-        title.style.left = background.offsetWidth / 2 -  title.offsetWidth / 2;
-        console.log(title.style.top);
-        setTimeout(function(){
-            title.style.opacity = 1;
-        },1000);
+    function displayTitle() {
+      const title = document.getElementById("title");
+
+      title.style.fontSize =
+        background.offsetHeight < background.offsetWidth ? "20vh" : "15vw";
+      title.style.top = background.offsetHeight / 2 - title.offsetHeight / 2;
+      title.style.left = background.offsetWidth / 2 - title.offsetWidth / 2;
+      console.log(title.style.top);
+      setTimeout(function () {
+        title.style.opacity = 1;
+      }, 1000);
     }
 
     //When the window resizes, re-determine how often to create snowflakes
     function onWindowResize() {
-        clearInterval(createInt);
-        console.log("Int:" + (300 - (background.offsetWidth * background.offsetHeight) / 10000));
-        createInt = setInterval(function() {
-            createSnowflake();
-        }, 300 - (background.offsetWidth * background.offsetHeight) / 10000) + 100;
+      clearInterval(createInt);
+      console.log(
+        "Int:" +
+          (300 - (background.offsetWidth * background.offsetHeight) / 10000)
+      );
+      createInt =
+        setInterval(function () {
+          createSnowflake();
+        }, 300 - (background.offsetWidth * background.offsetHeight) / 10000) +
+        100;
     }
 
     let intArray = [];
 
     //Resize the snowflake
     function resizeSnowflake(e, h, v) {
-        //tweak each snowflake
-        e.style.height = parseFloat(e.style.height) - 1 + "px";
-        e.style.width = e.style.height;
-        e.style.left = parseFloat(e.style.left) + h + "px";
-        e.style.top = parseFloat(e.style.top) + v + "px";
+      //tweak each snowflake
+      e.style.height = parseFloat(e.style.height) - 1 + "px";
+      e.style.width = e.style.height;
+      e.style.left = parseFloat(e.style.left) + h + "px";
+      e.style.top = parseFloat(e.style.top) + v + "px";
 
-        if (parseFloat(e.style.height) <= 1) e.remove();
+      if (parseFloat(e.style.height) <= 1) e.remove();
     }
 
     //Create a snowflake
     function createSnowflake() {
-        const e = document.createElement("div");
-        const es = e.style;
-        //Random spot
-        es.position = "fixed";
-        es.top = (Math.random() * background.offsetHeight) + "px";
-        es.left = (Math.random() * background.offsetWidth) + "px";
-        //Circle
-        es.height = (Math.random() * 20 + 10) + "px";
-        es.width = es.height;
-        es.borderRadius = "50%";
-        //White
-        es.backgroundColor = "white";
-        es.transitionDuration = ".1s";
-        document.querySelector("#background").appendChild(e);
+      const e = document.createElement("div");
+      const es = e.style;
+      //Random spot
+      es.position = "fixed";
+      es.top = Math.random() * background.offsetHeight + "px";
+      es.left = Math.random() * background.offsetWidth + "px";
+      //Circle
+      es.height = Math.random() * 20 + 10 + "px";
+      es.width = es.height;
+      es.borderRadius = "50%";
+      //White
+      es.backgroundColor = "white";
+      es.transitionDuration = ".1s";
+      document.querySelector("#background").appendChild(e);
 
-        const h = 5 * Math.random() - 2.5;
-        const v = 5 * Math.random() - 2.5;
-        intArray += [
-            setInterval(function() {
-                resizeSnowflake(e, h, v);
-            }, 100),
-        ];
+      const h = 5 * Math.random() - 2.5;
+      const v = 5 * Math.random() - 2.5;
+      intArray += [
+        setInterval(function () {
+          resizeSnowflake(e, h, v);
+        }, 100)
+      ];
     }
-</script>
-
+  </script>
 </html>
