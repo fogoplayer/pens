@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top" />
+    <!-- <title>Contents</title> -->
+  </head>
+  <script>
+    function navigate(name) {
+      google.script.run.navigate(name);
+    }
+  </script>
+  <body>
+    <ol>
+      <?
+        //Scriptlet loops through passed sheet names and populates table
+        for(i = 0; i < contents.length; i++) {
+          let sheet = contents[i];
+      ?>
+      <!-- 
+        This li is the same as the one below but works with the background-image code that is commented out in table-of-contents.gs
+        <li
+          onclick="navigate(<?= sheet.name ?>)"
+          style="background-image: url(<?!=sheet.url?>);"
+        > 
+      -->
+      <li onclick="navigate(<?= sheet.name ?>)">
+        <?= sheet.name ?>
+      </li>
+      <?
+        }
+      ?>
+    </ol>
+  </body>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      background-color: #073763;
+    }
+
+    li {
+      font-family: Roboto, sans-serif;
+      font-size: 2rem;
+      font-weight: 500;
+      list-style-type: none;
+      text-align: center;
+      padding: 1rem;
+      cursor: pointer;
+
+      background-color: #bbb;
+      background-position: center;
+      background-size: cover;
+      background-blend-mode: soft-light;
+    }
+
+    li:hover {
+      background-color: #333;
+      color: white;
+    }
+
+    li:not(:last-child) {
+      border-bottom: 5px solid #073763;
+    }
+  </style>
+</html>

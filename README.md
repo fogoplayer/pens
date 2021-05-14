@@ -12,6 +12,16 @@ When I was a teenager, I started drawing up mockups of a desktop interface desig
 
 #### [Version 2](./air-os/air-os-desktop-2.html)
 
+### [Apps Script](https://github.com/fogoplayer/pens/tree/main/apps-script)
+
+#### [Sync Sheets](https://github.com/fogoplayer/pens/tree/main/apps-script/sync-sheets.gs)
+
+Syncs up ranges in a Google Sheet (so, for example, a header is kept constant across the different pages but all can be edited).
+
+#### [Table of Contents](https://github.com/fogoplayer/pens/tree/main/apps-script/table-of-contents)
+
+Creates a custom sidebar that lists the names of each sheet in a workbook.
+
 ### [Bash Scripts](https://github.com/fogoplayer/pens/tree/main/bash-scripts)
 
 #### [Ping](https://github.com/fogoplayer/pens/tree/main/bash-scripts/ping.sh)
@@ -27,6 +37,7 @@ A script that pings a router frequently and indefinitely and logs outages to a t
 <h4><a href='javascript: (function () {var speed = prompt("Enter new playback speed"); document.querySelector("video").playbackRate = parseFloat(speed); })();'>Playback Speed</a></h4>
 
 Finds the first `video` element on a page and prompts the user to set a playback speed (helpful for default video players that don't have playback speed controls, as well as for going beyond the max speed of players like Youtube and Vimeo).
+TODO: automatically import bookmarklet from file?
 
 ### [Buc-ee's Animation](./bucees)
 
