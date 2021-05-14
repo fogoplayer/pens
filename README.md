@@ -8,6 +8,8 @@ Some my projects involve HTML. They are:
 
 ### [AirOS Desktop](./air-os)
 
+{% include_relative ./air-os/readme.md %}
+
 ### [Bookmarklets](./bookmarklets)
 
 ### [Buc-ee's Animation](./bucees)
