@@ -40,11 +40,13 @@ A script that pings a router frequently and indefinitely and logs outages to a t
 
 ### [Bookmarklets](https://github.com/fogoplayer/pens/tree/main/bookmarklets)
 
-<script src="https://fogoplayer.github.io/pens/bookmarklets/playbackspeed.js"></script>
-<h4><a id="playbackspeed" href=''>Playback Speed</a></h4>
+<script src="https://fogoplayer.github.io/pens/bookmarklets/bookmarklets.js"></script>
+
+<!-- Change Video Speed -->
+<h4><a id="changespeed" href=''>Change Video Speed</a></h4>
 <script>
   changeSpeed = changeSpeed.toString();
-  document.querySelector('#playbackspeed').href = "javascript: (" + changeSpeed + ")();";
+  document.querySelector('#changespeed').href = "javascript: (" + changeSpeed + ")();";
 </script>
 
 Finds the first `video` element on a page and prompts the user to set a playback speed (helpful for default video players that don't have playback speed controls, as well as for going beyond the max speed of players like Youtube and Vimeo).
