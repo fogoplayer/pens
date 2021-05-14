@@ -4,7 +4,7 @@ A series of snippets and scripts that I made for my own use. Due to their small 
 
 ## Pages
 
-### [AirOS Desktop](https://github.com/fogoplayer/pens/tree/air-os)
+### [AirOS Desktop](https://github.com/fogoplayer/pens/tree/main/air-os)
 
 When I was a teenager, I started drawing up mockups of a desktop interface designed to look clean and futuristic. When I learned about `transform: skew()`, I recognized that it allowed me to make the parallelograms that formed the core of AirOS's design language, so I whipped up a quick mockup. It doesn't look good, and it's not supposed to--this was a gleeful reaction to the discovery of new possibilities.
 
@@ -22,7 +22,7 @@ A script to ping all IP addresses on a network and return the successful ones. H
 
 A script that pings a router frequently and indefinitely and logs outages to a text file.
 
-### [Bookmarklets](https://github.com/fogoplayer/pens/tree/bookmarklets)
+### [Bookmarklets](https://github.com/fogoplayer/pens/tree/main/bookmarklets)
 
 <h4><a href='javascript: (function () {var speed = prompt("Enter new playback speed"); document.querySelector("video").playbackRate = parseFloat(speed); })();'>Playback Speed</a></h4>
 
