@@ -1,5 +1,4 @@
-### [Bookmarklets](https://github.com/fogoplayer/pens/tree/main/bookmarklets) To
-add a bookmarklet, click and drag the link into your bookmarks bar
+To add a bookmarklet, click and drag the link into your bookmarks bar
 
 <script src="https://fogoplayer.github.io/pens/bookmarklets/bookmarklets.js"></script>
 

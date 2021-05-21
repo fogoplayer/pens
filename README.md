@@ -1,7 +1,3 @@
-# pens
-
-A series of snippets and scripts that I made for my own use. Due to their small size and personal application, I didn't feel like each deserved their own repo, but I still wanted to publish them in case anyone else finds them useful (and to free up space on my drive).
-
 ## Pages
 
 ### [AirOS Desktop](https://github.com/fogoplayer/pens/tree/main/air-os)
@@ -38,30 +34,9 @@ A script that pings a router frequently and indefinitely and logs outages to a t
 
 ---
 
+### [Bookmarklets](./bookmarklets)
+
 {% include_relative bookmarklets/README.md %}
-
-<!-- ### [Bookmarklets](https://github.com/fogoplayer/pens/tree/main/bookmarklets)
-
-To add a bookmarklet, click and drag the link into your bookmarks bar
-
-<script src="https://fogoplayer.github.io/pens/bookmarklets/bookmarklets.js"></script>
-
-<h4><a id="changespeed" href=''>Change Video Speed</a></h4>
-<script>
-  changeSpeed = changeSpeed.toString();
-  document.querySelector('#changespeed').href = "javascript: (" + changeSpeed + ")();";
-</script>
-
-Finds the first `video` element on a page and prompts the user to set a playback speed (helpful for default video players that don't have playback speed controls, as well as for going beyond the max speed of players like Youtube and Vimeo).
-
-<h4><a id="clipcoupons" href="">Clip Coupons</a></h4>
-<script>
-  clipCoupons = clipCoupons.toString();
-  document.querySelector("#clipcoupons").href =
-    "javascript: (" + clipCoupons + ")();";
-</script>
-
-When on the coupon page of the Kroger website (including most sub-brands), it automatically clips coupons until you hit your limit. -->
 
 ---
 
