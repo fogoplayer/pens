@@ -1,3 +1,3 @@
-### [Bookmarklets](./bookmarklets)
+### Bookmarklets
 
 {% include_relative bookmarklets.md %}
