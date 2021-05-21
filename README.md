@@ -36,7 +36,7 @@ A script that pings a router frequently and indefinitely and logs outages to a t
 
 ### [Bookmarklets](./bookmarklets)
 
-{% include_relative bookmarklets/README.md %}
+{% include_relative bookmarklets/bookmarklets.md %}
 
 ---
 
