@@ -38,6 +38,8 @@ A script that pings a router frequently and indefinitely and logs outages to a t
 
 ---
 
+{% include_relative bookmarklets/README.md %}
+
 ### [Bookmarklets](https://github.com/fogoplayer/pens/tree/main/bookmarklets)
 
 To add a bookmarklet, click and drag the link into your bookmarks bar
