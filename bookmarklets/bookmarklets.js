@@ -39,37 +39,7 @@ function clipCoupons() {
   }
 }
 
-/* function hideMeetBar() {
-  /* //Box 
-  let FEED_CONTAINER = document.querySelector(
-    /* // "#ow3 > div.T4LgNb > div > div:nth-child(9) > div.crqnQb > div.loWbp > div.zWfAib.Z319Jd.QhPhw.eFmLfc.a1pVef" 
-    "#ow3 > div.T4LgNb > div > div:nth-child(9) > div.crqnQb > div.loWbp > div.zWfAib.Z319Jd.QhPhw.a1pVef"
-  );
-  /* // FEED_CONTAINER.style.backgroundColor = "blue"; 
-  FEED_CONTAINER.style.bottom = 0;
-
-  let FEED_CONTAINER_2 = document.querySelector(
-    "#ow3 > div.T4LgNb > div > div:nth-child(9) > div.crqnQb > div.loWbp.xYDeBf > div.zWfAib.Z319Jd.QhPhw.Qtgubc.a1pVef > div.xsj2Ff.Zf0RDc.GskdZ.AwnI1b"
-  );
-  FEED_CONTAINER_2.style.height = "100%";
-
-  /* //Video 
-  let FEED = document.querySelector(
-    "#ow3 > div.T4LgNb > div > div:nth-child(9) > div.crqnQb > div.loWbp > div.zWfAib.Z319Jd.QhPhw.a1pVef > div.xsj2Ff.Zf0RDc.AwnI1b > div.koV58.Zi94Db.S7urwe > div.p2hjYe.TPpRNe"
-  );
-  FEED.style.height = "100%";
-  FEED.style.width = "100%";
-  FEED.style.left = "unset";
-
-  /* //Bar *
-  let BOTTOM_BAR = document.querySelector(
-    "#ow3 > div.T4LgNb > div > div:nth-child(9) > div.crqnQb > div.rG0ybd.xPh1xb.P9KVBf.LCXT6"
-  );
-  /* // BOTTOM_BAR.style.backgroundColor = "red"; *
-  BOTTOM_BAR.style.opacity = 0;
-} */
-
-function hideMeetBar() {
+function meetFullScreen() {
   /* Feed Container */
   try {
     let FEED_CONTAINER = document.querySelector(
