@@ -40,62 +40,69 @@ function clipCoupons() {
 }
 
 function meetFullScreen() {
-  /* Feed Container */
-  try {
-    let FEED_CONTAINER = document.querySelector(
-      "div.zWfAib.Z319Jd.QhPhw.a1pVef"
-    );
-    FEED_CONTAINER.style.inset = 0;
-  } catch (e) {
-    console.error("Feed Container .zWfAib.Z319Jd.QhPhw.a1pVef");
-  }
+  function makeFullScreen() {
+    /* Feed Container */
+    try {
+      let FEED_CONTAINER = document.querySelector(
+        "div.zWfAib.Z319Jd.QhPhw.a1pVef"
+      );
+      FEED_CONTAINER.style.inset = 0;
+    } catch (e) {
+      console.error("Feed Container .zWfAib.Z319Jd.QhPhw.a1pVef");
+    }
 
-  /* Feed Container 2 */
-  try {
-    let FEED_CONTAINER_2 = document.querySelector(
-      "div.xsj2Ff.Zf0RDc.GskdZ.AwnI1b"
-    );
-    FEED_CONTAINER_2.style.height = "100%";
-  } catch (e) {
-    console.error("Feed Container 2 .xsj2Ff.Zf0RDc.GskdZ.AwnI1b");
-  }
+    /* Feed Container 2 */
+    try {
+      let FEED_CONTAINER_2 = document.querySelector(
+        "div.xsj2Ff.Zf0RDc.GskdZ.AwnI1b"
+      );
+      FEED_CONTAINER_2.style.height = "100%";
+    } catch (e) {
+      console.error("Feed Container 2 .xsj2Ff.Zf0RDc.GskdZ.AwnI1b");
+    }
 
-  /* Top Bar */
-  try {
-    let TOP_BAR = document.querySelector(".pHsCke");
-    TOP_BAR.style.display = "none";
-  } catch (e) {
-    console.error("Top Bar .pHsCke");
-  }
+    /* Top Bar */
+    try {
+      let TOP_BAR = document.querySelector(".pHsCke");
+      TOP_BAR.style.display = "none";
+    } catch (e) {
+      console.error("Top Bar .pHsCke");
+    }
 
-  /* //Video */
-  try {
-    let FEED = document.querySelector(
-      "div.xsj2Ff.Zf0RDc.AwnI1b > div.koV58.Zi94Db.S7urwe > div.p2hjYe.TPpRNe"
-    );
-    FEED.style.height = "100%";
-    FEED.style.width = "100%";
-    FEED.style.left = "unset";
-  } catch (e) {
-    console.error(
-      "Feed div.xsj2Ff.Zf0RDc.AwnI1b > div.koV58.Zi94Db.S7urwe > div.p2hjYe.TPpRNe"
-    );
-  }
+    /* //Video */
+    try {
+      let FEED = document.querySelector(
+        "div.xsj2Ff.Zf0RDc.AwnI1b > div.koV58.Zi94Db.S7urwe > div.p2hjYe.TPpRNe"
+      );
+      FEED.style.height = "100%";
+      FEED.style.width = "100%";
+      FEED.style.left = "unset";
+    } catch (e) {
+      console.error(
+        "Feed div.xsj2Ff.Zf0RDc.AwnI1b > div.koV58.Zi94Db.S7urwe > div.p2hjYe.TPpRNe"
+      );
+    }
 
-  /* Bottom Bar */
-  try {
-    let BOTTOM_BAR = document.querySelector("div.rG0ybd.xPh1xb.P9KVBf.LCXT6");
-    BOTTOM_BAR.style.opacity = 0;
-    BOTTOM_BAR.style.transition = "opacity .5s";
-
-    BOTTOM_BAR.addEventListener("mouseenter", () => {
-      BOTTOM_BAR.style.opacity = 0.8;
-    });
-
-    BOTTOM_BAR.addEventListener("mouseleave", () => {
+    /* Bottom Bar */
+    try {
+      let BOTTOM_BAR = document.querySelector("div.rG0ybd.xPh1xb.P9KVBf.LCXT6");
       BOTTOM_BAR.style.opacity = 0;
-    });
-  } catch (e) {
-    console.error("Bottom Bar div.rG0ybd.xPh1xb.P9KVBf.LCXT6");
+      BOTTOM_BAR.style.transition = "opacity .5s";
+
+      BOTTOM_BAR.addEventListener("mouseenter", () => {
+        BOTTOM_BAR.style.opacity = 0.8;
+      });
+
+      BOTTOM_BAR.addEventListener("mouseleave", () => {
+        BOTTOM_BAR.style.opacity = 0;
+      });
+    } catch (e) {
+      console.error("Bottom Bar div.rG0ybd.xPh1xb.P9KVBf.LCXT6");
+    }
   }
+
+  /* CTRL + F */
+  window.addEventListener("fullscreenchange", () =>
+    setTimeout(makeFullScreen, 100)
+  );
 }
