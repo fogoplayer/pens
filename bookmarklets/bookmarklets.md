@@ -34,4 +34,15 @@ automatically clips coupons until you hit your limit.
     "javascript: (" + meetFullScreen + ")();";
 </script>
 
-Hides the top and bottom bars of a Google Meet meeting during a presentation for a true full screen experience. Must be in Spotlight view with a presentation open.
+When in a Google Meet meeting, it hides extraneous UI elements to provide maximum screen real estate for a pinned feed.
+
+Prerequisites:
+
+- The [new Google Meet layout](https://support.google.com/meet/answer/10550593)
+- A meeting open in _Spotlight_ view (other views will cause bugs)
+
+To use:
+
+- Click on the bookmarklet to prime the
+- Put the Meet window in full screen with a double click, press of F11, or use of the full screen button in the Meet UI. (The modifications remain even if the user exits full screen).
+- To reset to the defualt view, refresh the page.
