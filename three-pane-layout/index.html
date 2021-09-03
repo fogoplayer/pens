@@ -129,7 +129,7 @@
   <nav class="left-sidebar sidebar" style="display: block;">
     <header>
       <h2>Navigation</h2>
-      <button id="collapse-left" onclick="toggleLeft" collapse-button">&lt;</button>
+      <button id="collapse-left" onclick="toggleLeft()" collapse-button">&lt;</button>
     </header>
     <ul>
       <li><a href="#">Lorem ipsum dolor</a></li>
@@ -158,9 +158,10 @@
   </nav>
   <main class="main-content">
     <header>
-      <button id="expand-left" onclick="toggleLeft" class="collapse-button" style="visibility: hidden;">&gt;</button>
+      <button id="expand-left" onclick="toggleLeft()" class="collapse-button" style="visibility: hidden;">&gt;</button>
       <h1>Title</h1>
-      <button id="expand-right" onclick="toggleRight" class="collapse-button" style="visibility: hidden;">&lt;</button>
+      <button id="expand-right" onclick="toggleRight()" class="collapse-button"
+        style="visibility: hidden;">&lt;</button>
     </header>
     <article>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore officiis maxime eligendi quam alias
@@ -272,7 +273,7 @@
   </main>
   <aside class="right-sidebar sidebar" style="display: block;">
     <header>
-      <button onclick="toggleRight" class="collapse-button">&gt;</button>
+      <button onclick="toggleRight()" class="collapse-button">&gt;</button>
       <h2>Notes</h2>
     </header>
     <h3>Author Info</h3>
@@ -292,17 +293,7 @@
     </ol>
   </aside>
 
-  <script>function toggleLeft() {
-      const classes = document.querySelector(".left-sidebar").classList;
-      console.log(classes);
-      const isHidden = (Array.from(classes).indexOf("hidden") !== -1);
-      if (isHidden) {
-        console.log("hiding");
-        classes.remove("hidden");
-      } else {
-        classes.add("hidden");
-      }
-    }
+  <script>
 
     function toggleLeft() {
       let classes = document.querySelector(".left-sidebar").classList;
