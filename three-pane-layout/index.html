@@ -8,266 +8,258 @@
      - [COMPLETE] Handle inital page load more gracefully. Sidebars are set to display:none and then JS makes them visible after page load. This is so that mobile users don't see them sliding off to the side on load. However, it creates a jarring pop-in on desktop. Ideally it would be the animation that would be disabled on load, rather than the display type. (Update: only seems to be an issue in the codepen editor)
     -->
 <html lang="en">
-  <head>
-    <title>Three Pane Layout</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="layout.css" />
-    <link rel="stylesheet" href="content.css" />
-  </head>
 
-  <body translate="no">
-    <header class="left-sidebar-header">
-      <h2>Navigation</h2>
-      <button id="collapse-left" onclick="toggleLeft()" class="collapse-button">
-        &lt;
-      </button>
-    </header>
+<head>
+  <title>Three Pane Layout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="layout.css" />
+  <link rel="stylesheet" href="content.css" />
+</head>
 
-    <header>
-      <button
-        id="expand-left"
-        onclick="toggleLeft()"
-        class="collapse-button"
-        style="visibility: hidden;"
-      >
-        &gt;
-      </button>
-      <h1>Title</h1>
-      <button
-        id="expand-right"
-        onclick="toggleRight()"
-        class="collapse-button"
-        style="visibility: hidden;"
-      >
-        &lt;
-      </button>
-    </header>
+<body translate="no">
+  <header class="left-sidebar-header">
+    <h2>Navigation</h2>
+    <button id="collapse-left" onclick="toggleLeft()" class="collapse-button">
+      &lt;
+    </button>
+  </header>
 
-    <header class="right-sidebar-header">
-      <button onclick="toggleRight()" class="collapse-button">&gt;</button>
-      <h2>Notes</h2>
-    </header>
+  <header>
+    <button id="expand-left" onclick="toggleLeft()" class="collapse-button" style="visibility: hidden;">
+      &gt;
+    </button>
+    <h1>Title</h1>
+    <button id="expand-right" onclick="toggleRight()" class="collapse-button" style="visibility: hidden;">
+      &lt;
+    </button>
+  </header>
 
-    <nav class="left-sidebar sidebar" style="display: block;">
-      <ul>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-      </ul>
-    </nav>
-    <main class="main-content">
-      <article>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-          officiis maxime eligendi quam alias possimus vel voluptates quasi
-          maiores cupiditate ullam sed quod assumenda beatae laboriosam ut,
-          iusto dolores iste facere quas. Perspiciatis esse impedit labore?
-          Dignissimos architecto labore reiciendis quidem, ipsa iusto obcaecati
-          explicabo iure quas accusantium facere odit id ullam, et perspiciatis
-          sapiente ab repudiandae corporis quae sequi minus porro enim
-          consectetur possimus. Doloremque vitae id quam nemo cumque odit,
-          nesciunt quo nisi nam eaque ipsum fugiat dolorem, tempora reiciendis
-          ad corrupti quos saepe aliquam asperiores blanditiis tenetur!
-          Excepturi fuga necessitatibus fugit eligendi modi culpa perspiciatis
-          tempore earum quasi. Alias, est! Provident reprehenderit neque nam
-          porro! Eaque numquam quis aliquam aperiam eum non ut sit, animi atque
-          harum perferendis nemo! Quis quam veniam corrupti illo obcaecati,
-          eveniet provident a fuga vel dolorum porro unde odit reprehenderit et
-          repellat tenetur quidem explicabo aut dicta at rem laboriosam
-          distinctio, magni dolor. Dolorum, veniam autem? Minus voluptate
-          perspiciatis dolorem, repellendus a laudantium delectus officia quas
-          dolore molestiae commodi saepe accusantium. Adipisci facilis quibusdam
-          fugiat tempora voluptas nulla exercitationem esse nesciunt explicabo
-          minima eos, vero, sit ab eius blanditiis nobis. Provident laboriosam
-          fuga molestiae rerum ipsam voluptas porro cumque odio tenetur saepe.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-          officiis maxime eligendi quam alias possimus vel voluptates quasi
-          maiores cupiditate ullam sed quod assumenda beatae laboriosam ut,
-          iusto dolores iste facere quas. Perspiciatis esse impedit labore?
-          Dignissimos architecto labore reiciendis quidem, ipsa iusto obcaecati
-          explicabo iure quas accusantium facere odit id ullam, et perspiciatis
-          sapiente ab repudiandae corporis quae sequi minus porro enim
-          consectetur possimus. Doloremque vitae id quam nemo cumque odit,
-          nesciunt quo nisi nam eaque ipsum fugiat dolorem, tempora reiciendis
-          ad corrupti quos saepe aliquam asperiores blanditiis tenetur!
-          Excepturi fuga necessitatibus fugit eligendi modi culpa perspiciatis
-          tempore earum quasi. Alias, est! Provident reprehenderit neque nam
-          porro! Eaque numquam quis aliquam aperiam eum non ut sit, animi atque
-          harum perferendis nemo! Quis quam veniam corrupti illo obcaecati,
-          eveniet provident a fuga vel dolorum porro unde odit reprehenderit et
-          repellat tenetur quidem explicabo aut dicta at rem laboriosam
-          distinctio, magni dolor. Dolorum, veniam autem? Minus voluptate
-          perspiciatis dolorem, repellendus a laudantium delectus officia quas
-          dolore molestiae commodi saepe accusantium. Adipisci facilis quibusdam
-          fugiat tempora voluptas nulla exercitationem esse nesciunt explicabo
-          minima eos, vero, sit ab eius blanditiis nobis. Provident laboriosam
-          fuga molestiae rerum ipsam voluptas porro cumque odio tenetur saepe.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-          officiis maxime eligendi quam alias possimus vel voluptates quasi
-          maiores cupiditate ullam sed quod assumenda beatae laboriosam ut,
-          iusto dolores iste facere quas. Perspiciatis esse impedit labore?
-          Dignissimos architecto labore reiciendis quidem, ipsa iusto obcaecati
-          explicabo iure quas accusantium facere odit id ullam, et perspiciatis
-          sapiente ab repudiandae corporis quae sequi minus porro enim
-          consectetur possimus. Doloremque vitae id quam nemo cumque odit,
-          nesciunt quo nisi nam eaque ipsum fugiat dolorem, tempora reiciendis
-          ad corrupti quos saepe aliquam asperiores blanditiis tenetur!
-          Excepturi fuga necessitatibus fugit eligendi modi culpa perspiciatis
-          tempore earum quasi. Alias, est! Provident reprehenderit neque nam
-          porro! Eaque numquam quis aliquam aperiam eum non ut sit, animi atque
-          harum perferendis nemo! Quis quam veniam corrupti illo obcaecati,
-          eveniet provident a fuga vel dolorum porro unde odit reprehenderit et
-          repellat tenetur quidem explicabo aut dicta at rem laboriosam
-          distinctio, magni dolor. Dolorum, veniam autem? Minus voluptate
-          perspiciatis dolorem, repellendus a laudantium delectus officia quas
-          dolore molestiae commodi saepe accusantium. Adipisci facilis quibusdam
-          fugiat tempora voluptas nulla exercitationem esse nesciunt explicabo
-          minima eos, vero, sit ab eius blanditiis nobis. Provident laboriosam
-          fuga molestiae rerum ipsam voluptas porro cumque odio tenetur saepe.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-          officiis maxime eligendi quam alias possimus vel voluptates quasi
-          maiores cupiditate ullam sed quod assumenda beatae laboriosam ut,
-          iusto dolores iste facere quas. Perspiciatis esse impedit labore?
-          Dignissimos architecto labore reiciendis quidem, ipsa iusto obcaecati
-          explicabo iure quas accusantium facere odit id ullam, et perspiciatis
-          sapiente ab repudiandae corporis quae sequi minus porro enim
-          consectetur possimus. Doloremque vitae id quam nemo cumque odit,
-          nesciunt quo nisi nam eaque ipsum fugiat dolorem, tempora reiciendis
-          ad corrupti quos saepe aliquam asperiores blanditiis tenetur!
-          Excepturi fuga necessitatibus fugit eligendi modi culpa perspiciatis
-          tempore earum quasi. Alias, est! Provident reprehenderit neque nam
-          porro! Eaque numquam quis aliquam aperiam eum non ut sit, animi atque
-          harum perferendis nemo! Quis quam veniam corrupti illo obcaecati,
-          eveniet provident a fuga vel dolorum porro unde odit reprehenderit et
-          repellat tenetur quidem explicabo aut dicta at rem laboriosam
-          distinctio, magni dolor. Dolorum, veniam autem? Minus voluptate
-          perspiciatis dolorem, repellendus a laudantium delectus officia quas
-          dolore molestiae commodi saepe accusantium. Adipisci facilis quibusdam
-          fugiat tempora voluptas nulla exercitationem esse nesciunt explicabo
-          minima eos, vero, sit ab eius blanditiis nobis. Provident laboriosam
-          fuga molestiae rerum ipsam voluptas porro cumque odio tenetur saepe.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-          officiis maxime eligendi quam alias possimus vel voluptates quasi
-          maiores cupiditate ullam sed quod assumenda beatae laboriosam ut,
-          iusto dolores iste facere quas. Perspiciatis esse impedit labore?
-          Dignissimos architecto labore reiciendis quidem, ipsa iusto obcaecati
-          explicabo iure quas accusantium facere odit id ullam, et perspiciatis
-          sapiente ab repudiandae corporis quae sequi minus porro enim
-          consectetur possimus. Doloremque vitae id quam nemo cumque odit,
-          nesciunt quo nisi nam eaque ipsum fugiat dolorem, tempora reiciendis
-          ad corrupti quos saepe aliquam asperiores blanditiis tenetur!
-          Excepturi fuga necessitatibus fugit eligendi modi culpa perspiciatis
-          tempore earum quasi. Alias, est! Provident reprehenderit neque nam
-          porro! Eaque numquam quis aliquam aperiam eum non ut sit, animi atque
-          harum perferendis nemo! Quis quam veniam corrupti illo obcaecati,
-          eveniet provident a fuga vel dolorum porro unde odit reprehenderit et
-          repellat tenetur quidem explicabo aut dicta at rem laboriosam
-          distinctio, magni dolor. Dolorum, veniam autem? Minus voluptate
-          perspiciatis dolorem, repellendus a laudantium delectus officia quas
-          dolore molestiae commodi saepe accusantium. Adipisci facilis quibusdam
-          fugiat tempora voluptas nulla exercitationem esse nesciunt explicabo
-          minima eos, vero, sit ab eius blanditiis nobis. Provident laboriosam
-          fuga molestiae rerum ipsam voluptas porro cumque odio tenetur saepe.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-          officiis maxime eligendi quam alias possimus vel voluptates quasi
-          maiores cupiditate ullam sed quod assumenda beatae laboriosam ut,
-          iusto dolores iste facere quas. Perspiciatis esse impedit labore?
-          Dignissimos architecto labore reiciendis quidem, ipsa iusto obcaecati
-          explicabo iure quas accusantium facere odit id ullam, et perspiciatis
-          sapiente ab repudiandae corporis quae sequi minus porro enim
-          consectetur possimus. Doloremque vitae id quam nemo cumque odit,
-          nesciunt quo nisi nam eaque ipsum fugiat dolorem, tempora reiciendis
-          ad corrupti quos saepe aliquam asperiores blanditiis tenetur!
-          Excepturi fuga necessitatibus fugit eligendi modi culpa perspiciatis
-          tempore earum quasi. Alias, est! Provident reprehenderit neque nam
-          porro! Eaque numquam quis aliquam aperiam eum non ut sit, animi atque
-          harum perferendis nemo! Quis quam veniam corrupti illo obcaecati,
-          eveniet provident a fuga vel dolorum porro unde odit reprehenderit et
-          repellat tenetur quidem explicabo aut dicta at rem laboriosam
-          distinctio, magni dolor. Dolorum, veniam autem? Minus voluptate
-          perspiciatis dolorem, repellendus a laudantium delectus officia quas
-          dolore molestiae commodi saepe accusantium. Adipisci facilis quibusdam
-          fugiat tempora voluptas nulla exercitationem esse nesciunt explicabo
-          minima eos, vero, sit ab eius blanditiis nobis. Provident laboriosam
-          fuga molestiae rerum ipsam voluptas porro cumque odio tenetur saepe.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-          officiis maxime eligendi quam alias possimus vel voluptates quasi
-          maiores cupiditate ullam sed quod assumenda beatae laboriosam ut,
-          iusto dolores iste facere quas. Perspiciatis esse impedit labore?
-          Dignissimos architecto labore reiciendis quidem, ipsa iusto obcaecati
-          explicabo iure quas accusantium facere odit id ullam, et perspiciatis
-          sapiente ab repudiandae corporis quae sequi minus porro enim
-          consectetur possimus. Doloremque vitae id quam nemo cumque odit,
-          nesciunt quo nisi nam eaque ipsum fugiat dolorem, tempora reiciendis
-          ad corrupti quos saepe aliquam asperiores blanditiis tenetur!
-          Excepturi fuga necessitatibus fugit eligendi modi culpa perspiciatis
-          tempore earum quasi. Alias, est! Provident reprehenderit neque nam
-          porro! Eaque numquam quis aliquam aperiam eum non ut sit, animi atque
-          harum perferendis nemo! Quis quam veniam corrupti illo obcaecati,
-          eveniet provident a fuga vel dolorum porro unde odit reprehenderit et
-          repellat tenetur quidem explicabo aut dicta at rem laboriosam
-          distinctio, magni dolor. Dolorum, veniam autem? Minus voluptate
-          perspiciatis dolorem, repellendus a laudantium delectus officia quas
-          dolore molestiae commodi saepe accusantium. Adipisci facilis quibusdam
-          fugiat tempora voluptas nulla exercitationem esse nesciunt explicabo
-          minima eos, vero, sit ab eius blanditiis nobis. Provident laboriosam
-          fuga molestiae rerum ipsam voluptas porro cumque odio tenetur saepe.
-        </p>
-      </article>
-    </main>
-    <aside class="right-sidebar sidebar" style="display: block;">
-      <h3>Author Info</h3>
+  <header class="right-sidebar-header">
+    <button onclick="toggleRight()" class="collapse-button">&gt;</button>
+    <h2>Notes</h2>
+  </header>
+
+  <nav class="left-sidebar sidebar" style="display: block;">
+    <ul>
+      <li><a href="#">Lorem ipsum dolor</a></li>
+      <li><a href="#">Lorem ipsum dolor</a></li>
+      <li><a href="#">Lorem ipsum dolor</a></li>
+      <li><a href="#">Lorem ipsum dolor</a></li>
+      <li><a href="#">Lorem ipsum dolor</a></li>
+      <li><a href="#">Lorem ipsum dolor</a></li>
+      <li><a href="#">Lorem ipsum dolor</a></li>
+      <li><a href="#">Lorem ipsum dolor</a></li>
+      <li><a href="#">Lorem ipsum dolor</a></li>
+      <li><a href="#">Lorem ipsum dolor</a></li>
+      <li><a href="#">Lorem ipsum dolor</a></li>
+      <li><a href="#">Lorem ipsum dolor</a></li>
+      <li><a href="#">Lorem ipsum dolor</a></li>
+      <li><a href="#">Lorem ipsum dolor</a></li>
+      <li><a href="#">Lorem ipsum dolor</a></li>
+      <li><a href="#">Lorem ipsum dolor</a></li>
+      <li><a href="#">Lorem ipsum dolor</a></li>
+      <li><a href="#">Lorem ipsum dolor</a></li>
+      <li><a href="#">Lorem ipsum dolor</a></li>
+      <li><a href="#">Lorem ipsum dolor</a></li>
+      <li><a href="#">Lorem ipsum dolor</a></li>
+      <li><a href="#">Lorem ipsum dolor</a></li>
+    </ul>
+  </nav>
+  <main class="main-content">
+    <article>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt dicta,
-        laborum aliquam adipisci reprehenderit saepe, praesentium cumque quidem
-        quisquam, similique tenetur repellat architecto perferendis voluptas
-        cupiditate cum molestias error natus aperiam. Odio omnis non vitae nulla
-        consequatur libero earum, laboriosam placeat dolore cumque voluptates
-        sequi, asperiores dicta commodi in reiciendis!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
+        officiis maxime eligendi quam alias possimus vel voluptates quasi
+        maiores cupiditate ullam sed quod assumenda beatae laboriosam ut,
+        iusto dolores iste facere quas. Perspiciatis esse impedit labore?
+        Dignissimos architecto labore reiciendis quidem, ipsa iusto obcaecati
+        explicabo iure quas accusantium facere odit id ullam, et perspiciatis
+        sapiente ab repudiandae corporis quae sequi minus porro enim
+        consectetur possimus. Doloremque vitae id quam nemo cumque odit,
+        nesciunt quo nisi nam eaque ipsum fugiat dolorem, tempora reiciendis
+        ad corrupti quos saepe aliquam asperiores blanditiis tenetur!
+        Excepturi fuga necessitatibus fugit eligendi modi culpa perspiciatis
+        tempore earum quasi. Alias, est! Provident reprehenderit neque nam
+        porro! Eaque numquam quis aliquam aperiam eum non ut sit, animi atque
+        harum perferendis nemo! Quis quam veniam corrupti illo obcaecati,
+        eveniet provident a fuga vel dolorum porro unde odit reprehenderit et
+        repellat tenetur quidem explicabo aut dicta at rem laboriosam
+        distinctio, magni dolor. Dolorum, veniam autem? Minus voluptate
+        perspiciatis dolorem, repellendus a laudantium delectus officia quas
+        dolore molestiae commodi saepe accusantium. Adipisci facilis quibusdam
+        fugiat tempora voluptas nulla exercitationem esse nesciunt explicabo
+        minima eos, vero, sit ab eius blanditiis nobis. Provident laboriosam
+        fuga molestiae rerum ipsam voluptas porro cumque odio tenetur saepe.
       </p>
-      <h3>Notes</h3>
-      <ol>
-        <li>Lorem ipsum, dolor sit amet consectetur adipisicing.</li>
-        <li>Lorem ipsum, dolor sit amet consectetur adipisicing.</li>
-        <li>Lorem ipsum, dolor sit amet consectetur adipisicing.</li>
-        <li>Lorem ipsum, dolor sit amet consectetur adipisicing.</li>
-        <li>Lorem ipsum, dolor sit amet consectetur adipisicing.</li>
-        <li>Lorem ipsum, dolor sit amet consectetur adipisicing.</li>
-        <li>Lorem ipsum, dolor sit amet consectetur adipisicing.</li>
-      </ol>
-    </aside>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
+        officiis maxime eligendi quam alias possimus vel voluptates quasi
+        maiores cupiditate ullam sed quod assumenda beatae laboriosam ut,
+        iusto dolores iste facere quas. Perspiciatis esse impedit labore?
+        Dignissimos architecto labore reiciendis quidem, ipsa iusto obcaecati
+        explicabo iure quas accusantium facere odit id ullam, et perspiciatis
+        sapiente ab repudiandae corporis quae sequi minus porro enim
+        consectetur possimus. Doloremque vitae id quam nemo cumque odit,
+        nesciunt quo nisi nam eaque ipsum fugiat dolorem, tempora reiciendis
+        ad corrupti quos saepe aliquam asperiores blanditiis tenetur!
+        Excepturi fuga necessitatibus fugit eligendi modi culpa perspiciatis
+        tempore earum quasi. Alias, est! Provident reprehenderit neque nam
+        porro! Eaque numquam quis aliquam aperiam eum non ut sit, animi atque
+        harum perferendis nemo! Quis quam veniam corrupti illo obcaecati,
+        eveniet provident a fuga vel dolorum porro unde odit reprehenderit et
+        repellat tenetur quidem explicabo aut dicta at rem laboriosam
+        distinctio, magni dolor. Dolorum, veniam autem? Minus voluptate
+        perspiciatis dolorem, repellendus a laudantium delectus officia quas
+        dolore molestiae commodi saepe accusantium. Adipisci facilis quibusdam
+        fugiat tempora voluptas nulla exercitationem esse nesciunt explicabo
+        minima eos, vero, sit ab eius blanditiis nobis. Provident laboriosam
+        fuga molestiae rerum ipsam voluptas porro cumque odio tenetur saepe.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
+        officiis maxime eligendi quam alias possimus vel voluptates quasi
+        maiores cupiditate ullam sed quod assumenda beatae laboriosam ut,
+        iusto dolores iste facere quas. Perspiciatis esse impedit labore?
+        Dignissimos architecto labore reiciendis quidem, ipsa iusto obcaecati
+        explicabo iure quas accusantium facere odit id ullam, et perspiciatis
+        sapiente ab repudiandae corporis quae sequi minus porro enim
+        consectetur possimus. Doloremque vitae id quam nemo cumque odit,
+        nesciunt quo nisi nam eaque ipsum fugiat dolorem, tempora reiciendis
+        ad corrupti quos saepe aliquam asperiores blanditiis tenetur!
+        Excepturi fuga necessitatibus fugit eligendi modi culpa perspiciatis
+        tempore earum quasi. Alias, est! Provident reprehenderit neque nam
+        porro! Eaque numquam quis aliquam aperiam eum non ut sit, animi atque
+        harum perferendis nemo! Quis quam veniam corrupti illo obcaecati,
+        eveniet provident a fuga vel dolorum porro unde odit reprehenderit et
+        repellat tenetur quidem explicabo aut dicta at rem laboriosam
+        distinctio, magni dolor. Dolorum, veniam autem? Minus voluptate
+        perspiciatis dolorem, repellendus a laudantium delectus officia quas
+        dolore molestiae commodi saepe accusantium. Adipisci facilis quibusdam
+        fugiat tempora voluptas nulla exercitationem esse nesciunt explicabo
+        minima eos, vero, sit ab eius blanditiis nobis. Provident laboriosam
+        fuga molestiae rerum ipsam voluptas porro cumque odio tenetur saepe.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
+        officiis maxime eligendi quam alias possimus vel voluptates quasi
+        maiores cupiditate ullam sed quod assumenda beatae laboriosam ut,
+        iusto dolores iste facere quas. Perspiciatis esse impedit labore?
+        Dignissimos architecto labore reiciendis quidem, ipsa iusto obcaecati
+        explicabo iure quas accusantium facere odit id ullam, et perspiciatis
+        sapiente ab repudiandae corporis quae sequi minus porro enim
+        consectetur possimus. Doloremque vitae id quam nemo cumque odit,
+        nesciunt quo nisi nam eaque ipsum fugiat dolorem, tempora reiciendis
+        ad corrupti quos saepe aliquam asperiores blanditiis tenetur!
+        Excepturi fuga necessitatibus fugit eligendi modi culpa perspiciatis
+        tempore earum quasi. Alias, est! Provident reprehenderit neque nam
+        porro! Eaque numquam quis aliquam aperiam eum non ut sit, animi atque
+        harum perferendis nemo! Quis quam veniam corrupti illo obcaecati,
+        eveniet provident a fuga vel dolorum porro unde odit reprehenderit et
+        repellat tenetur quidem explicabo aut dicta at rem laboriosam
+        distinctio, magni dolor. Dolorum, veniam autem? Minus voluptate
+        perspiciatis dolorem, repellendus a laudantium delectus officia quas
+        dolore molestiae commodi saepe accusantium. Adipisci facilis quibusdam
+        fugiat tempora voluptas nulla exercitationem esse nesciunt explicabo
+        minima eos, vero, sit ab eius blanditiis nobis. Provident laboriosam
+        fuga molestiae rerum ipsam voluptas porro cumque odio tenetur saepe.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
+        officiis maxime eligendi quam alias possimus vel voluptates quasi
+        maiores cupiditate ullam sed quod assumenda beatae laboriosam ut,
+        iusto dolores iste facere quas. Perspiciatis esse impedit labore?
+        Dignissimos architecto labore reiciendis quidem, ipsa iusto obcaecati
+        explicabo iure quas accusantium facere odit id ullam, et perspiciatis
+        sapiente ab repudiandae corporis quae sequi minus porro enim
+        consectetur possimus. Doloremque vitae id quam nemo cumque odit,
+        nesciunt quo nisi nam eaque ipsum fugiat dolorem, tempora reiciendis
+        ad corrupti quos saepe aliquam asperiores blanditiis tenetur!
+        Excepturi fuga necessitatibus fugit eligendi modi culpa perspiciatis
+        tempore earum quasi. Alias, est! Provident reprehenderit neque nam
+        porro! Eaque numquam quis aliquam aperiam eum non ut sit, animi atque
+        harum perferendis nemo! Quis quam veniam corrupti illo obcaecati,
+        eveniet provident a fuga vel dolorum porro unde odit reprehenderit et
+        repellat tenetur quidem explicabo aut dicta at rem laboriosam
+        distinctio, magni dolor. Dolorum, veniam autem? Minus voluptate
+        perspiciatis dolorem, repellendus a laudantium delectus officia quas
+        dolore molestiae commodi saepe accusantium. Adipisci facilis quibusdam
+        fugiat tempora voluptas nulla exercitationem esse nesciunt explicabo
+        minima eos, vero, sit ab eius blanditiis nobis. Provident laboriosam
+        fuga molestiae rerum ipsam voluptas porro cumque odio tenetur saepe.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
+        officiis maxime eligendi quam alias possimus vel voluptates quasi
+        maiores cupiditate ullam sed quod assumenda beatae laboriosam ut,
+        iusto dolores iste facere quas. Perspiciatis esse impedit labore?
+        Dignissimos architecto labore reiciendis quidem, ipsa iusto obcaecati
+        explicabo iure quas accusantium facere odit id ullam, et perspiciatis
+        sapiente ab repudiandae corporis quae sequi minus porro enim
+        consectetur possimus. Doloremque vitae id quam nemo cumque odit,
+        nesciunt quo nisi nam eaque ipsum fugiat dolorem, tempora reiciendis
+        ad corrupti quos saepe aliquam asperiores blanditiis tenetur!
+        Excepturi fuga necessitatibus fugit eligendi modi culpa perspiciatis
+        tempore earum quasi. Alias, est! Provident reprehenderit neque nam
+        porro! Eaque numquam quis aliquam aperiam eum non ut sit, animi atque
+        harum perferendis nemo! Quis quam veniam corrupti illo obcaecati,
+        eveniet provident a fuga vel dolorum porro unde odit reprehenderit et
+        repellat tenetur quidem explicabo aut dicta at rem laboriosam
+        distinctio, magni dolor. Dolorum, veniam autem? Minus voluptate
+        perspiciatis dolorem, repellendus a laudantium delectus officia quas
+        dolore molestiae commodi saepe accusantium. Adipisci facilis quibusdam
+        fugiat tempora voluptas nulla exercitationem esse nesciunt explicabo
+        minima eos, vero, sit ab eius blanditiis nobis. Provident laboriosam
+        fuga molestiae rerum ipsam voluptas porro cumque odio tenetur saepe.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
+        officiis maxime eligendi quam alias possimus vel voluptates quasi
+        maiores cupiditate ullam sed quod assumenda beatae laboriosam ut,
+        iusto dolores iste facere quas. Perspiciatis esse impedit labore?
+        Dignissimos architecto labore reiciendis quidem, ipsa iusto obcaecati
+        explicabo iure quas accusantium facere odit id ullam, et perspiciatis
+        sapiente ab repudiandae corporis quae sequi minus porro enim
+        consectetur possimus. Doloremque vitae id quam nemo cumque odit,
+        nesciunt quo nisi nam eaque ipsum fugiat dolorem, tempora reiciendis
+        ad corrupti quos saepe aliquam asperiores blanditiis tenetur!
+        Excepturi fuga necessitatibus fugit eligendi modi culpa perspiciatis
+        tempore earum quasi. Alias, est! Provident reprehenderit neque nam
+        porro! Eaque numquam quis aliquam aperiam eum non ut sit, animi atque
+        harum perferendis nemo! Quis quam veniam corrupti illo obcaecati,
+        eveniet provident a fuga vel dolorum porro unde odit reprehenderit et
+        repellat tenetur quidem explicabo aut dicta at rem laboriosam
+        distinctio, magni dolor. Dolorum, veniam autem? Minus voluptate
+        perspiciatis dolorem, repellendus a laudantium delectus officia quas
+        dolore molestiae commodi saepe accusantium. Adipisci facilis quibusdam
+        fugiat tempora voluptas nulla exercitationem esse nesciunt explicabo
+        minima eos, vero, sit ab eius blanditiis nobis. Provident laboriosam
+        fuga molestiae rerum ipsam voluptas porro cumque odio tenetur saepe.
+      </p>
+    </article>
+  </main>
+  <aside class="right-sidebar sidebar" style="display: block;">
+    <h3>Author Info</h3>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt dicta,
+      laborum aliquam adipisci reprehenderit saepe, praesentium cumque quidem
+      quisquam, similique tenetur repellat architecto perferendis voluptas
+      cupiditate cum molestias error natus aperiam. Odio omnis non vitae nulla
+      consequatur libero earum, laboriosam placeat dolore cumque voluptates
+      sequi, asperiores dicta commodi in reiciendis!
+    </p>
+    <h3>Notes</h3>
+    <ol>
+      <li>Lorem ipsum, dolor sit amet consectetur adipisicing.</li>
+      <li>Lorem ipsum, dolor sit amet consectetur adipisicing.</li>
+      <li>Lorem ipsum, dolor sit amet consectetur adipisicing.</li>
+      <li>Lorem ipsum, dolor sit amet consectetur adipisicing.</li>
+      <li>Lorem ipsum, dolor sit amet consectetur adipisicing.</li>
+      <li>Lorem ipsum, dolor sit amet consectetur adipisicing.</li>
+      <li>Lorem ipsum, dolor sit amet consectetur adipisicing.</li>
+    </ol>
+  </aside>
 
-    <script src="./sidebars.js" />
-  </body>
+  <script src="./sidebars.js"></script>
+</body>
+
 </html>
