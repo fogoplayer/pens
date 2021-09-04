@@ -4,7 +4,7 @@ function toggleLeft() {
 
   if (classes.contains("hidden")) {
     classes.remove("hidden");
-    document.body.classList.add("left-sidebar-hidden");
+    document.body.classList.remove("left-sidebar-hidden");
     expandLeft.style.visibility = "hidden";
   } else {
     classes.add("hidden");
@@ -19,7 +19,7 @@ function toggleRight() {
 
   if (classes.contains("hidden")) {
     classes.remove("hidden");
-    document.body.classList.add("right-sidebar-hidden");
+    document.body.classList.remove("right-sidebar-hidden");
     expandRight.style.visibility = "hidden";
   } else {
     classes.add("hidden");
