@@ -1,3 +1,12 @@
+<!-- 
+    A 3-pane web app layout inspired by study.churchofjesuschrist.org and messenger.com
+    
+    Wishlist:
+     - Overlay when floating sidebars are open to prevent touches hitting the other sections
+     - Track state for sidebars: if user closes a sidebar, don't open it again (At least, not until they cross a breakpoint. Right now there are screen sizes where they're supposed to be opened or closed. If the user toggles a sidebar and then resizes the window, it determines state based on the viewport without regarding the user's choice)
+     - [COMPLETE] Redo using CSS grid (header becomes misaligned if a line of text wraps)
+     - [COMPLETE] Handle inital page load more gracefully. Sidebars are set to display:none and then JS makes them visible after page load. This is so that mobile users don't see them sliding off to the side on load. However, it creates a jarring pop-in on desktop. Ideally it would be the animation that would be disabled on load, rather than the display type. (Update: only seems to be an issue in the codepen editor)
+    -->
 <html lang="en">
   <head>
     <title>Three Pane Layout</title>
@@ -7,15 +16,6 @@
   </head>
 
   <body translate="no">
-    <!-- 
-    A 3-pane web app layout inspired by study.churchofjesuschrist.org and messenger.com
-    
-    Wishlist:
-     - Overlay when floating sidebars are open to prevent touches hitting the other sections
-     - Track state for sidebars: if user closes a sidebar, don't open it again (At least, not until they cross a breakpoint. Right now there are screen sizes where they're supposed to be opened or closed. If the user toggles a sidebar and then resizes the window, it determines state based on the viewport without regarding the user's choice)
-     - Redo using CSS grid (header becomes misaligned if a line of text wraps)
-     - Handle inital page load more gracefully. Sidebars are set to display:none and then JS makes them visible after page load. This is so that mobile users don't see them sliding off to the side on load. However, it creates a jarring pop-in on desktop. Ideally it would be the animation that would be disabled on load, rather than the display type. (Update: only seems to be an issue in the codepen editor)
-    -->
     <header class="left-sidebar-header">
       <h2>Navigation</h2>
       <button id="collapse-left" onclick="toggleLeft()" class="collapse-button">
