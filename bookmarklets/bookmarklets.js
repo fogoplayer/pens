@@ -41,6 +41,8 @@ function clipCoupons() {
 
 function meetFullScreen() {
   function makeFullScreen() {
+    /* Divs appear in nested order */
+
     /* Feed Container */
     try {
       let FEED_CONTAINER = document.querySelector(
@@ -48,7 +50,7 @@ function meetFullScreen() {
       );
       FEED_CONTAINER.style.inset = 0;
     } catch (e) {
-      console.error("Feed Container .zWfAib.Z319Jd.QhPhw.a1pVef");
+      console.error("Feed Container .zWfAib.Z319Jd.QhPhw");
     }
 
     /* Feed Container 2 */
@@ -69,7 +71,7 @@ function meetFullScreen() {
       console.error("Top Bar .pHsCke");
     }
 
-    /* //Video */
+    /* Video */
     try {
       let FEED = document.querySelector(
         "div.xsj2Ff.Zf0RDc.AwnI1b > div.koV58.Zi94Db.S7urwe > div.p2hjYe.TPpRNe"
@@ -101,8 +103,19 @@ function meetFullScreen() {
     }
   }
 
-  /* CTRL + F */
+  /* Triggers--Fullscreen & CTRL + F */
   window.addEventListener("fullscreenchange", () =>
     setTimeout(makeFullScreen, 100)
+  );
+
+  window.addEventListener(
+    "keydown",
+    (e) => {
+      if (e.ctrlKey && e.keyCode === 70) {
+        e.preventDefault();
+        makeFullScreen();
+      }
+    },
+    true
   );
 }
