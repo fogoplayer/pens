@@ -1,0 +1,437 @@
+<html lang="en">
+  <head>
+    <title>Three Pane Layout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      :root {
+        --column-padding: 1rem;
+        --inverse-column-padding-margin: -1rem;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        width: 100vw;
+        height: 100vh;
+        padding: 0px;
+        margin: 0px;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        grid-template-columns: 300px auto 300px;
+        overflow-x: clip;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        position: sticky;
+        top: 0px;
+        font-size: 2rem;
+        font-family: sans-serif;
+        background: lightgray;
+        padding: var(--column-padding);
+        border-bottom: 2px solid darkgray;
+        grid-row: 1 / 2;
+      }
+
+      header h2,
+      header h1 {
+        font-size: inherit;
+        margin: 0px;
+        width: 100%;
+        text-align: center;
+      }
+
+      header .collapse-button {
+        border: none;
+        background: none;
+        padding: 0px;
+        width: 4rem;
+        height: 100%;
+        font-size: 2rem;
+        margin: var(--inverse-column-padding-margin);
+      }
+
+      .sidebar {
+        overflow-y: scroll;
+        padding: 0 var(--column-padding);
+        display: none;
+      }
+
+      .sidebar.floating,
+      .sidebar.hidden {
+        position: absolute;
+      }
+
+      .sidebar.floating {
+        box-shadow: black 0px 0px 1em;
+        transition: transform 0.25s ease-out 0s;
+      }
+
+      .left-sidebar {
+        background: pink;
+        left: 0px;
+        z-index: 2;
+      }
+
+      .left-sidebar.hidden {
+        transform: translateX(-100%);
+      }
+
+      .sidebar ul {
+        list-style: none;
+        padding: 0px;
+        margin: 0px;
+      }
+
+      .sidebar ul li {
+        margin: 2rem 0px;
+      }
+
+      .right-sidebar {
+        background: lightblue;
+        right: 0px;
+        z-index: 1;
+      }
+
+      .right-sidebar.hidden {
+        transform: translateX(100%);
+      }
+
+      main {
+        overflow-y: scroll;
+        padding: 0 var(--column-padding);
+      }
+
+      #expand-left,
+      #expand-right {
+        visibility: hidden;
+      }
+    </style>
+  </head>
+
+  <body translate="no">
+    <!-- 
+    A 3-pane web app layout inspired by study.churchofjesuschrist.org and messenger.com
+    
+    Wishlist:
+     - Overlay when floating sidebars are open to prevent touches hitting the other sections
+     - Track state for sidebars: if user closes a sidebar, don't open it again (At least, not until they cross a breakpoint. Right now there are screen sizes where they're supposed to be opened or closed. If the user toggles a sidebar and then resizes the window, it determines state based on the viewport without regarding the user's choice)
+     - Redo using CSS grid (header becomes misaligned if a line of text wraps)
+     - Handle inital page load more gracefully. Sidebars are set to display:none and then JS makes them visible after page load. This is so that mobile users don't see them sliding off to the side on load. However, it creates a jarring pop-in on desktop. Ideally it would be the animation that would be disabled on load, rather than the display type. (Update: only seems to be an issue in the codepen editor)
+    -->
+    <header>
+      <h2>Navigation</h2>
+      <button id="collapse-left" onclick="toggleLeft()" class="collapse-button">
+        &lt;
+      </button>
+    </header>
+    <header>
+      <button
+        id="expand-left"
+        onclick="toggleLeft()"
+        class="collapse-button"
+        style="visibility: hidden;"
+      >
+        &gt;
+      </button>
+      <h1>Title</h1>
+      <button
+        id="expand-right"
+        onclick="toggleRight()"
+        class="collapse-button"
+        style="visibility: hidden;"
+      >
+        &lt;
+      </button>
+    </header>
+    <header>
+      <button onclick="toggleRight()" class="collapse-button">&gt;</button>
+      <h2>Notes</h2>
+    </header>
+    <nav class="left-sidebar sidebar" style="display: block;">
+      <ul>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+      </ul>
+    </nav>
+    <main class="main-content">
+      <article>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
+          officiis maxime eligendi quam alias possimus vel voluptates quasi
+          maiores cupiditate ullam sed quod assumenda beatae laboriosam ut,
+          iusto dolores iste facere quas. Perspiciatis esse impedit labore?
+          Dignissimos architecto labore reiciendis quidem, ipsa iusto obcaecati
+          explicabo iure quas accusantium facere odit id ullam, et perspiciatis
+          sapiente ab repudiandae corporis quae sequi minus porro enim
+          consectetur possimus. Doloremque vitae id quam nemo cumque odit,
+          nesciunt quo nisi nam eaque ipsum fugiat dolorem, tempora reiciendis
+          ad corrupti quos saepe aliquam asperiores blanditiis tenetur!
+          Excepturi fuga necessitatibus fugit eligendi modi culpa perspiciatis
+          tempore earum quasi. Alias, est! Provident reprehenderit neque nam
+          porro! Eaque numquam quis aliquam aperiam eum non ut sit, animi atque
+          harum perferendis nemo! Quis quam veniam corrupti illo obcaecati,
+          eveniet provident a fuga vel dolorum porro unde odit reprehenderit et
+          repellat tenetur quidem explicabo aut dicta at rem laboriosam
+          distinctio, magni dolor. Dolorum, veniam autem? Minus voluptate
+          perspiciatis dolorem, repellendus a laudantium delectus officia quas
+          dolore molestiae commodi saepe accusantium. Adipisci facilis quibusdam
+          fugiat tempora voluptas nulla exercitationem esse nesciunt explicabo
+          minima eos, vero, sit ab eius blanditiis nobis. Provident laboriosam
+          fuga molestiae rerum ipsam voluptas porro cumque odio tenetur saepe.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
+          officiis maxime eligendi quam alias possimus vel voluptates quasi
+          maiores cupiditate ullam sed quod assumenda beatae laboriosam ut,
+          iusto dolores iste facere quas. Perspiciatis esse impedit labore?
+          Dignissimos architecto labore reiciendis quidem, ipsa iusto obcaecati
+          explicabo iure quas accusantium facere odit id ullam, et perspiciatis
+          sapiente ab repudiandae corporis quae sequi minus porro enim
+          consectetur possimus. Doloremque vitae id quam nemo cumque odit,
+          nesciunt quo nisi nam eaque ipsum fugiat dolorem, tempora reiciendis
+          ad corrupti quos saepe aliquam asperiores blanditiis tenetur!
+          Excepturi fuga necessitatibus fugit eligendi modi culpa perspiciatis
+          tempore earum quasi. Alias, est! Provident reprehenderit neque nam
+          porro! Eaque numquam quis aliquam aperiam eum non ut sit, animi atque
+          harum perferendis nemo! Quis quam veniam corrupti illo obcaecati,
+          eveniet provident a fuga vel dolorum porro unde odit reprehenderit et
+          repellat tenetur quidem explicabo aut dicta at rem laboriosam
+          distinctio, magni dolor. Dolorum, veniam autem? Minus voluptate
+          perspiciatis dolorem, repellendus a laudantium delectus officia quas
+          dolore molestiae commodi saepe accusantium. Adipisci facilis quibusdam
+          fugiat tempora voluptas nulla exercitationem esse nesciunt explicabo
+          minima eos, vero, sit ab eius blanditiis nobis. Provident laboriosam
+          fuga molestiae rerum ipsam voluptas porro cumque odio tenetur saepe.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
+          officiis maxime eligendi quam alias possimus vel voluptates quasi
+          maiores cupiditate ullam sed quod assumenda beatae laboriosam ut,
+          iusto dolores iste facere quas. Perspiciatis esse impedit labore?
+          Dignissimos architecto labore reiciendis quidem, ipsa iusto obcaecati
+          explicabo iure quas accusantium facere odit id ullam, et perspiciatis
+          sapiente ab repudiandae corporis quae sequi minus porro enim
+          consectetur possimus. Doloremque vitae id quam nemo cumque odit,
+          nesciunt quo nisi nam eaque ipsum fugiat dolorem, tempora reiciendis
+          ad corrupti quos saepe aliquam asperiores blanditiis tenetur!
+          Excepturi fuga necessitatibus fugit eligendi modi culpa perspiciatis
+          tempore earum quasi. Alias, est! Provident reprehenderit neque nam
+          porro! Eaque numquam quis aliquam aperiam eum non ut sit, animi atque
+          harum perferendis nemo! Quis quam veniam corrupti illo obcaecati,
+          eveniet provident a fuga vel dolorum porro unde odit reprehenderit et
+          repellat tenetur quidem explicabo aut dicta at rem laboriosam
+          distinctio, magni dolor. Dolorum, veniam autem? Minus voluptate
+          perspiciatis dolorem, repellendus a laudantium delectus officia quas
+          dolore molestiae commodi saepe accusantium. Adipisci facilis quibusdam
+          fugiat tempora voluptas nulla exercitationem esse nesciunt explicabo
+          minima eos, vero, sit ab eius blanditiis nobis. Provident laboriosam
+          fuga molestiae rerum ipsam voluptas porro cumque odio tenetur saepe.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
+          officiis maxime eligendi quam alias possimus vel voluptates quasi
+          maiores cupiditate ullam sed quod assumenda beatae laboriosam ut,
+          iusto dolores iste facere quas. Perspiciatis esse impedit labore?
+          Dignissimos architecto labore reiciendis quidem, ipsa iusto obcaecati
+          explicabo iure quas accusantium facere odit id ullam, et perspiciatis
+          sapiente ab repudiandae corporis quae sequi minus porro enim
+          consectetur possimus. Doloremque vitae id quam nemo cumque odit,
+          nesciunt quo nisi nam eaque ipsum fugiat dolorem, tempora reiciendis
+          ad corrupti quos saepe aliquam asperiores blanditiis tenetur!
+          Excepturi fuga necessitatibus fugit eligendi modi culpa perspiciatis
+          tempore earum quasi. Alias, est! Provident reprehenderit neque nam
+          porro! Eaque numquam quis aliquam aperiam eum non ut sit, animi atque
+          harum perferendis nemo! Quis quam veniam corrupti illo obcaecati,
+          eveniet provident a fuga vel dolorum porro unde odit reprehenderit et
+          repellat tenetur quidem explicabo aut dicta at rem laboriosam
+          distinctio, magni dolor. Dolorum, veniam autem? Minus voluptate
+          perspiciatis dolorem, repellendus a laudantium delectus officia quas
+          dolore molestiae commodi saepe accusantium. Adipisci facilis quibusdam
+          fugiat tempora voluptas nulla exercitationem esse nesciunt explicabo
+          minima eos, vero, sit ab eius blanditiis nobis. Provident laboriosam
+          fuga molestiae rerum ipsam voluptas porro cumque odio tenetur saepe.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
+          officiis maxime eligendi quam alias possimus vel voluptates quasi
+          maiores cupiditate ullam sed quod assumenda beatae laboriosam ut,
+          iusto dolores iste facere quas. Perspiciatis esse impedit labore?
+          Dignissimos architecto labore reiciendis quidem, ipsa iusto obcaecati
+          explicabo iure quas accusantium facere odit id ullam, et perspiciatis
+          sapiente ab repudiandae corporis quae sequi minus porro enim
+          consectetur possimus. Doloremque vitae id quam nemo cumque odit,
+          nesciunt quo nisi nam eaque ipsum fugiat dolorem, tempora reiciendis
+          ad corrupti quos saepe aliquam asperiores blanditiis tenetur!
+          Excepturi fuga necessitatibus fugit eligendi modi culpa perspiciatis
+          tempore earum quasi. Alias, est! Provident reprehenderit neque nam
+          porro! Eaque numquam quis aliquam aperiam eum non ut sit, animi atque
+          harum perferendis nemo! Quis quam veniam corrupti illo obcaecati,
+          eveniet provident a fuga vel dolorum porro unde odit reprehenderit et
+          repellat tenetur quidem explicabo aut dicta at rem laboriosam
+          distinctio, magni dolor. Dolorum, veniam autem? Minus voluptate
+          perspiciatis dolorem, repellendus a laudantium delectus officia quas
+          dolore molestiae commodi saepe accusantium. Adipisci facilis quibusdam
+          fugiat tempora voluptas nulla exercitationem esse nesciunt explicabo
+          minima eos, vero, sit ab eius blanditiis nobis. Provident laboriosam
+          fuga molestiae rerum ipsam voluptas porro cumque odio tenetur saepe.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
+          officiis maxime eligendi quam alias possimus vel voluptates quasi
+          maiores cupiditate ullam sed quod assumenda beatae laboriosam ut,
+          iusto dolores iste facere quas. Perspiciatis esse impedit labore?
+          Dignissimos architecto labore reiciendis quidem, ipsa iusto obcaecati
+          explicabo iure quas accusantium facere odit id ullam, et perspiciatis
+          sapiente ab repudiandae corporis quae sequi minus porro enim
+          consectetur possimus. Doloremque vitae id quam nemo cumque odit,
+          nesciunt quo nisi nam eaque ipsum fugiat dolorem, tempora reiciendis
+          ad corrupti quos saepe aliquam asperiores blanditiis tenetur!
+          Excepturi fuga necessitatibus fugit eligendi modi culpa perspiciatis
+          tempore earum quasi. Alias, est! Provident reprehenderit neque nam
+          porro! Eaque numquam quis aliquam aperiam eum non ut sit, animi atque
+          harum perferendis nemo! Quis quam veniam corrupti illo obcaecati,
+          eveniet provident a fuga vel dolorum porro unde odit reprehenderit et
+          repellat tenetur quidem explicabo aut dicta at rem laboriosam
+          distinctio, magni dolor. Dolorum, veniam autem? Minus voluptate
+          perspiciatis dolorem, repellendus a laudantium delectus officia quas
+          dolore molestiae commodi saepe accusantium. Adipisci facilis quibusdam
+          fugiat tempora voluptas nulla exercitationem esse nesciunt explicabo
+          minima eos, vero, sit ab eius blanditiis nobis. Provident laboriosam
+          fuga molestiae rerum ipsam voluptas porro cumque odio tenetur saepe.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
+          officiis maxime eligendi quam alias possimus vel voluptates quasi
+          maiores cupiditate ullam sed quod assumenda beatae laboriosam ut,
+          iusto dolores iste facere quas. Perspiciatis esse impedit labore?
+          Dignissimos architecto labore reiciendis quidem, ipsa iusto obcaecati
+          explicabo iure quas accusantium facere odit id ullam, et perspiciatis
+          sapiente ab repudiandae corporis quae sequi minus porro enim
+          consectetur possimus. Doloremque vitae id quam nemo cumque odit,
+          nesciunt quo nisi nam eaque ipsum fugiat dolorem, tempora reiciendis
+          ad corrupti quos saepe aliquam asperiores blanditiis tenetur!
+          Excepturi fuga necessitatibus fugit eligendi modi culpa perspiciatis
+          tempore earum quasi. Alias, est! Provident reprehenderit neque nam
+          porro! Eaque numquam quis aliquam aperiam eum non ut sit, animi atque
+          harum perferendis nemo! Quis quam veniam corrupti illo obcaecati,
+          eveniet provident a fuga vel dolorum porro unde odit reprehenderit et
+          repellat tenetur quidem explicabo aut dicta at rem laboriosam
+          distinctio, magni dolor. Dolorum, veniam autem? Minus voluptate
+          perspiciatis dolorem, repellendus a laudantium delectus officia quas
+          dolore molestiae commodi saepe accusantium. Adipisci facilis quibusdam
+          fugiat tempora voluptas nulla exercitationem esse nesciunt explicabo
+          minima eos, vero, sit ab eius blanditiis nobis. Provident laboriosam
+          fuga molestiae rerum ipsam voluptas porro cumque odio tenetur saepe.
+        </p>
+      </article>
+    </main>
+    <aside class="right-sidebar sidebar" style="display: block;">
+      <h3>Author Info</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt dicta,
+        laborum aliquam adipisci reprehenderit saepe, praesentium cumque quidem
+        quisquam, similique tenetur repellat architecto perferendis voluptas
+        cupiditate cum molestias error natus aperiam. Odio omnis non vitae nulla
+        consequatur libero earum, laboriosam placeat dolore cumque voluptates
+        sequi, asperiores dicta commodi in reiciendis!
+      </p>
+      <h3>Notes</h3>
+      <ol>
+        <li>Lorem ipsum, dolor sit amet consectetur adipisicing.</li>
+        <li>Lorem ipsum, dolor sit amet consectetur adipisicing.</li>
+        <li>Lorem ipsum, dolor sit amet consectetur adipisicing.</li>
+        <li>Lorem ipsum, dolor sit amet consectetur adipisicing.</li>
+        <li>Lorem ipsum, dolor sit amet consectetur adipisicing.</li>
+        <li>Lorem ipsum, dolor sit amet consectetur adipisicing.</li>
+        <li>Lorem ipsum, dolor sit amet consectetur adipisicing.</li>
+      </ol>
+    </aside>
+
+    <script>
+      function toggleLeft() {
+        let classes = document.querySelector(".left-sidebar").classList;
+        let expandLeft = document.getElementById("expand-left");
+
+        if (classes.contains("hidden")) {
+          classes.remove("hidden");
+          expandLeft.style.visibility = "hidden";
+        } else {
+          classes.add("hidden");
+          expandLeft.style.visibility = "visible";
+        }
+      }
+
+      function toggleRight() {
+        let classes = document.querySelector(".right-sidebar").classList;
+        let expandRight = document.getElementById("expand-right");
+
+        if (classes.contains("hidden")) {
+          classes.remove("hidden");
+          expandRight.style.visibility = "hidden";
+        } else {
+          classes.add("hidden");
+          expandRight.style.visibility = "visible";
+        }
+      }
+
+      window.onresize = function () {
+        const width = window.innerWidth;
+        let leftSidebarClassList = document.querySelector(".left-sidebar")
+          .classList;
+        let rightSidebarClassList = document.querySelector(".right-sidebar")
+          .classList;
+        let expandLeft = document.getElementById("expand-left");
+        let expandRight = document.getElementById("expand-right");
+
+        if (width < 1024) {
+          if (!rightSidebarClassList.contains("floating")) {
+            rightSidebarClassList.add("floating", "hidden");
+            expandRight.style.visibility = "visible";
+          }
+        } else {
+          rightSidebarClassList.remove("floating", "hidden");
+          expandRight.style.visibility = "hidden";
+        }
+
+        if (width < 800) {
+          if (!leftSidebarClassList.contains("floating")) {
+            leftSidebarClassList.add("floating", "hidden");
+            expandLeft.style.visibility = "visible";
+          }
+        } else {
+          leftSidebarClassList.remove("floating", "hidden");
+          expandLeft.style.visibility = "hidden";
+        }
+      };
+
+      window.onresize(); // Determine inital classes. I could have set it with a media query, but the logic is already here
+      Array.from(document.querySelectorAll(".sidebar")).forEach(
+        (sidebar) => (sidebar.style.display = "block")
+      ); // Set sidebars to display="none" and then reveal them after page load to avoid animation on initial page load
+    </script>
+  </body>
+</html>
