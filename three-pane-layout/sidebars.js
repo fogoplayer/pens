@@ -1,58 +1,52 @@
 function toggleLeft() {
-  let classes = document.querySelector(".left-sidebar").classList;
+  let bodyClassList = document.body.classList;
   let expandLeft = document.getElementById("expand-left");
 
-  if (classes.contains("hidden")) {
-    classes.remove("hidden");
-    document.body.classList.remove("left-sidebar-hidden");
+  if (bodyClassList.contains("left-sidebar-hidden")) {
+    bodyClassList.remove("left-sidebar-hidden");
     expandLeft.style.visibility = "hidden";
   } else {
-    classes.add("hidden");
-    document.body.classList.add("left-sidebar-hidden");
+    bodyClassList.add("left-sidebar-hidden");
     expandLeft.style.visibility = "visible";
   }
 }
 
 function toggleRight() {
-  let classes = document.querySelector(".right-sidebar").classList;
+  let bodyClassList = document.body.classList;
   let expandRight = document.getElementById("expand-right");
 
-  if (classes.contains("hidden")) {
-    classes.remove("hidden");
-    document.body.classList.remove("right-sidebar-hidden");
+  if (bodyClassList.contains("right-sidebar-hidden")) {
+    bodyClassList.remove("right-sidebar-hidden");
     expandRight.style.visibility = "hidden";
   } else {
-    classes.add("hidden");
-    document.body.classList.add("right-sidebar-hidden");
+    bodyClassList.add("right-sidebar-hidden");
     expandRight.style.visibility = "visible";
   }
 }
 
 window.onresize = function () {
   const width = window.innerWidth;
-  let leftSidebarClassList = document.querySelector(".left-sidebar").classList;
-  let rightSidebarClassList = document.querySelector(".right-sidebar")
-    .classList;
+  let bodyClassList = document.body.classList;
   let expandLeft = document.getElementById("expand-left");
   let expandRight = document.getElementById("expand-right");
 
   if (width < 1024) {
-    if (!rightSidebarClassList.contains("floating")) {
-      rightSidebarClassList.add("floating", "hidden");
+    if (!bodyClassList.contains("right--sidebar-floating")) {
+      bodyClassList.add("right-sidebar-hidden", "right-sidebar-floating");
       expandRight.style.visibility = "visible";
     }
   } else {
-    rightSidebarClassList.remove("floating", "hidden");
+    bodyClassList.remove("right-sidebar-hidden", "right-sidebar-floating");
     expandRight.style.visibility = "hidden";
   }
 
   if (width < 800) {
-    if (!leftSidebarClassList.contains("floating")) {
-      leftSidebarClassList.add("floating", "hidden");
+    if (!bodyClassList.contains("left--sidebar-floating")) {
+      bodyClassList.add("left-sidebar-hidden", "left-sidebar-floating");
       expandLeft.style.visibility = "visible";
     }
   } else {
-    leftSidebarClassList.remove("floating", "hidden");
+    bodyClassList.remove("left-sidebar-hidden", "left-sidebar-floating");
     expandLeft.style.visibility = "hidden";
   }
 };

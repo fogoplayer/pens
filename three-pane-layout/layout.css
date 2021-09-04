@@ -22,19 +22,19 @@ body {
   overflow-x: clip;
 }
 
-body.left-sidebar-hidden {
+body.left-sidebar-hidden,
+body.left-sidebar-floating {
   --left-sidebar-width: 0;
 }
 
-body.right-sidebar-hidden {
+body.right-sidebar-hidden,
+body.right-sidebar-floating {
   --right-sidebar-width: 0;
 }
 
 header {
   display: flex;
   align-items: center;
-  position: sticky;
-  top: 0px;
   font-size: 2rem;
   font-family: sans-serif;
   background: lightgray;
@@ -60,40 +60,44 @@ header .collapse-button {
   margin: var(--inverse-column-padding-margin);
 }
 
+header,
 .sidebar {
-  overflow-y: scroll;
-  padding: 0 var(--column-padding);
+  overflow: scroll;
+  padding: var(--column-padding);
+  transition: transform 0.25s ease-out;
 }
 
-.sidebar.floating,
-.sidebar.hidden {
-  /* position: absolute; */
+.left-sidebar-floating:not(.left-sidebar-hidden) .left-sidebar-header,
+.left-sidebar-floating:not(.left-sidebar-hidden) .left-sidebar,
+.right-sidebar-floating:not(.right-sidebar-hidden) .right-sidebar-header,
+.right-sidebar-floating:not(.right-sidebar-hidden) .right-sidebar {
+  position: relative;
+  width: 300px;
+  /* box-shadow: black 0px 0px 1em; */
 }
 
-.sidebar.floating {
-  box-shadow: black 0px 0px 1em;
-  transition: transform 0.25s ease-out 0s;
+.left-sidebar-hidden .left-sidebar-header,
+.left-sidebar-hidden .left-sidebar,
+.right-sidebar-hidden .right-sidebar-header,
+.right-sidebar-hidden .right-sidebar {
+  position: relative;
+  padding: 0;
 }
 
 .left-sidebar {
   background: pink;
   left: 0px;
   z-index: 2;
-  --left-sidebar-width: 0;
 }
 
-.left-sidebar.hidden {
+.left-sidebar-hidden .left-sidebar-header,
+.left-sidebar-hidden .left-sidebar {
   transform: translateX(-100%);
 }
 
-.sidebar ul {
-  list-style: none;
-  padding: 0px;
-  margin: 0px;
-}
-
-.sidebar ul li {
-  margin: 2rem 0px;
+.left-sidebar-floating:not(.left-sidebar-hidden) .left-sidebar-header,
+.left-sidebar-floating:not(.left-sidebar-hidden) .left-sidebar {
+  transform: translateX(0);
 }
 
 .right-sidebar {
@@ -102,8 +106,9 @@ header .collapse-button {
   z-index: 1;
 }
 
-.right-sidebar.hidden {
-  transform: translateX(100%);
+.right-sidebar-floating:not(.right-sidebar-hidden) .right-sidebar-header,
+.right-sidebar-floating:not(.right-sidebar-hidden) .right-sidebar {
+  transform: translateX(-100%);
 }
 
 main {

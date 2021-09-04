@@ -3,6 +3,7 @@
     <title>Three Pane Layout</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="layout.css" />
+    <link rel="stylesheet" href="content.css" />
   </head>
 
   <body translate="no">
@@ -15,12 +16,13 @@
      - Redo using CSS grid (header becomes misaligned if a line of text wraps)
      - Handle inital page load more gracefully. Sidebars are set to display:none and then JS makes them visible after page load. This is so that mobile users don't see them sliding off to the side on load. However, it creates a jarring pop-in on desktop. Ideally it would be the animation that would be disabled on load, rather than the display type. (Update: only seems to be an issue in the codepen editor)
     -->
-    <header>
+    <header class="left-sidebar-header">
       <h2>Navigation</h2>
       <button id="collapse-left" onclick="toggleLeft()" class="collapse-button">
         &lt;
       </button>
     </header>
+
     <header>
       <button
         id="expand-left"
@@ -40,10 +42,12 @@
         &lt;
       </button>
     </header>
-    <header>
+
+    <header class="right-sidebar-header">
       <button onclick="toggleRight()" class="collapse-button">&gt;</button>
       <h2>Notes</h2>
     </header>
+
     <nav class="left-sidebar sidebar" style="display: block;">
       <ul>
         <li><a href="#">Lorem ipsum dolor</a></li>
