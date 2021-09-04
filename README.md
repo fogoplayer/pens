@@ -58,6 +58,16 @@ A simple snowfall animation. Scales to viewport.
 
 ---
 
+### [Three-Pane Template](./three-pane-layout)
+
+A 3-pane web app layout inspired by study.churchofjesuschrist.org and messenger.com. Uses CSS grid to align everything. Side panels for navigation and details expand and contract based on the viewport width and user input.
+
+#### [Flexbox Version](./three-pane-layout/three-pane-flexbox.html)
+
+My first attempt at a three-pane layout, using Flexbox.
+
+---
+
 ### [ZCode Logo](./zcode-logo)
 
 A CSS animation that I developed for use as a logo.
