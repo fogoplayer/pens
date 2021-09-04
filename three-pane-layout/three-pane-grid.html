@@ -2,125 +2,7 @@
   <head>
     <title>Three Pane Layout</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-      :root {
-        --column-padding: 1rem;
-        --inverse-column-padding-margin: -1rem;
-        --left-sidebar-width: 300px;
-        --right-sidebar-width: 300px;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        width: 100vw;
-        height: 100vh;
-        padding: 0px;
-        margin: 0px;
-        display: grid;
-        grid-template-rows: auto 1fr;
-        grid-template-columns: var(--left-sidebar-width) 1fr var(
-            --right-sidebar-width
-          );
-        overflow-x: clip;
-      }
-
-      body.left-sidebar-hidden {
-        --left-sidebar-width: 0;
-      }
-
-      body.right-sidebar-hidden {
-        --right-sidebar-width: 0;
-      }
-
-      header {
-        display: flex;
-        align-items: center;
-        position: sticky;
-        top: 0px;
-        font-size: 2rem;
-        font-family: sans-serif;
-        background: lightgray;
-        padding: var(--column-padding);
-        border-bottom: 2px solid darkgray;
-      }
-
-      header h2,
-      header h1 {
-        font-size: inherit;
-        margin: 0px;
-        width: 100%;
-        text-align: center;
-      }
-
-      header .collapse-button {
-        border: none;
-        background: none;
-        padding: 0px;
-        width: 4rem;
-        height: 100%;
-        font-size: 2rem;
-        margin: var(--inverse-column-padding-margin);
-      }
-
-      .sidebar {
-        overflow-y: scroll;
-        padding: 0 var(--column-padding);
-      }
-
-      .sidebar.floating,
-      .sidebar.hidden {
-        /* position: absolute; */
-      }
-
-      .sidebar.floating {
-        box-shadow: black 0px 0px 1em;
-        transition: transform 0.25s ease-out 0s;
-      }
-
-      .left-sidebar {
-        background: pink;
-        left: 0px;
-        z-index: 2;
-        --left-sidebar-width: 0;
-      }
-
-      .left-sidebar.hidden {
-        transform: translateX(-100%);
-      }
-
-      .sidebar ul {
-        list-style: none;
-        padding: 0px;
-        margin: 0px;
-      }
-
-      .sidebar ul li {
-        margin: 2rem 0px;
-      }
-
-      .right-sidebar {
-        background: lightblue;
-        right: 0px;
-        z-index: 1;
-      }
-
-      .right-sidebar.hidden {
-        transform: translateX(100%);
-      }
-
-      main {
-        overflow-y: scroll;
-        padding: 0 var(--column-padding);
-      }
-
-      #expand-left,
-      #expand-right {
-        visibility: hidden;
-      }
-    </style>
+    <link rel="stylesheet" href="layout.css" />
   </head>
 
   <body translate="no">
@@ -382,6 +264,6 @@
       </ol>
     </aside>
 
-    <script></script>
+    <script src="./sidebars.js" />
   </body>
 </html>
