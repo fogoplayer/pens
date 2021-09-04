@@ -99,13 +99,12 @@ header,
   z-index: 2;
 }
 
+.left-sidebar-hidden .left-sidebar-header,
+.left-sidebar-hidden .left-sidebar,
 .left-sidebar-floating .left-sidebar-header,
 .left-sidebar-floating .left-sidebar {
-  left: calc(-1 * var(--sidebar-width));
-}
-.left-sidebar-hidden .left-sidebar-header,
-.left-sidebar-hidden .left-sidebar {
   width: var(--sidebar-width);
+  left: calc(-1 * var(--sidebar-width));
 }
 
 .left-sidebar-floating:not(.left-sidebar-hidden) .left-sidebar-header,
