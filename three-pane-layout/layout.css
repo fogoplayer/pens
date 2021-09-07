@@ -10,12 +10,15 @@
   box-sizing: border-box;
 }
 
-/* Body ---------------------------------------------------------------------------------------------------------------- */
 body {
-  width: 100vw;
-  height: 100vh;
   padding: 0px;
   margin: 0px;
+}
+
+/* Body ---------------------------------------------------------------------------------------------------------------- */
+.wrapper {
+  width: 100vw;
+  height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr;
   grid-template-columns: var(--left-sidebar-col-width) 1fr var(
@@ -24,13 +27,13 @@ body {
   overflow-x: clip;
 }
 
-body.left-sidebar-hidden,
-body.left-sidebar-floating {
+.wrapper.left-sidebar-hidden,
+.wrapper.left-sidebar-floating {
   --left-sidebar-col-width: 0;
 }
 
-body.right-sidebar-hidden,
-body.right-sidebar-floating {
+.wrapper.right-sidebar-hidden,
+.wrapper.right-sidebar-floating {
   --right-sidebar-col-width: 0;
 }
 

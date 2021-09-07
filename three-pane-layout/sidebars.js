@@ -1,5 +1,5 @@
 function toggleLeft() {
-  let bodyClassList = document.body.classList;
+  let bodyClassList = document.querySelector(".wrapper").classList;
   let expandLeft = document.getElementById("expand-left");
 
   if (bodyClassList.contains("left-sidebar-hidden")) {
@@ -12,7 +12,7 @@ function toggleLeft() {
 }
 
 function toggleRight() {
-  let bodyClassList = document.body.classList;
+  let bodyClassList = document.querySelector(".wrapper").classList;
   let expandRight = document.getElementById("expand-right");
 
   if (bodyClassList.contains("right-sidebar-hidden")) {
@@ -26,7 +26,7 @@ function toggleRight() {
 
 window.onresize = function () {
   const width = window.innerWidth;
-  let bodyClassList = document.body.classList;
+  let bodyClassList = document.querySelector(".wrapper").classList;
   let expandLeft = document.getElementById("expand-left");
   let expandRight = document.getElementById("expand-right");
 
