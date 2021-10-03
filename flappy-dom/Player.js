@@ -19,7 +19,7 @@ export default class Player {
     this.player.style.transitionTimingFunction = "ease-out";
 
     // Position
-    this.y = this.y + 20 * VH + this.player.offsetHeight;
+    this.y = this.y + 15 * VH + this.player.offsetHeight;
     clearInterval(this.flapTime);
     this.flapTime = setTimeout(() => {
       this.fall();
