@@ -5,9 +5,8 @@ export default class Player {
   constructor() {
     this.player = document.getElementById("player");
     this.y = window.innerHeight / 2;
-    document.addEventListener("keydown", (e) => {
-      this.flap();
-    });
+    document.addEventListener("keydown", (e) => this.flap());
+    document.addEventListener("click", (e) => this.flap());
   }
 
   flap() {
