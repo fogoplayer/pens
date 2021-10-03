@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+#player {
+  /* display */
+  /* positioning */
+  position: absolute;
+
+  /* box-model */
+  width: 10vh;
+  height: 10vh;
+  background: orange;
+
+  /* typography */
+  /* manipulation */
+  transition: top;
+  /* misc */
+}
