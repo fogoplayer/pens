@@ -18,6 +18,7 @@ export default class Player {
     this.player.style.transitionTimingFunction = "ease-out";
 
     // Position
+    console.log(this.y, 15 * VH, this.player.offsetHeight);
     this.y = this.y + 15 * VH + this.player.offsetHeight;
     clearInterval(this.flapTime);
     this.flapTime = setTimeout(() => {
@@ -39,7 +40,16 @@ export default class Player {
   }
 
   get y() {
-    return window.innerHeight - this.player.offsetHeight - this.player.y;
+    console.log(
+      window.innerHeight,
+      this.player.offsetHeight,
+      this.player.getBoundingClientRect().top,
+    );
+    return (
+      window.innerHeight -
+      this.player.offsetHeight -
+      this.player.getBoundingClientRect().top
+    );
   }
 
   set y(arg) {
