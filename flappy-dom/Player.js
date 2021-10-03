@@ -8,9 +8,6 @@ export default class Player {
     document.addEventListener("keydown", (e) => {
       this.flap();
     });
-    setTimeout(() => {
-      this.fall();
-    }, 1000);
   }
 
   flap() {

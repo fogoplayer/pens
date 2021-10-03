@@ -25,3 +25,39 @@ body {
   transition: top;
   /* misc */
 }
+
+#background-container {
+  width: fit-content;
+}
+
+#background {
+  /* display */
+  /* positioning */
+  position: relative;
+  left: 0;
+
+  /* box-model */
+  height: 100vh;
+  background: linear-gradient(
+    90deg,
+    red,
+    blue,
+    red,
+    blue,
+    red,
+    blue,
+    red,
+    blue,
+    red,
+    blue,
+    red,
+    blue
+  );
+
+  /* typography */
+  /* manipulation */
+  transition-property: margin-left;
+  transition-timing-function: linear;
+
+  /* misc */
+}
