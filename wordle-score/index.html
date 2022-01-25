@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Worldle Scorer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <h1>Wordle Score</h1>
+    <textarea id="score-input"></textarea>
+    <div>
+      Score:
+      <div id="score-output"></div>
+    </div>
+  </body>
+  <style>
+    body {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+    }
+
+    textarea {
+      width: clamp(100px, 80vw, 400px);
+    }
+  </style>
+  <script>
+    const inputEl = document.getElementById("score-input");
+    const outputEl = document.getElementById("score-output");
+    inputEl.oninput = generateScore;
+
+    function generateScore() {
+      // Initialize variables
+      const SQUARE_FLOOR = 10000;
+      const BASE_SQUARE = 55357;
+      const YELLOW = 57320;
+      const GREEN = 57321;
+      const GRAY = 11035;
+      let score = 100;
+      let input;
+      let codes;
+
+      try {
+        // Resize text box
+        inputEl.style.height = inputEl.scrollHeight + "px";
+
+        // Sanitize input
+        input = inputEl.value;
+        input = sanitize();
+        score = score - guessesPenalty() - colorPenalty();
+      } catch (error) {
+        console.error(error);
+        score = "Invalid input";
+      }
+
+      postScore();
+
+      function sanitize() {
+        input = input.split("");
+        // Remove everything but squares
+        input = input.filter((e) => e.charCodeAt("0") > SQUARE_FLOOR);
+        // Remove base square, leave color modifiers
+        input = input.filter((e) => e.charCodeAt("0") !== 55357);
+        codes = input.map((e) => e.charCodeAt(0));
+
+        // Only accept multiples of 5 squares
+        if (input.length % 5 !== 0) throw new Error("Invalid input");
+
+        return input;
+      }
+
+      function guessesPenalty() {
+        const codesLen = codes.length;
+
+        // Is the puzzle solved?
+        for (let i = 1; i <= 5; i++) {
+          if (codes[codesLen - i] !== GREEN) return 40;
+        }
+
+        // How many guesses did they take?
+        const guesses = codesLen / 5;
+        switch (guesses) {
+          case 1:
+            return 0;
+            break;
+
+          case 2:
+            return 1;
+            break;
+
+          case 3:
+            return 2;
+            break;
+
+          case 4:
+            return 4;
+            break;
+
+          case 5:
+            return 8;
+            break;
+
+          case 6:
+            return 16;
+            break;
+
+          default:
+            throw new Error("Invalid input");
+            break;
+        }
+      }
+
+      function colorPenalty() {
+        const grayPenalty = input.reduce(
+          (value, item, i) => (codes[i] === GRAY ? value + 2 : value),
+          0,
+        );
+        const yellowPenalty = input.reduce(
+          (value, item, i) => (codes[i] === YELLOW ? value + 1 : value),
+          0,
+        );
+        return grayPenalty + yellowPenalty;
+      }
+      function postScore() {
+        outputEl.innerText = score;
+      }
+    }
+  </script>
+</html>
