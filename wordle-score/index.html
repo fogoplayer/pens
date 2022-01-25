@@ -38,6 +38,7 @@
       const YELLOW = 57320;
       const GREEN = 57321;
       const GRAY = 11035;
+      const LIGHT_GRAY = 11036;
       let score = 100;
       let input;
       let codes;
@@ -60,9 +61,15 @@
       function sanitize() {
         input = input.split("");
         // Remove everything but squares
-        input = input.filter((e) => e.charCodeAt("0") > SQUARE_FLOOR);
-        // Remove base square, leave color modifiers
-        input = input.filter((e) => e.charCodeAt("0") !== 55357);
+        input = input.filter((e) => {
+          const code = e.charCodeAt("0");
+          return (
+            code === GREEN ||
+            code === YELLOW ||
+            code === GRAY ||
+            code === LIGHT_GRAY
+          );
+        });
         codes = input.map((e) => e.charCodeAt(0));
 
         // Only accept multiples of 5 squares
@@ -114,7 +121,8 @@
 
       function colorPenalty() {
         const grayPenalty = input.reduce(
-          (value, item, i) => (codes[i] === GRAY ? value + 2 : value),
+          (value, item, i) =>
+            codes[i] === GRAY || codes[i] === LIGHT_GRAY ? value + 2 : value,
           0,
         );
         const yellowPenalty = input.reduce(
