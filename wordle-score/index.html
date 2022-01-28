@@ -24,7 +24,7 @@ Wordle 223 5/6
       Score:
       <span id="score-output"></span>
     </div>
-    <button>Share board with score</button>
+    <button id="share-btn">Share board with score</button>
   </body>
   <style>
     body {
@@ -41,6 +41,7 @@ Wordle 223 5/6
     const inputEl = document.getElementById("score-input");
     const outputEl = document.getElementById("score-output");
     inputEl.oninput = generateScore;
+    document.getElementById("share-btn").onclick = share;
 
     function generateScore() {
       // Initialize variables
@@ -143,6 +144,18 @@ Wordle 223 5/6
       }
       function postScore() {
         outputEl.innerText = score;
+      }
+    }
+
+    async function share() {
+      try {
+        const data = {
+          text: `${inputEl.value}\n\nScore:${outputEl.innerText}`,
+        };
+        if (inputEl.value && navigator.canShare(data))
+          await navigator.share(data);
+      } catch (err) {
+        console.error(err);
       }
     }
   </script>
