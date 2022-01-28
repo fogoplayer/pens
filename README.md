@@ -71,3 +71,7 @@ My first attempt at a three-pane layout, using Flexbox.
 ### [ZCode Logo](./zcode-logo)
 
 A CSS animation that I developed for use as a logo.
+
+### [Wordle Score](./wordle-score)
+
+An algorithm to rank a Wordle solution on a scale from 1-100
