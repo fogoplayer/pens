@@ -32,6 +32,10 @@ A script to ping all IP addresses on a network and return the successful ones. H
 
 A script that pings a router frequently and indefinitely and logs outages to a text file.
 
+#### [Chrome OS Symlinks](https://github.com/fogoplayer/pens/tree/main/bash-scripts/symlinks.sh)
+
+Set up symbolic links to integrate The Chrome OS Downloads and Google Drive folders into Crostini containers
+
 ---
 
 ### [Bookmarklets](./bookmarklets)

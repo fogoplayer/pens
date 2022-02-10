@@ -1,0 +1,2 @@
+# Run this script in a new Crostini container to map Google Drive and Downloads to the Linux container
+ln -s /mnt/chromeos/MyFiles/Downloads ~/Downloads && ln -s /mnt/chromeos/GoogleDrive/MyDrive/_downloads ~/Drive
