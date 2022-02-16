@@ -12,19 +12,19 @@
   "categories": [],
   "screenshots": [
     {
-      "src": "/images/screenshot.png",
+      "src": "/pens/wordle-score/images/screenshot.png",
       "sizes": "1280x800",
       "type": "image/png"
     },
     {
-      "src": "/images/screenshot2.png",
+      "src": "/pens/wordle-score/images/screenshot2.png",
       "sizes": "1280x800",
       "type": "image/png"
     }
   ],
   "icons": [
     {
-      "src": "/images/favicon.png",
+      "src": "/pens/wordle-score/images/favicon.png",
       "sizes": "512x512",
       "type": "image/png"
     }],
