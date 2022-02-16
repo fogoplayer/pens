@@ -28,5 +28,12 @@
       "sizes": "512x512",
       "type": "image/png"
     }],
-  "shortcuts": []
+  "shortcuts": [],
+  "share_target": {
+    "action": "/index.html",
+    "method": "POST",
+    "params": {
+      "text": "text"
+    }
+  }
 }
