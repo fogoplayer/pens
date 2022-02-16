@@ -16,7 +16,11 @@ Wordle 223 5/6
     <title>Worldle Scorer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="manifest" href="/pens/wordle-score/manifest.json" />
-    <link rel="shortcut icon" href="/pens/wordle-score/images/favicon.png" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="/pens/wordle-score/images/favicon.png"
+      type="image/x-icon"
+    />
   </head>
   <body>
     <h1>Wordle Score</h1>
@@ -88,15 +92,11 @@ Wordle 223 5/6
     }
   </style>
   <script>
-    /*
-    This code uses the pwa-update web component https://github.com/pwa-builder/pwa-update to register your service worker,
-    tell the user when there is an update available and let the user know when your PWA is ready to use offline.
-    */
-
-    import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
-
-    const el = document.createElement('pwa-update');
-    document.body.appendChild(el);
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("sw.js");
+      });
+    }
 
     const inputEl = document.getElementById("score-input");
     const outputEl = document.getElementById("score-output");
