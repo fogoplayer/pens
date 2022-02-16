@@ -30,7 +30,7 @@
     }],
   "shortcuts": [],
   "share_target": {
-    "action": "/index.html",
+    "action": "/pens/wordle-score/index.html",
     "method": "POST",
     "params": {
       "text": "text"
