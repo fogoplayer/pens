@@ -103,6 +103,11 @@ Wordle 223 5/6
     inputEl.oninput = generateScore;
     document.getElementById("share-btn").onclick = share;
 
+    window.onload = () => {
+      const parsedUrl = new URL(window.location);
+      inputEl.value = parsedUrl.searchParams.get("text");
+    };
+
     function generateScore() {
       // Initialize variables
       const SQUARE_FLOOR = 10000;
