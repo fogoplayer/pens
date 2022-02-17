@@ -35,7 +35,7 @@
   "shortcuts": [],
   "share_target": {
     "action": "/pens/wordle-score/index.html",
-    "method": "POST",
+    "method": "GET",
     "params": {
       "text": "text"
     }
