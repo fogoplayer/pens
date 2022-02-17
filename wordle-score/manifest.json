@@ -5,7 +5,7 @@
   "display": "standalone",
   "name": "Wordle Score Calculator",
   "orientation": "any",
-  "scope": "/",
+  "scope": "/pens/wordle-score/",
   "short_name": "Wordle Scorer",
   "start_url": "/pens/wordle-score/index.html",
   "theme_color": "#6aaa64",
