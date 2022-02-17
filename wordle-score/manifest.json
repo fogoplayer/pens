@@ -34,7 +34,7 @@
     }],
   "shortcuts": [],
   "share_target": {
-    "action": "/pens/wordle-score/",
+    "action": "/pens/wordle-score/index.html",
     "method": "POST",
     "params": {
       "text": "text"
