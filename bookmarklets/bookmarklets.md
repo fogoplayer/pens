@@ -2,6 +2,16 @@ To add a bookmarklet, click and drag the link into your bookmarks bar
 
 <script src="https://fogoplayer.github.io/pens/bookmarklets/bookmarklets.js"></script>
 
+<!-- LDS Music Library Fullscreen -->
+<h4><a id="ldsMusicLibraryFullscreen" href="">LDS Music Library Fullscreen</a></h4>
+<script>
+  ldsMusicLibraryFullscreen = ldsMusicLibraryFullscreen.toString();
+  document.querySelector("#ldsMusicLibraryFullscreen").href =
+    "javascript: (" + ldsMusicLibraryFullscreen + ")();";
+</script>
+
+On the LDS Music library, finds the pdf viewer for the sheet music and opens it in full screen.
+
 <!-- Change Video Speed -->
 <h4><a id="changespeed" href="">Change Video Speed</a></h4>
 <script>
