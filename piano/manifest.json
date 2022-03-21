@@ -11,9 +11,17 @@
   "theme_color": "#e4b474",
   "categories": [],
   "screenshots": [
-    
+    {
+      "src": "/pens/piano/screenshot.png",
+      "sizes": "576x1280",
+      "type": "image/png"
+    }
   ],
-  "icons": [
+  "icons": [{
+    "src": "/pens/wordle-score/woodgrain.svg",
+    "sizes": "512x512",
+    "type": "image/png"
+  }
     ],
   "shortcuts": []
   
