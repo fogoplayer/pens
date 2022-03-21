@@ -47,6 +47,11 @@ Set up symbolic links to integrate The Chrome OS Downloads and Google Drive fold
 ### [Buc-ee's Animation](./bucees)
 
 A simple puppet of Texas legend Buc-ee.
+---
+
+### [PWA Piano](./piano)
+
+There are lots of online pianos out there, but they have issues--no offline support, and they're slow. So I built my own.
 
 ---
 
