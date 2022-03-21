@@ -1,5 +1,5 @@
 :root {
-  --white-key-height:31rem;
+  --white-key-height:min(31rem,calc(100vh - 6vw - 2rem));
   --white-key-width: 6rem;
   --black-key-height: calc(var(--white-key-height) * 0.5);
   --black-key-width: calc(var(--white-key-width) * 0.5);
@@ -36,12 +36,12 @@ main {
   margin: auto
 }
 
-label {
-  margin-bottom: 1em;
+label, .starting-octave, .starting-pitch {
+  font-size: 2rem;
 }
 
-.starting-octave {
-  width: 2.5em;
+.starting-octave, .starting-pitch {
+  width: 1.5em;
 }
 
 .keyboard {
@@ -73,7 +73,7 @@ label {
 
 .white-key {
   background: white;
-  min-height: var(--white-key-height);
+  height: var(--white-key-height);
   min-width: var(--white-key-width);
   border: 2px solid black;
 }
@@ -96,7 +96,7 @@ label {
 
   /* box-model */
   background:black;
-  min-height: var(--black-key-height);
+  height: var(--black-key-height);
   min-width: var(--black-key-width);
   margin: 0 calc(var(--black-key-width) * -0.5);
   border: none;
