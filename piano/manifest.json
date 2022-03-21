@@ -1,0 +1,20 @@
+{
+  "background_color": "#e4b474",
+  "description": "A responsive, web-based, offline-capable piano app",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "PWA Keyboard",
+  "orientation": "landscape",
+  "scope": "/pens/piano/",
+  "short_name": "Piano",
+  "start_url": "/pens/piano/index.html",
+  "theme_color": "#e4b474",
+  "categories": [],
+  "screenshots": [
+    
+  ],
+  "icons": [
+    ],
+  "shortcuts": []
+  
+}
