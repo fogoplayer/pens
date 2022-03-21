@@ -18,7 +18,7 @@
     }
   ],
   "icons": [{
-    "src": "/pens/piano/woodgrain.svg",
+    "src": "/pens/piano/icon.png",
     "sizes": "512x512",
     "type": "image/png"
   }
