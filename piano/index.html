@@ -96,7 +96,7 @@
     };
     document.addEventListener("keydown", (e) => {
       try {
-        document.querySelector("#key-" + e.key).click();
+        document.getElementById("key-" + e.key).click();
       } catch (error) {
         console.error(error);
       }
