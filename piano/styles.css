@@ -9,12 +9,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family:  Roboto, sans-serif;
 }
 
 body{
   display: flex;
   flex-flow: column nowrap;
   min-height: 100vh;
+  background: url(./woodgrain.svg);
 }
 
 header {
@@ -26,6 +28,16 @@ header {
 
 h1 {
   width: fit-content;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 6vw;
+}
+
+main {
+  margin: auto
+}
+
+label {
+  margin-bottom: 1em;
 }
 
 .starting-octave {
@@ -48,6 +60,10 @@ h1 {
   align-items: center;
   justify-content: flex-end;
   padding-bottom: calc(var(--black-key-width) * 0.5);
+}
+
+.key:focus {
+  background-color: lightblue;
 }
 
 .pitch-label {
