@@ -1,0 +1,92 @@
+:root {
+  --white-key-height:31rem;
+  --white-key-width: 6rem;
+  --black-key-height: calc(var(--white-key-height) * 0.5);
+  --black-key-width: calc(var(--white-key-width) * 0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: 100vh;
+}
+
+header {
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  width: fit-content;
+}
+
+.starting-octave {
+  width: 2.5em;
+}
+
+.keyboard {
+  flex: 0 1 auto;
+  display:flex;
+  align-items: flex-start;
+  width: fit-content;
+  background: black;
+}
+
+.key {
+  /* display */
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: calc(var(--black-key-width) * 0.5);
+}
+
+.pitch-label {
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+.white-key {
+  background: white;
+  min-height: var(--white-key-height);
+  min-width: var(--white-key-width);
+  border: 2px solid black;
+}
+
+.white-key ~ .white-key {
+  border-left: none;
+}
+
+.anchor {
+  position: relative;
+  width: 0;
+  height: 0
+}
+
+.black-key
+{
+  /* positioning */
+  position: absolute;
+  z-index: 10;
+
+  /* box-model */
+  background:black;
+  min-height: var(--black-key-height);
+  min-width: var(--black-key-width);
+  margin: 0 calc(var(--black-key-width) * -0.5);
+  border: none;
+
+  /* typography */
+  color: white;
+  /* manipulation */
+  /* misc */
+}

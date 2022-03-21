@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Online Piano</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>PWA Keyboard</h1>
+      <script src="./vars.js"></script>
+      <script src="./simpleTones.js"></script>
+    </header>
+    <label>
+      Select the leftmost note for the keyboard:
+      <select name="starting pitch" class="starting-pitch">
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="E">E</option>
+        <option value="F">F</option>
+        <option value="G">G</option>
+      </select>
+      <input class="starting-octave" type="number" max="8" min="0" value="4" />
+    </label>
+    <section class="keyboard"></section>
+  </body>
+  <script>
+    let savePitch = scale[0];
+    let saveOctave = 4;
+
+    function createKeyboard(pitch = savePitch, octave = saveOctave) {
+      // Save pitch and/or octave
+      savePitch = pitch;
+      saveOctave = parseInt(octave);
+
+      let keyboard = document.querySelector(".keyboard");
+
+      keyboard.innerHTML = "";
+      let pitchTracker = 0;
+      let whiteKeyCount = 0;
+
+      while (addAKey()) {
+        const note =
+          scale[(scale.indexOf(pitch) + pitchTracker) % scale.length];
+        octave =
+          saveOctave +
+          Math.floor((scale.indexOf(pitch) + pitchTracker) / scale.length);
+        if (note[1] !== "#") {
+          keyboard.innerHTML += whiteKey(
+            note + octave,
+            whiteKeyboard[whiteKeyCount]
+          );
+          whiteKeyCount++;
+        } else {
+          keyboard.innerHTML += blackKey(
+            note + octave,
+            blackKeyboard[whiteKeyCount]
+          );
+        }
+        pitchTracker++;
+      }
+
+      function addAKey() {
+        const rootStyle = getComputedStyle(document.querySelector(":root"));
+        const whiteKeyWidth =
+          parseFloat(rootStyle.getPropertyValue("--white-key-width")) *
+          parseFloat(rootStyle.fontSize);
+
+        return (
+          whiteKeyCount < whiteKeyboard.length &&
+          keyboard.clientWidth + whiteKeyWidth <= window.innerWidth
+        );
+      }
+    }
+
+    createKeyboard();
+    window.onresize = () => createKeyboard();
+    document.querySelector(".starting-pitch").onchange = (e) => {
+      createKeyboard(e.target.value, saveOctave);
+    };
+
+    document.querySelector(".starting-octave").onchange = (e) => {
+      createKeyboard(savePitch, e.target.value);
+    };
+    document.addEventListener("keydown", (e) => {
+      document.querySelector("#key-" + e.key).click();
+    });
+  </script>
+</html>
