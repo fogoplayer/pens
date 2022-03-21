@@ -93,7 +93,11 @@
       createKeyboard(savePitch, e.target.value);
     };
     document.addEventListener("keydown", (e) => {
-      document.querySelector("#key-" + e.key).click();
+      try {
+        document.querySelector("#key-" + e.key).click();
+      } catch (error) {
+        console.error(error);
+      }
     });
   </script>
 </html>
