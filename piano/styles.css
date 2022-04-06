@@ -1,5 +1,5 @@
 :root {
-  --white-key-height:min(31rem,calc(100vh - 6vw - 2rem));
+  --white-key-height: min(31rem, calc(100vh - 6vw - 2rem));
   --white-key-width: 6rem;
   --black-key-height: calc(var(--white-key-height) * 0.5);
   --black-key-width: calc(var(--white-key-width) * 0.5);
@@ -9,14 +9,15 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family:  Roboto, sans-serif;
+  font-family: Roboto, sans-serif;
 }
 
-body{
+body {
   display: flex;
   flex-flow: column nowrap;
   min-height: 100vh;
-  background: url(./woodgrain.svg);
+  background: black;
+  color: rgb(255, 193, 7);
 }
 
 header {
@@ -30,23 +31,27 @@ h1 {
   width: fit-content;
   font-family: 'Times New Roman', Times, serif;
   font-size: 6vw;
+  font-weight: 100;
 }
 
 main {
   margin: auto
 }
 
-label, .starting-octave, .starting-pitch {
+label,
+.starting-octave,
+.starting-pitch {
   font-size: 2rem;
 }
 
-.starting-octave, .starting-pitch {
+.starting-octave,
+.starting-pitch {
   width: 1.5em;
 }
 
 .keyboard {
   flex: 0 1 auto;
-  display:flex;
+  display: flex;
   align-items: flex-start;
   width: fit-content;
   background: black;
@@ -78,7 +83,7 @@ label, .starting-octave, .starting-pitch {
   border: 2px solid black;
 }
 
-.white-key ~ .white-key {
+.white-key~.white-key {
   border-left: none;
 }
 
@@ -88,14 +93,13 @@ label, .starting-octave, .starting-pitch {
   height: 0
 }
 
-.black-key
-{
+.black-key {
   /* positioning */
   position: absolute;
   z-index: 10;
 
   /* box-model */
-  background:black;
+  background: black;
   height: var(--black-key-height);
   min-width: var(--black-key-width);
   margin: 0 calc(var(--black-key-width) * -0.5);
