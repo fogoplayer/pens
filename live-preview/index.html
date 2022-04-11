@@ -8,6 +8,7 @@
   </head>
   <body>
     <button id="pickfile">Pick a file</button>
+    <iframe id="displayfile"></iframe>
   </body>
   <script>
     let fileHandle;
@@ -15,7 +16,11 @@
       // Destructure the one-element array.
       [fileHandle] = await window.showOpenFilePicker();
       // Do something with the file handle.
-      console.log(fileHandle);
+      let file = await fileHandle.getFile();
+
+      let iframe = document.getElementById("displayfile");
+      let iframedoc = iframe.contentDocument || iframe.contentWindow.document;
+      iframedoc = file.text();
     });
   </script>
 </html>
