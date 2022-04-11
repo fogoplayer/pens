@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Preview Demo</title>
+  </head>
+  <body>
+    <button id="pickfile">Pick a file</button>
+  </body>
+  <script>
+    let fileHandle;
+    document.querySelector("#pickfile").addEventListener("click", async () => {
+      // Destructure the one-element array.
+      [fileHandle] = await window.showOpenFilePicker();
+      // Do something with the file handle.
+      console.log(fileHandle);
+    });
+  </script>
+</html>
