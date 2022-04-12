@@ -22,7 +22,7 @@
 
       let iframe = document.getElementById("displayfile");
       let iframedoc = iframe.contentDocument || iframe.contentWindow.document;
-      iframedoc.body.innerHTML = file.text();
+      iframedoc.body.innerHTML = await file.text();
     });
   </script>
 </html>
