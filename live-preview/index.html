@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>4 Live Preview Demo</title>
+    <title>5 Live Preview Demo</title>
   </head>
   <body>
     <button id="pickfile">Pick a file</button>
@@ -16,6 +16,21 @@
   <script>
     let fileHandle;
     document.querySelector("#pickfile").addEventListener("click", async () => {
+      const dirHandle = await window.showDirectoryPicker();
+      for await (const entry of dirHandle.values()) {
+        console.log(entry.kind, entry.name);
+      }
+
+      let file = await dirHandle.getFileHandle("index.html").getFile();
+
+      console.log(file);
+
+      let iframe = document.getElementById("displayfile");
+      let iframedoc = iframe.contentDocument || iframe.contentWindow.document;
+      iframedoc.body.innerHTML = await file.text();
+    });
+
+    /* addEventListener("click", async () => {
       // Destructure the one-element array.
       [fileHandle] = await window.showOpenFilePicker();
       // Do something with the file handle.
@@ -26,6 +41,6 @@
       let iframe = document.getElementById("displayfile");
       let iframedoc = iframe.contentDocument || iframe.contentWindow.document;
       iframedoc.body.innerHTML = await file.text();
-    });
+    }); */
   </script>
 </html>
