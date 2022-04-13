@@ -34,7 +34,7 @@
     });
 
     function inlineReferences(file) {
-      scripts = file.matchAll(/<script.*<\/script>/);
+      scripts = file.matchAll(/<script.*<\/script>/g);
       console.log(scripts);
     }
   </script>
