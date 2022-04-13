@@ -34,7 +34,8 @@
     });
 
     function inlineReferences(file) {
-      scripts = file.matchAll(/<script.*<\/script>/g);
+      const scriptsRegEx = /<script.*<\/script>/g;
+      let scripts = [...file.matchAll(scriptsRegEx)];
       console.log(scripts);
     }
   </script>
