@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>8 Live Preview Demo</title>
+    <title>9 Live Preview Demo</title>
   </head>
   <body>
     <button id="pickfile">Pick a file</button>
@@ -26,17 +26,29 @@
       file = await file.text();
 
       console.log(file);
-      file = inlineReferences(file);
+      file = inlineReferences(file, dirHandle);
 
       let iframe = document.getElementById("displayfile");
       let iframedoc = iframe.contentDocument || iframe.contentWindow.document;
       iframedoc.body.innerHTML = file;
     });
 
-    function inlineReferences(file) {
+    function inlineReferences(file, dirHandle) {
       const scriptsRegEx = /<script.*<\/script>/g;
       let scripts = [...file.matchAll(scriptsRegEx)];
       console.log(scripts);
+
+      scripts.forEach((script) => {
+        let index = script.index;
+        let script = script[0];
+
+        const srcIndex = script.indexOf('src="');
+        if (srcIndex >= 0) {
+          const srcStart = srcIndex + 5;
+          const srcEnd = script.indexOf('"', srcStart);
+          console.log(script.substring(srcStart, srcEnd));
+        }
+      });
     }
   </script>
 </html>
