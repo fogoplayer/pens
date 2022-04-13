@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1 Live Preview Demo</title>
+    <title>2 Live Preview Demo</title>
   </head>
   <body>
     <button id="pickfile">Pick a file</button>
@@ -23,32 +23,45 @@
 
       let file = await dirHandle.getFileHandle("index.html");
       file = await file.getFile();
-      file = await file.text();
 
       console.log(file);
-      file = inlineReferences(file, dirHandle);
+      file = await inlineReferences(file, dirHandle);
 
       let iframe = document.getElementById("displayfile");
       let iframedoc = iframe.contentDocument || iframe.contentWindow.document;
       iframedoc.body.innerHTML = file;
     });
 
-    function inlineReferences(file, dirHandle) {
+    async function inlineReferences(file, dirHandle) {
+      const text = await file.text();
+      console.log(file);
+
+      // Scripts
       const scriptsRegEx = /<script.*<\/script>/g;
-      let scripts = [...file.matchAll(scriptsRegEx)];
+      let scripts = [...text.matchAll(scriptsRegEx)];
       console.log(scripts);
 
       scripts.forEach((script) => {
         let index = script.index;
         script = script[0];
 
+        // If it has a src attribute
         const srcIndex = script.indexOf('src="');
         if (srcIndex >= 0) {
           const srcStart = srcIndex + 5;
           const srcEnd = script.indexOf('"', srcStart);
-          console.log(script.substring(srcStart, srcEnd));
+          let src = script.substring(srcStart, srcEnd);
+
+          // Remove leading ./
+          if (src.substring(0, 2)) src = src.substring(2);
+
+          script = await dirHandle.getFileHandle(src);
+          script = await script.getFile();
+          script = await script.text();
+          script = `<script>${script}</script>`
         }
       });
+      return file;
     }
   </script>
 </html>
