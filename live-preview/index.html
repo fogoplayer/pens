@@ -41,7 +41,7 @@
       let scripts = [...text.matchAll(scriptsRegEx)];
       console.log(scripts);
 
-      scripts.forEach((script) => {
+      scripts.forEach(async(script) => {
         let index = script.index;
         script = script[0];
 
