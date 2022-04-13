@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>6 Live Preview Demo</title>
+    <title>7 Live Preview Demo</title>
   </head>
   <body>
     <button id="pickfile">Pick a file</button>
@@ -23,25 +23,19 @@
 
       let file = await dirHandle.getFileHandle("index.html");
       file = await file.getFile();
+      file = await file.text();
 
       console.log(file);
+      file = inlineReferences(file);
 
       let iframe = document.getElementById("displayfile");
       let iframedoc = iframe.contentDocument || iframe.contentWindow.document;
-      iframedoc.body.innerHTML = await file.text();
+      iframedoc.body.innerHTML = file;
     });
 
-    /* addEventListener("click", async () => {
-      // Destructure the one-element array.
-      [fileHandle] = await window.showOpenFilePicker();
-      // Do something with the file handle.
-      let file = await fileHandle.getFile();
-
-      console.log(file);
-
-      let iframe = document.getElementById("displayfile");
-      let iframedoc = iframe.contentDocument || iframe.contentWindow.document;
-      iframedoc.body.innerHTML = await file.text();
-    }); */
+    function inlineReferences(file) {
+      scripts = file.matchAll(/<script.*<\/script>/);
+      console.log(scripts);
+    }
   </script>
 </html>
