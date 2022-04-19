@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1 Live Preview Demo</title>
+    <title>2 Live Preview Demo</title>
   </head>
   <body>
     <button id="pickfile">Pick a file</button>
@@ -35,7 +35,7 @@
       const scriptsRegEx = /<script.*<\/script>/g;
       let scripts = [...text.matchAll(scriptsRegEx)];
 
-      scripts.forEach(async (script) => {
+      await scripts.forEach(async (script) => {
         let index = script.index;
         script = script[0];
 
@@ -63,7 +63,7 @@
       const stylesRegEx = /<link.*rel=\"stylesheet\".*\/.*>/g;
       let styles = [...text.matchAll(stylesRegEx)];
 
-      styles.forEach(async (style) => {
+      await styles.forEach(async (style) => {
         let index = style.index;
         style = style[0];
 
