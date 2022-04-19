@@ -53,7 +53,7 @@
           let src = script.substring(srcStart, srcEnd);
 
           // Remove leading ./
-          if (src.substring(0, 2)) src = src.substring(2);
+          if (src.substring(0, 2) === "./") src = src.substring(2);
 
           script = await dirHandle.getFileHandle(src);
           script = await script.getFile();
@@ -75,12 +75,12 @@
         // If it has a src attribute
         const srcIndex = style.indexOf('href="');
         if (srcIndex >= 0) {
-          const srcStart = srcIndex + 7;
+          const srcStart = srcIndex + 6;
           const srcEnd = style.indexOf('"', srcStart);
           let src = style.substring(srcStart, srcEnd);
 
           // Remove leading ./
-          if (src.substring(0, 2)) src = src.substring(2);
+          if (src.substring(0, 2) === "./") src = src.substring(2);
 
           style = await dirHandle.getFileHandle(src);
           style = await style.getFile();
