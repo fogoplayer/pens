@@ -55,8 +55,6 @@
           script = await script.text();
           script = `<script>\n${script}\n</${"script"}>`;
           text = text.replace(SCRIPTS_REGEX_FIRST, script);
-          console.log(script);
-          console.log(text);
         }
       }
 
@@ -84,12 +82,9 @@
           style = await style.text();
           style = `<style>\n${style}\n</${"style"}>`;
           text = text.replace(STYLES_REGEX_FIRST, style);
-          console.log(style);
-          console.log(text);
         }
       }
 
-      console.log(text);
       return text;
     }
   </script>
