@@ -52,7 +52,7 @@
           script = await dirHandle.getFileHandle(src);
           script = await script.getFile();
           script = await script.text();
-          script = `<script>${script}</${"script"}>`;
+          script = `<script>\n${script}\n</${"script"}>`;
           text = text.replace(scriptsRegEx, script);
           console.log(script);
           console.log(text);
@@ -80,7 +80,7 @@
           style = await dirHandle.getFileHandle(src);
           style = await style.getFile();
           style = await style.text();
-          style = `<style>${style}</${"style"}>`;
+          style = `<style>\n${style}\n</${"style"}>`;
           text = text.replace(stylesRegEx, style);
           console.log(style);
           console.log(text);
