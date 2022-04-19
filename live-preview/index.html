@@ -32,8 +32,9 @@
       let text = await file.text();
 
       // Scripts
-      const scriptsRegEx = /<script.*<\/script>/g;
-      let scripts = [...text.matchAll(scriptsRegEx)];
+      const SCRIPTS_REGEX_GLOBAL = /<script.*<\/script>/g;
+      const SCRIPTS_REGEX_FIRST = /<script.*<\/script>/;
+      let scripts = [...text.matchAll(SCRIPTS_REGEX_GLOBAL)];
 
       for (let script of scripts) {
         let index = script.index;
@@ -53,15 +54,16 @@
           script = await script.getFile();
           script = await script.text();
           script = `<script>\n${script}\n</${"script"}>`;
-          text = text.replace(scriptsRegEx, script);
+          text = text.replace(SCRIPTS_REGEX_FIRST, script);
           console.log(script);
           console.log(text);
         }
       }
 
       // Styles
-      const stylesRegEx = /<link.*rel=\"stylesheet\".*\/.*>/g;
-      let styles = [...text.matchAll(stylesRegEx)];
+      const STYLES_REGEX_GLOBAL = /<link.*rel=\"stylesheet\".*\/.*>/g;
+      const STYLES_REGEX_FIRST = /<link.*rel=\"stylesheet\".*\/.*>/g;
+      let styles = [...text.matchAll(STYLES_REGEX_GLOBAL)];
 
       for (let style of styles) {
         let index = style.index;
@@ -81,7 +83,7 @@
           style = await style.getFile();
           style = await style.text();
           style = `<style>\n${style}\n</${"style"}>`;
-          text = text.replace(stylesRegEx, style);
+          text = text.replace(STYLES_REGEX_FIRST, style);
           console.log(style);
           console.log(text);
         }
