@@ -62,6 +62,34 @@
           text = text.replace(scriptsRegEx, script);
         }
       });
+
+      // Styles
+      const stylesRegEx = /<link.*rel="stylesheet".*A\/.*>/g;
+      let styles = [...text.matchAll(stylesRegEx)];
+      console.log(styles);
+
+      styles.forEach(async (style) => {
+        let index = style.index;
+        style = style[0];
+
+        // If it has a src attribute
+        const srcIndex = style.indexOf('src="');
+        if (srcIndex >= 0) {
+          const srcStart = srcIndex + 5;
+          const srcEnd = style.indexOf('"', srcStart);
+          let src = style.substring(srcStart, srcEnd);
+
+          // Remove leading ./
+          if (src.substring(0, 2)) src = src.substring(2);
+
+          style = await dirHandle.getFileHandle(src);
+          style = await style.getFile();
+          style = await style.text();
+          style = `<style>${style}</${"style"}>`;
+          text = text.replace(stylesRegEx, style);
+        }
+      });
+
       return text;
     }
   </script>
