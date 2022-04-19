@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3 Live Preview Demo</title>
+    <title>4 Live Preview Demo</title>
   </head>
   <body>
     <button id="pickfile">Pick a file</button>
@@ -59,9 +59,10 @@
           script = await script.getFile();
           script = await script.text();
           script = `<script>${script}</${"script"}>`;
+          text = text.replace(scriptsRegEx, script);
         }
       });
-      return file;
+      return text;
     }
   </script>
 </html>
