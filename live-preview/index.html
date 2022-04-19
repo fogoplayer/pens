@@ -63,7 +63,7 @@
       const stylesRegEx = /<link.*rel=\"stylesheet\".*\/.*>/g;
       let styles = [...text.matchAll(stylesRegEx)];
 
-      for (const style of styles) {
+      for (let style of styles) {
         let index = style.index;
         style = style[0];
 
