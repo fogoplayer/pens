@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>9 Live Preview Demo</title>
+    <title>1 Live Preview Demo</title>
   </head>
   <body>
     <button id="pickfile">Pick a file</button>
@@ -17,14 +17,10 @@
     let fileHandle;
     document.querySelector("#pickfile").addEventListener("click", async () => {
       const dirHandle = await window.showDirectoryPicker();
-      for await (const entry of dirHandle.values()) {
-        console.log(entry.kind, entry.name);
-      }
 
       let file = await dirHandle.getFileHandle("index.html");
       file = await file.getFile();
 
-      console.log(file);
       file = await inlineReferences(file, dirHandle);
 
       let iframe = document.getElementById("displayfile");
@@ -34,12 +30,10 @@
 
     async function inlineReferences(file, dirHandle) {
       let text = await file.text();
-      console.log(file);
 
       // Scripts
       const scriptsRegEx = /<script.*<\/script>/g;
       let scripts = [...text.matchAll(scriptsRegEx)];
-      console.log(scripts);
 
       scripts.forEach(async (script) => {
         let index = script.index;
@@ -60,13 +54,14 @@
           script = await script.text();
           script = `<script>${script}</${"script"}>`;
           text = text.replace(scriptsRegEx, script);
+          console.log(script);
+          console.log(text);
         }
       });
 
       // Styles
       const stylesRegEx = /<link.*rel=\"stylesheet\".*\/.*>/g;
       let styles = [...text.matchAll(stylesRegEx)];
-      console.log(styles);
 
       styles.forEach(async (style) => {
         let index = style.index;
@@ -87,9 +82,12 @@
           style = await style.text();
           style = `<style>${style}</${"style"}>`;
           text = text.replace(stylesRegEx, style);
+          console.log(style);
+          console.log(text);
         }
       });
 
+      console.log(text);
       return text;
     }
   </script>
