@@ -8,10 +8,10 @@
   </head>
   <body>
     <button id="pickfile">Pick a file</button>
-    <iframe
+    <section
       id="displayfile"
       style="display:block; width: 100vw;height: 90vh;"
-    ></iframe>
+    ></section>
   </body>
   <script>
     let fileHandle;
@@ -24,8 +24,7 @@
       file = await inlineReferences(file, dirHandle);
 
       let iframe = document.getElementById("displayfile");
-      let iframedoc = iframe.contentDocument || iframe.contentWindow.document;
-      iframedoc.body.innerHTML = file;
+      body.innerHTML = file;
     });
 
     async function inlineReferences(file, dirHandle) {
