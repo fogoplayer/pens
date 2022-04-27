@@ -4,7 +4,7 @@ function ldsMusicLibraryFullscreen() {
 
 function changeSpeed() {
   var speed = prompt("Enter new playback speed");
-  document.querySelector("video").playbackRate = parseFloat(speed);
+  (document.querySelector("video") || document.querySelector("audio")).playbackRate = parseFloat(speed);
 }
 
 function clipCoupons() {
