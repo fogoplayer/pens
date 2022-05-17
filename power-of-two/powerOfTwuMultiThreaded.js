@@ -63,7 +63,7 @@ function returnDigitArray(number) {
 }
 
 function ifContainsPowerOfTwo(digits) {
-  const powersOfTwo = [BigInt(0), BigInt(1), BigInt(2), BigInt(4), BigInt(8)];
+  const powersOfTwo = [BigInt(1), BigInt(2), BigInt(4), BigInt(8)];
   let containsPowerOfTwo = false;
   digits.forEach((i) => {
     if (powersOfTwo.includes(i)) {
