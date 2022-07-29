@@ -11,8 +11,6 @@
       href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
   </head>
   <body>
     <section></section>
@@ -32,7 +30,7 @@
       Orientation
       <div>
         <label>
-          <input type="radio" name="orientation" id="orientation-portrait" />
+          <input type="radio" name="orientation" id="orientation-portrait" checked />
           Portrait
         </label>
         <label>
@@ -45,21 +43,60 @@
         Minimum Overlap
       </label>
       <div>
-        <input type="range" name="overlap" id="overlap" />
-        <output for="overlap"></output>
+        <input
+          type="range"
+          name="overlap"
+          id="overlap"
+          max="4"
+          min="0"
+          step="0.001"
+          class="responsive"
+        />
+        <input
+          for="overlap"
+          id="overlap-output"
+          class="responsive"
+          type="number"
+          contenteditable
+        ></input>
       </div>
 
       <label for="margin">
         Margins
       </label>
       <div>
-        <input type="range" name="overlap" id="margin" />
-        <output for="margin"></output>
+        <input
+          type="range"
+          name="overlap"
+          id="margin"
+          max="4"
+          min="0"
+          step="0.001"
+          class="responsive"
+        />
+        <input
+          for="margin"
+          id="margin-output"
+          class="responsive"
+          type="number"
+          contenteditable
+        ></input>
       </div>
       <button>Save</button>
     </form>
   </body>
 </html>
+<script>
+  document.querySelectorAll(".responsive").forEach((el) => {
+    el.value=0.5;
+    el.oninput = function rangeUpdate(e) {
+      const value = e.target.value;
+      const parent = e.target.parentNode;
+      parent.querySelector("[type='range']").value = value;
+      parent.querySelector("[type='number']").value = value;
+    };
+  });
+</script>
 <style>
   * {
     box-sizing: border-box;
@@ -110,7 +147,16 @@
     text-align: center;
   }
 
+  form div{
+    display: flex;
+    flex-flow: row nowrap;
+  }
+
   form input[type="range"] {
-    width: 100%;
+    flex: 1 1 auto
+  }
+  form input[type="number"] {
+    flex: 0 0 4em;
+    width: 4em;
   }
 </style>
