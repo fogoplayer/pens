@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Tiling</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <output></output>
+    <form>
+      <label>
+        Image
+        <input type="file" />
+      </label>
+      <label>
+        <select name="paper-size" id="paper-size">
+          <option value="letter">Letter</option>
+          <option value="a4">A4</option>
+        </select></label
+      >
+      Orientation
+      <label>
+        <input type="radio" name="orientation" id="orientation-portrait" />
+        Portrait
+      </label>
+      <label>
+        <input type="radio" name="orientation" id="orientation-landscape" />
+        Landscape
+      </label>
+      <label>
+        Minimum Overlap
+        <input type="range" name="overlap" id="overlap" />
+        <output for="overlap"></output>
+      </label>
+      <label>
+        Margins
+        <input type="range" name="overlap" id="margin" />
+        <output for="margin"></output>
+      </label>
+    </form>
+  </body>
+</html>
+<style>
+  body {
+    display: flex;
+    flex-flow: row nowrap;
+  }
+</style>
