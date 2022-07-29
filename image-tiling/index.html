@@ -14,42 +14,51 @@
   </head>
   <body class="flex">
     <section></section>
-    <form onsumbit="onSumbit">
+    <form >
       <h1 class="colspan">Reference Tiler</h1>
       <label for="file">
         Image
       </label>
-      <input type="file" id="file" />
+      <input type="file" name="image" id="file" />
 
       <hr class="colspan">
 
       <h2 class="colspan">Final Dimensions</h2>
       <div class="colspan flex flex-center">
-        <label class="flex-even" for="height">Height</label>
-        <input class="flex-even" id="height" type="number" step="any">
-        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 48 48"><path d="M11 44q-1.25 0-2.125-.875T8 41V19.3q0-1.25.875-2.125T11 16.3h3.5v-4.8q0-3.95 2.775-6.725Q20.05 2 24 2q3.95 0 6.725 2.775Q33.5 7.55 33.5 11.5v4.8H37q1.25 0 2.125.875T40 19.3V41q0 1.25-.875 2.125T37 44Zm0-3h26V19.3H11V41Zm13-7q1.6 0 2.725-1.1t1.125-2.65q0-1.5-1.125-2.725T24 26.3q-1.6 0-2.725 1.225T20.15 30.25q0 1.55 1.125 2.65Q22.4 34 24 34Zm-6.5-17.7h13v-4.8q0-2.7-1.9-4.6Q26.7 5 24 5q-2.7 0-4.6 1.9-1.9 1.9-1.9 4.6ZM11 41V19.3 41Z"/></svg>
         <label class="flex-even" for="width">Width</label>
-        <input class="flex-even" id="width" type="number" step="any">
+        <input class="flex-even ratioed" id="width" name="width" type="number" step="any">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 48 48"><path d="M11 44q-1.25 0-2.125-.875T8 41V19.3q0-1.25.875-2.125T11 16.3h3.5v-4.8q0-3.95 2.775-6.725Q20.05 2 24 2q3.95 0 6.725 2.775Q33.5 7.55 33.5 11.5v4.8H37q1.25 0 2.125.875T40 19.3V41q0 1.25-.875 2.125T37 44Zm0-3h26V19.3H11V41Zm13-7q1.6 0 2.725-1.1t1.125-2.65q0-1.5-1.125-2.725T24 26.3q-1.6 0-2.725 1.225T20.15 30.25q0 1.55 1.125 2.65Q22.4 34 24 34Zm-6.5-17.7h13v-4.8q0-2.7-1.9-4.6Q26.7 5 24 5q-2.7 0-4.6 1.9-1.9 1.9-1.9 4.6ZM11 41V19.3 41Z"/></svg>
+        <label class="flex-even" for="height">Height</label>
+        <input class="flex-even ratioed" id="height" name="height" type="number" step="any">
       </div>
-      
+      <div class="flex colspan flex-center">
+        <label>
+          <input type="radio" name="units" id="units-inches" value="inches" checked />
+          inches
+        </label>
+        <label>
+          <input type="radio" name="units" id="units-centimeters" value="centimeters" />
+          centimeters
+        </label>
+      </div>
       
       <hr class="colspan"> 
       
       <h2 class="colspan">Paper</h2>
       <label for="paper-size">Paper Size</label>
-      <select name="paper-size" id="paper-size">
+      <select name="paperSize" id="paper-size">
         <option value="letter">Letter</option>
         <option value="a4">A4</option>
       </select>
 
       Orientation
-      <div flex>
+      <div class="flex">
         <label>
-          <input type="radio" name="orientation" id="orientation-portrait" checked />
+          <input type="radio" name="orientation" id="orientation-portrait" value="portrait" checked />
           Portrait
         </label>
         <label>
-          <input type="radio" name="orientation" id="orientation-landscape" />
+          <input type="radio" name="orientation" id="orientation-landscape" value="landscape" />
           Landscape
         </label>
       </div>
@@ -63,7 +72,6 @@
       <div class="flex">
         <input
           type="range"
-          name="overlap"
           id="overlap"
           class="responsive"
         />
@@ -71,6 +79,7 @@
           for="overlap"
           id="overlap-output"
           class="responsive"
+          name="overlap"
           type="number"
           contenteditable
         ></input>
@@ -82,7 +91,6 @@
       <div class="flex">
         <input
           type="range"
-          name="overlap"
           id="margin"
           class="responsive"
         />
@@ -90,6 +98,7 @@
           for="margin"
           id="margin-output"
           class="responsive"
+          name="margin"
           type="number"
           contenteditable
         ></input>
@@ -99,6 +108,40 @@
   </body>
 </html>
 <script>
+  const aspectRatio = 1.5; // width / height
+  const PAPER_SIZES = { // storing in pixels so that it's measurement-system-agnostic
+    letter: {width: 816, height: 1056},
+    a4: {width:792, height:1128}
+  }
+  const INCH = 96 // px
+  const CENTIMETER = 37.8 // px
+
+  const form = document.querySelector("form")
+  form.onsubmit = (e)=> {
+    e.preventDefault()
+    const formData = new FormData(form);
+    for (const [key, value] of formData) {
+      formData[key] = value;
+    }
+    
+    const {image, width, height, units, paperSize, orientation, overlap, margin} = formData
+    
+    debugger
+  }
+
+  // Link dimensions
+  document.querySelectorAll(".ratioed").forEach((el) => {
+    el.oninput = function rangeUpdate(e) {
+      const {value, id, parentNode} = e.target
+      if (id === "width") {
+        parentNode.querySelector("#height").value = value / aspectRatio
+      }else{
+        parentNode.querySelector("#width").value = value * aspectRatio
+      }
+    };
+  });
+
+  // Link ranges to outputs
   document.querySelectorAll(".responsive").forEach((el) => {
     el.value=0.5;
     el.max=4;         el.min=0;
@@ -110,11 +153,6 @@
       parent.querySelector("[type='number']").value = value;
     };
   });
-
-  function onSumbit(e) {
-    e.preventDefault()
-    debugger    
-  }
 </script>
 <style>
   * {
