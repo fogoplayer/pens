@@ -12,15 +12,30 @@
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body class="flex">
     <section></section>
-    <form>
-      <h1>Reference Tiler</h1>
+    <form onsumbit="onSumbit">
+      <h1 class="colspan">Reference Tiler</h1>
       <label for="file">
         Image
       </label>
       <input type="file" id="file" />
 
+      <hr class="colspan">
+
+      <h2 class="colspan">Final Dimensions</h2>
+      <div class="colspan flex flex-center">
+        <label class="flex-even" for="height">Height</label>
+        <input class="flex-even" id="height" type="number" step="any">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 48 48"><path d="M11 44q-1.25 0-2.125-.875T8 41V19.3q0-1.25.875-2.125T11 16.3h3.5v-4.8q0-3.95 2.775-6.725Q20.05 2 24 2q3.95 0 6.725 2.775Q33.5 7.55 33.5 11.5v4.8H37q1.25 0 2.125.875T40 19.3V41q0 1.25-.875 2.125T37 44Zm0-3h26V19.3H11V41Zm13-7q1.6 0 2.725-1.1t1.125-2.65q0-1.5-1.125-2.725T24 26.3q-1.6 0-2.725 1.225T20.15 30.25q0 1.55 1.125 2.65Q22.4 34 24 34Zm-6.5-17.7h13v-4.8q0-2.7-1.9-4.6Q26.7 5 24 5q-2.7 0-4.6 1.9-1.9 1.9-1.9 4.6ZM11 41V19.3 41Z"/></svg>
+        <label class="flex-even" for="width">Width</label>
+        <input class="flex-even" id="width" type="number" step="any">
+      </div>
+      
+      
+      <hr class="colspan"> 
+      
+      <h2 class="colspan">Paper</h2>
       <label for="paper-size">Paper Size</label>
       <select name="paper-size" id="paper-size">
         <option value="letter">Letter</option>
@@ -28,7 +43,7 @@
       </select>
 
       Orientation
-      <div>
+      <div flex>
         <label>
           <input type="radio" name="orientation" id="orientation-portrait" checked />
           Portrait
@@ -39,17 +54,17 @@
         </label>
       </div>
 
+      <hr class="colspan">
+
+      <h2 class="colspan">Margins</h2>
       <label for="overlap">
         Minimum Overlap
       </label>
-      <div>
+      <div class="flex">
         <input
           type="range"
           name="overlap"
           id="overlap"
-          max="4"
-          min="0"
-          step="0.001"
           class="responsive"
         />
         <input
@@ -64,14 +79,11 @@
       <label for="margin">
         Margins
       </label>
-      <div>
+      <div class="flex">
         <input
           type="range"
           name="overlap"
           id="margin"
-          max="4"
-          min="0"
-          step="0.001"
           class="responsive"
         />
         <input
@@ -82,13 +94,15 @@
           contenteditable
         ></input>
       </div>
-      <button>Save</button>
+      <button class="colspan">Save</button>
     </form>
   </body>
 </html>
 <script>
   document.querySelectorAll(".responsive").forEach((el) => {
     el.value=0.5;
+    el.max=4;         el.min=0;
+         el.step=0.001;
     el.oninput = function rangeUpdate(e) {
       const value = e.target.value;
       const parent = e.target.parentNode;
@@ -96,6 +110,11 @@
       parent.querySelector("[type='number']").value = value;
     };
   });
+
+  function onSumbit(e) {
+    e.preventDefault()
+    debugger    
+  }
 </script>
 <style>
   * {
@@ -104,9 +123,6 @@
   }
 
   body {
-    display: flex;
-    flex-flow: row nowrap;
-
     max-height: 100vh;
     margin: 0;
     padding: 0;
@@ -121,6 +137,12 @@
     flex: 1 1 auto;
   }
 
+  svg {
+    fill: currentColor;
+    width: 1.5em;
+    height: 1.5em;
+  }
+
   form {
     flex: 0 0 25em;
 
@@ -131,25 +153,26 @@
     grid-auto-rows: max-content;
 
     background-color: lightblue;
+    background-color: darkblue;
+    color:white;
     padding: 2em;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  button {
+  .colspan {
     grid-column: 1 / 3;
     margin: 0;
     padding: 0;
     text-align: center;
   }
 
-  form div{
+  .flex{
     display: flex;
     flex-flow: row nowrap;
+    gap: 0.5em
+  }
+
+  .flex-center {
+    justify-content: center
   }
 
   form input[type="range"] {
