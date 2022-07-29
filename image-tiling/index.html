@@ -9,43 +9,84 @@
     <script src="main.js"></script>
   </head>
   <body>
-    <output></output>
+    <section></section>
     <form>
-      <label>
+      <label for="file">
         Image
-        <input type="file" />
       </label>
-      <label>
-        <select name="paper-size" id="paper-size">
-          <option value="letter">Letter</option>
-          <option value="a4">A4</option>
-        </select></label
-      >
+      <input type="file" id="file" />
+
+      <label for="paper-size">Paper Size</label>
+      <select name="paper-size" id="paper-size">
+        <option value="letter">Letter</option>
+        <option value="a4">A4</option>
+      </select>
+
       Orientation
-      <label>
-        <input type="radio" name="orientation" id="orientation-portrait" />
-        Portrait
-      </label>
-      <label>
-        <input type="radio" name="orientation" id="orientation-landscape" />
-        Landscape
-      </label>
-      <label>
+      <div>
+        <label>
+          <input type="radio" name="orientation" id="orientation-portrait" />
+          Portrait
+        </label>
+        <label>
+          <input type="radio" name="orientation" id="orientation-landscape" />
+          Landscape
+        </label>
+      </div>
+
+      <label for="overlap">
         Minimum Overlap
+      </label>
+      <div>
         <input type="range" name="overlap" id="overlap" />
         <output for="overlap"></output>
-      </label>
-      <label>
+      </div>
+
+      <label for="margin">
         Margins
+      </label>
+      <div>
         <input type="range" name="overlap" id="margin" />
         <output for="margin"></output>
-      </label>
+      </div>
     </form>
   </body>
 </html>
 <style>
+  * {
+    box-sizing: border-box;
+    font-family: inherit;
+  }
+
   body {
     display: flex;
     flex-flow: row nowrap;
+
+    max-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  section {
+    flex: 1 1 auto;
+  }
+
+  form {
+    flex: 0 0 auto;
+
+    display: grid;
+    gap: 0.5em;
+    grid-template-columns: auto 1fr;
+    grid-auto-rows: max-content;
+
+    background-color: lightblue;
+    padding: 2em;
+  }
+
+  form input[type="range"] {
+    width: 100%;
   }
 </style>
