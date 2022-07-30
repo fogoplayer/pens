@@ -11,7 +11,7 @@ body {
   width: 100vw;
   height: 100vh;
 
-  font-family: "Architects Daughter", cursive;
+  font-family: "Permanent Marker", cursive;
   background: linear-gradient(to left, rgba(0, 0, 0, 0.5) 25em, transparent),
     repeating-linear-gradient(
       105deg,
@@ -28,6 +28,15 @@ body {
       transparent 50px
     );
   background-color: #0066ff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
 }
 
 #output {
@@ -48,7 +57,7 @@ svg {
 }
 
 form {
-  flex: 0 0 25em;
+  flex: 0 0 27em;
 
   display: grid;
   column-gap: 0.5em;
