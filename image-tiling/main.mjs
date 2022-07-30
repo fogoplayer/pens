@@ -43,20 +43,25 @@ form.onsubmit = async (e) => {
   const verticalCount = getPageCount(height, paperHeight, overlap, margin);
 
   const output = document.querySelector("#output");
-  output.style.gridTemplateColumns = `repeat(${horizontalCount},1fr`;
+
+  // Set properties
+  document.body.style.setProperty("--cols", 4);
+  document.body.style.setProperty("--margin", margin + "px");
 
   for (let i = 0; i < verticalCount; i++) {
     for (let j = 0; j < horizontalCount; j++) {
       const canvas = cropImg(
         image,
-        (paperWidth - overlap - margin) * j, // add overlap/margin later
+        (paperWidth - overlap - margin) * j,
         (paperHeight - overlap - margin) * i,
-        paperWidth - overlap - margin,
-        paperHeight - overlap - margin
+        paperWidth - margin,
+        paperHeight - margin
       );
-      output.appendChild(canvas);
-      // const img = document.createElement("image");
-      // img.src = img;
+      const page = document.createElement("div");
+
+      page.classList.add("page");
+      page.appendChild(canvas);
+      output.appendChild(page);
     }
   }
 };

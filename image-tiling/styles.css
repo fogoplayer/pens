@@ -14,12 +14,17 @@ body {
   font-family: "Architects Daughter", cursive;
 }
 
-section#output {
+#output {
   flex: 1 1 auto;
 
   display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
   overflow: scroll;
   width: 100%;
+}
+
+#output .page {
+  padding: var(--margin);
 }
 
 svg {
