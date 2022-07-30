@@ -16,7 +16,10 @@ body {
 
 section#output {
   flex: 1 1 auto;
+
+  display: grid;
   overflow: scroll;
+  width: 100%;
 }
 
 svg {
