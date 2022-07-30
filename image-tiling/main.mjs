@@ -11,6 +11,10 @@ const UNITS = {
 const form = document.querySelector("form");
 form.onsubmit = async (e) => {
   e.preventDefault();
+
+  const output = document.querySelector("#output");
+  output.innerHTML = "";
+
   const formData = new FormData(form);
   for (const [key, value] of formData) {
     formData[key] = value;
@@ -42,10 +46,8 @@ form.onsubmit = async (e) => {
   const horizontalCount = getPageCount(width, paperWidth, overlap, margin);
   const verticalCount = getPageCount(height, paperHeight, overlap, margin);
 
-  const output = document.querySelector("#output");
-
   // Set properties
-  document.body.style.setProperty("--cols", 4);
+  document.body.style.setProperty("--cols", horizontalCount);
   document.body.style.setProperty("--margin", margin + "px");
 
   for (let i = 0; i < verticalCount; i++) {
