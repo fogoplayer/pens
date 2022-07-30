@@ -55,8 +55,8 @@ form.onsubmit = async (e) => {
       const canvas = cropImg(
         image,
         margin,
-        (paperWidth - overlap) * j,
-        (paperHeight - overlap) * i,
+        (paperWidth - overlap - 2 * margin) * j,
+        (paperHeight - overlap - 2 * margin) * i,
         paperWidth,
         paperHeight
       );
@@ -120,15 +120,13 @@ function cropImg(img, margin, x, y, width, height) {
   ctx.fillStyle = "white";
   ctx.fillRect(0, 0, width, height);
   // Safari has a bug where when you try to draw non-existent pixels (out of the boundaries or the source image), it will just fail.
+  width = width - 2 * margin;
+  height = height - 2 * margin;
   if (x + width > img.width) {
     width = img.width - x;
-  } else {
-    width = width - 2 * margin;
   }
   if (y + height > img.height) {
     height = img.height - y;
-  } else {
-    height = height - 2 * margin;
   }
 
   ctx.drawImage(
