@@ -136,6 +136,7 @@ function cropImg(img, margin, x, y, width, height) {
     width - 2 * margin,
     height - 2 * margin
   );
+  canvas.classList.add("page");
   document.querySelector("#output").appendChild(canvas);
   return canvas;
 }

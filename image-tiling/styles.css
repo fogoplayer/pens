@@ -46,7 +46,11 @@ h6 {
   grid-template-columns: repeat(var(--cols), 1fr);
   gap: 1px;
 
-  overflow: scroll;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+#output .page {
   width: 100%;
 }
 
