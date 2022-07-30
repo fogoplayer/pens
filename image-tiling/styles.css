@@ -12,7 +12,8 @@ body {
   height: 100vh;
 
   font-family: "Architects Daughter", cursive;
-  background: repeating-linear-gradient(
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.5) 25em, transparent),
+    repeating-linear-gradient(
       105deg,
       white 0,
       white 2px,
@@ -26,8 +27,7 @@ body {
       transparent 0,
       transparent 50px
     );
-  --background-color: #0066ff;
-  background-color: var(--background-color);
+  background-color: #0066ff;
 }
 
 #output {
@@ -57,12 +57,7 @@ form {
   grid-auto-rows: max-content;
 
   color: white;
-  --shadow-size: 1px;
-  text-shadow: var(--shadow-size) var(--shadow-size) 0 var(--background-color),
-    calc(-1 * var(--shadow-size)) var(--shadow-size) 0 var(--background-color),
-    --shadow-size calc(-1 * var(--shadow-size)) 0 var(--background-color),
-    calc(-1 * var(--shadow-size)) calc(-1 * var(--shadow-size)) 0
-      var(--background-color);
+  /* background: linear-gradient(to left, rgba(0, 0, 0, 0.5), transparent); */
   padding: 2em;
 }
 
