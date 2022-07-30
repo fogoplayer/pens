@@ -1,113 +1,98 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Tiling</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
-    <link rel="preload" as="style" href="./styles.css">
-    <link rel="stylesheet" href="./styles.css">
-    <script defer src="https://cdn.jsdelivr.net/npm/pdf-lib@1.4.0/dist/pdf-lib.min.js"></script>
-    <script defer src="./main.js"></script>
-  </head>
-  <body class="flex">
-    <section id="output"></section>
-    <form >
-      <h1 class="colspan">Reference Tiler</h1>
-      <img id="preview" class="colspan" alt="Uploaded image preview">
-      <label for="file">
-        Image
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Tiling</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="./styles.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/pdf-lib@1.4.0/dist/pdf-lib.min.js"></script>
+  <script defer src="./main.js"></script>
+</head>
+
+<body class="flex">
+  <section id="output"></section>
+  <form>
+    <h1 class="colspan">Reference Tiler</h1>
+    <img id="preview" class="colspan" alt="Uploaded image preview">
+    <label for="file">
+      Image
+    </label>
+    <input type="file" name="image" id="file" accept="image/*" required />
+
+    <hr class="colspan">
+
+    <h2 class="colspan">Final Dimensions</h2>
+    <div class="colspan flex flex-center">
+      <label class="flex-even" for="width">Width</label>
+      <input class="flex-even ratioed" id="width" name="width" type="number" step="any" required>
+      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 48 48">
+        <path
+          d="M11 44q-1.25 0-2.125-.875T8 41V19.3q0-1.25.875-2.125T11 16.3h3.5v-4.8q0-3.95 2.775-6.725Q20.05 2 24 2q3.95 0 6.725 2.775Q33.5 7.55 33.5 11.5v4.8H37q1.25 0 2.125.875T40 19.3V41q0 1.25-.875 2.125T37 44Zm0-3h26V19.3H11V41Zm13-7q1.6 0 2.725-1.1t1.125-2.65q0-1.5-1.125-2.725T24 26.3q-1.6 0-2.725 1.225T20.15 30.25q0 1.55 1.125 2.65Q22.4 34 24 34Zm-6.5-17.7h13v-4.8q0-2.7-1.9-4.6Q26.7 5 24 5q-2.7 0-4.6 1.9-1.9 1.9-1.9 4.6ZM11 41V19.3 41Z" />
+      </svg>
+      <label class="flex-even" for="height">Height</label>
+      <input class="flex-even ratioed" id="height" name="height" type="number" step="any" required>
+    </div>
+    <div class="flex colspan flex-center">
+      <label>
+        <input type="radio" name="units" id="units-inches" value="inches" checked required />
+        inches
       </label>
-      <input type="file" name="image" id="file" accept="image/*" />
-
-      <hr class="colspan">
-
-      <h2 class="colspan">Final Dimensions</h2>
-      <div class="colspan flex flex-center">
-        <label class="flex-even" for="width">Width</label>
-        <input class="flex-even ratioed" id="width" name="width" type="number" step="any">
-        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 48 48"><path d="M11 44q-1.25 0-2.125-.875T8 41V19.3q0-1.25.875-2.125T11 16.3h3.5v-4.8q0-3.95 2.775-6.725Q20.05 2 24 2q3.95 0 6.725 2.775Q33.5 7.55 33.5 11.5v4.8H37q1.25 0 2.125.875T40 19.3V41q0 1.25-.875 2.125T37 44Zm0-3h26V19.3H11V41Zm13-7q1.6 0 2.725-1.1t1.125-2.65q0-1.5-1.125-2.725T24 26.3q-1.6 0-2.725 1.225T20.15 30.25q0 1.55 1.125 2.65Q22.4 34 24 34Zm-6.5-17.7h13v-4.8q0-2.7-1.9-4.6Q26.7 5 24 5q-2.7 0-4.6 1.9-1.9 1.9-1.9 4.6ZM11 41V19.3 41Z"/></svg>
-        <label class="flex-even" for="height">Height</label>
-        <input class="flex-even ratioed" id="height" name="height" type="number" step="any">
-      </div>
-      <div class="flex colspan flex-center">
-        <label>
-          <input type="radio" name="units" id="units-inches" value="inches" checked />
-          inches
-        </label>
-        <label>
-          <input type="radio" name="units" id="units-centimeters" value="centimeters" />
-          centimeters
-        </label>
-      </div>
-      
-      <hr class="colspan"> 
-      
-      <h2 class="colspan">Paper</h2>
-      <label for="paper-size">Paper Size</label>
-      <select name="paperSize" id="paper-size">
-        <option value="letter">Letter</option>
-        <option value="a4">A4</option>
-      </select>
-
-      Orientation
-      <div class="flex">
-        <label>
-          <input type="radio" name="orientation" id="orientation-portrait" value="portrait" checked />
-          Portrait
-        </label>
-        <label>
-          <input type="radio" name="orientation" id="orientation-landscape" value="landscape" />
-          Landscape
-        </label>
-      </div>
-
-      <hr class="colspan">
-
-      <h2 class="colspan">Margins</h2>
-      <label for="overlap">
-        Minimum Overlap
+      <label>
+        <input type="radio" name="units" id="units-centimeters" value="centimeters" required />
+        centimeters
       </label>
-      <div class="flex">
-        <input
-          type="range"
-          id="overlap"
-          class="responsive"
-        />
-        <input
-          for="overlap"
-          id="overlap-output"
-          class="responsive"
-          name="overlap"
-          type="number"
-          contenteditable
-        ></input>
-      </div>
+    </div>
 
-      <label for="margin">
-        Margins
+    <hr class="colspan">
+
+    <h2 class="colspan">Paper</h2>
+    <label for="paper-size">Paper Size</label>
+    <select name="paperSize" id="paper-size">
+      <option value="letter">Letter</option>
+      <option value="a4">A4</option>
+    </select>
+
+    Orientation
+    <div class="flex">
+      <label>
+        <input type="radio" name="orientation" id="orientation-portrait" value="portrait" checked required />
+        Portrait
       </label>
-      <div class="flex">
-        <input
-          type="range"
-          id="margin"
-          class="responsive"
-        />
-        <input
-          for="margin"
-          id="margin-output"
-          class="responsive"
-          name="margin"
-          type="number"
-          contenteditable
-        ></input>
-      </div>
-      <button class="colspan">Generate</button>
-      <button class="colspan" onclick="window.print()">Print</button>
-      <a id="contribute" class="colspan" href="https://github.com/fogoplayer/pens/tree/main/image-tiling">Contribute on Github</a>
-    </form>
-  </body>
+      <label>
+        <input type="radio" name="orientation" id="orientation-landscape" value="landscape" required />
+        Landscape
+      </label>
+    </div>
+
+    <hr class="colspan">
+
+    <h2 class="colspan">Margins</h2>
+    <label for="overlap">
+      Minimum Overlap
+    </label>
+    <div class="flex">
+      <input type="range" id="overlap" class="responsive" required />
+      <input for="overlap" id="overlap-output" class="responsive" name="overlap" type="number" required></input>
+    </div>
+
+    <label for="margin">
+      Margins
+    </label>
+    <div class="flex">
+      <input type="range" id="margin" class="responsive" required />
+      <input for="margin" id="margin-output" class="responsive" name="margin" type="number" required></input>
+    </div>
+    <button class="colspan">Generate</button>
+    <button class="colspan" onclick="window.print()">Print</button>
+    <a id="contribute" class="colspan" href="https://github.com/fogoplayer/pens/tree/main/image-tiling">Contribute on
+      Github</a>
+  </form>
+</body>
+
 </html>
