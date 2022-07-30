@@ -79,3 +79,14 @@ form input[type="number"] {
   flex: 0 0 4em;
   width: 4em;
 }
+
+@media print {
+  form {
+    display: none;
+  }
+
+  #output {
+    display: block;
+    overflow: visible;
+  }
+}

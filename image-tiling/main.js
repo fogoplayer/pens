@@ -54,10 +54,10 @@ form.onsubmit = async (e) => {
     for (let j = 0; j < horizontalCount; j++) {
       const canvas = cropImg(
         image,
-        (paperWidth - overlap - margin) * j,
-        (paperHeight - overlap - margin) * i,
-        paperWidth - margin,
-        paperHeight - margin
+        (paperWidth - overlap - 2 * margin) * j,
+        (paperHeight - overlap - 2 * margin) * i,
+        paperWidth - 2 * margin,
+        paperHeight - 2 * margin
       );
       const page = document.createElement("div");
 
@@ -66,7 +66,11 @@ form.onsubmit = async (e) => {
       output.appendChild(page);
     }
   }
+
+  createPdf();
 };
+
+createPdf();
 
 // Convert image to dataURL
 document.querySelector("#file").onchange = async (e) => {
@@ -155,3 +159,20 @@ document.querySelectorAll(".responsive").forEach((el) => {
     parent.querySelector("[type='number']").value = value;
   };
 });
+
+async function createPdf() {
+  const { PDFDocument, StandardFonts, rgb } = window.PDFLib;
+
+  const pdfDoc = await PDFDocument.create();
+
+  const pages = Array.from(document.querySelectorAll(".page"));
+  pages.forEach((page) => {
+    const pdf = pdfDoc.addPage();
+  });
+
+  const pdfBytes = await pdfDoc.saveAsBase64({ dataUri: true });
+
+  const iframe = document.createElement("iframe");
+  iframe.src = pdfBytes;
+  // output.appendChild(iframe);
+}
