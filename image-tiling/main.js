@@ -57,14 +57,9 @@ form.onsubmit = async (e) => {
         margin,
         (paperWidth - overlap) * j,
         (paperHeight - overlap) * i,
-        paperWidth - margin,
-        paperHeight - margin
+        paperWidth,
+        paperHeight
       );
-      /* const page = document.createElement("div");
-
-      page.classList.add("page");
-      page.appendChild(canvas);
-      output.appendChild(page); */
       output.appendChild(canvas);
     }
   }
@@ -106,11 +101,6 @@ async function getImageFromFile(file) {
 }
 
 function getPageCount(targetDim, paperDim, overlap, margin) {
-  /*
-  The final page count needs to include the target dimension, plus overlap and margins for each page
-  paperDim - overlap - margin gives us the amount of useable space
-  targetDim / that gives us the number of page
-  */
   const unusablePerPage = 2 * (overlap + margin);
   const usablePerPage = paperDim - unusablePerPage;
   const pageCount = targetDim / usablePerPage;
@@ -131,7 +121,19 @@ function cropImg(img, margin, x, y, width, height) {
   canvas.width = width;
   canvas.height = height;
   var ctx = canvas.getContext("2d");
-  ctx.drawImage(img, x, y, width, height, margin, margin, width, height);
+  ctx.drawImage(
+    // source
+    img,
+    x,
+    y,
+    width,
+    height,
+    // output
+    margin,
+    margin,
+    width - 2 * margin,
+    height - 2 * margin
+  );
   document.querySelector("#output").appendChild(canvas);
   return canvas;
 }
