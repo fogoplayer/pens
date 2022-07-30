@@ -54,16 +54,18 @@ form.onsubmit = async (e) => {
     for (let j = 0; j < horizontalCount; j++) {
       const canvas = cropImg(
         image,
-        (paperWidth - overlap - 2 * margin) * j,
-        (paperHeight - overlap - 2 * margin) * i,
-        paperWidth - 2 * margin,
-        paperHeight - 2 * margin
+        margin,
+        (paperWidth - overlap) * j,
+        (paperHeight - overlap) * i,
+        paperWidth - margin,
+        paperHeight - margin
       );
-      const page = document.createElement("div");
+      /* const page = document.createElement("div");
 
       page.classList.add("page");
       page.appendChild(canvas);
-      output.appendChild(page);
+      output.appendChild(page); */
+      output.appendChild(canvas);
     }
   }
 
@@ -124,12 +126,12 @@ function resizeImg(img, width, height) {
   return canvas;
 }
 
-function cropImg(img, x, y, width, height) {
+function cropImg(img, margin, x, y, width, height) {
   var canvas = document.createElement("canvas");
   canvas.width = width;
   canvas.height = height;
   var ctx = canvas.getContext("2d");
-  ctx.drawImage(img, x, y, width, height, 0, 0, width, height);
+  ctx.drawImage(img, x, y, width, height, margin, margin, width, height);
   document.querySelector("#output").appendChild(canvas);
   return canvas;
 }
