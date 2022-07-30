@@ -58,6 +58,9 @@ form {
 
 form #preview {
   display: none;
+  max-width: 100%;
+  max-height: 20vh;
+  margin: auto;
 }
 
 form input[type="range"] {
