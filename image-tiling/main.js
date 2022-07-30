@@ -63,11 +63,7 @@ form.onsubmit = async (e) => {
       output.appendChild(canvas);
     }
   }
-
-  createPdf();
 };
-
-createPdf();
 
 // Convert image to dataURL
 document.querySelector("#file").onchange = async (e) => {
@@ -123,6 +119,18 @@ function cropImg(img, margin, x, y, width, height) {
   var ctx = canvas.getContext("2d");
   ctx.fillStyle = "white";
   ctx.fillRect(0, 0, width, height);
+  // Safari has a bug where when you try to draw non-existent pixels (out of the boundaries or the source image), it will just fail.
+  if (x + margin + width > img.width) {
+    width = img.width - x;
+  } else {
+    width = width - 2 * margin;
+  }
+  if (y + margin + height > img.height) {
+    height = img.height - y;
+  } else {
+    height = height - 2 * margin;
+  }
+
   ctx.drawImage(
     // source
     img,
@@ -133,8 +141,8 @@ function cropImg(img, margin, x, y, width, height) {
     // output
     margin,
     margin,
-    width - 2 * margin,
-    height - 2 * margin
+    width,
+    height
   );
   canvas.classList.add("page");
   document.querySelector("#output").appendChild(canvas);
@@ -166,20 +174,3 @@ document.querySelectorAll(".responsive").forEach((el) => {
     parent.querySelector("[type='number']").value = value;
   };
 });
-
-async function createPdf() {
-  const { PDFDocument, StandardFonts, rgb } = window.PDFLib;
-
-  const pdfDoc = await PDFDocument.create();
-
-  const pages = Array.from(document.querySelectorAll(".page"));
-  pages.forEach((page) => {
-    const pdf = pdfDoc.addPage();
-  });
-
-  const pdfBytes = await pdfDoc.saveAsBase64({ dataUri: true });
-
-  const iframe = document.createElement("iframe");
-  iframe.src = pdfBytes;
-  // output.appendChild(iframe);
-}
