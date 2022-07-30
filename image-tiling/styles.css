@@ -44,10 +44,12 @@ h6 {
 
   display: grid;
   grid-template-columns: repeat(var(--cols), 1fr);
-  gap: 1px;
+  grid-auto-rows: max-content;
+  gap: 0.25em;
 
   overflow-y: scroll;
   width: 100%;
+  padding: 0.5em;
 }
 
 #output .page {
