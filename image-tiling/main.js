@@ -161,10 +161,10 @@ document.querySelectorAll(".ratioed").forEach((el) => {
 
 // Link ranges to outputs
 document.querySelectorAll(".responsive").forEach((el) => {
-  el.value = 0.5;
   el.max = 4;
   el.min = 0;
   el.step = 0.001;
+  el.value = 0.5;
   el.oninput = function rangeUpdate(e) {
     const value = e.target.value;
     const parent = e.target.parentNode;
