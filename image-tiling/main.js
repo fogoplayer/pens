@@ -120,12 +120,12 @@ function cropImg(img, margin, x, y, width, height) {
   ctx.fillStyle = "white";
   ctx.fillRect(0, 0, width, height);
   // Safari has a bug where when you try to draw non-existent pixels (out of the boundaries or the source image), it will just fail.
-  if (x + margin + width > img.width) {
+  if (x + width > img.width) {
     width = img.width - x;
   } else {
     width = width - 2 * margin;
   }
-  if (y + margin + height > img.height) {
+  if (y + height > img.height) {
     height = img.height - y;
   } else {
     height = height - 2 * margin;
