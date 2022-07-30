@@ -12,6 +12,22 @@ body {
   height: 100vh;
 
   font-family: "Architects Daughter", cursive;
+  background: repeating-linear-gradient(
+      105deg,
+      white 0,
+      white 2px,
+      transparent 0,
+      transparent 50px
+    ),
+    repeating-linear-gradient(
+      15deg,
+      white 0,
+      white 2px,
+      transparent 0,
+      transparent 50px
+    );
+  --background-color: #0066ff;
+  background-color: var(--background-color);
 }
 
 #output {
@@ -19,6 +35,8 @@ body {
 
   display: grid;
   grid-template-columns: repeat(var(--cols), 1fr);
+  gap: 1px;
+
   overflow: scroll;
   width: 100%;
 }
@@ -38,9 +56,13 @@ form {
   grid-template-columns: auto 1fr;
   grid-auto-rows: max-content;
 
-  background-color: lightblue;
-  background-color: darkblue;
   color: white;
+  --shadow-size: 1px;
+  text-shadow: var(--shadow-size) var(--shadow-size) 0 var(--background-color),
+    calc(-1 * var(--shadow-size)) var(--shadow-size) 0 var(--background-color),
+    --shadow-size calc(-1 * var(--shadow-size)) 0 var(--background-color),
+    calc(-1 * var(--shadow-size)) calc(-1 * var(--shadow-size)) 0
+      var(--background-color);
   padding: 2em;
 }
 
