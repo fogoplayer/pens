@@ -14,8 +14,9 @@ body {
   font-family: "Architects Daughter", cursive;
 }
 
-section {
+section#output {
   flex: 1 1 auto;
+  overflow: scroll;
 }
 
 svg {
