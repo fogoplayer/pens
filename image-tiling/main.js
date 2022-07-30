@@ -99,7 +99,7 @@ async function getImageFromFile(file) {
 function getPageCount(targetDim, paperDim, overlap, margin) {
   const unusablePerPage = 2 * (overlap + margin);
   const usablePerPage = paperDim - unusablePerPage;
-  const pageCount = targetDim / usablePerPage;
+  const pageCount = targetDim / (usablePerPage + overlap);
   return Math.ceil(pageCount);
 }
 
