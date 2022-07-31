@@ -120,6 +120,18 @@ form input[type="number"] {
   color: white;
 }
 
+@media screen and (max-width: 54em) {
+  body.flex {
+    flex-flow: column-reverse;
+    height: unset;
+    max-height: unset;
+    overflow: visible;
+  }
+  form {
+    flex-basis: auto;
+  }
+}
+
 @media print {
   form {
     display: none;
