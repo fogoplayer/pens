@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Page Title</title>
+    <title>Guess Who</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
   </head>
@@ -12,6 +12,10 @@
       <input type="file" name="files" accept="image/*" id="" multiple /> Width
       (in): <input name="width" type="number" /> Height: (in):
       <input type="number" name="height" id="" />
+      Font Size: (px):
+      <input type="number" name="font-size" id="" />
+      Vertical Padding: (px):
+      <input type="number" name="padding-block" id="" />
       Color:
       <input type="color" name="color" value="red" id="" />
     </form>
@@ -76,6 +80,10 @@
       box-sizing: border-box;
     }
 
+    body{
+      --font-size:16;
+    }
+
     output {
       width: 7.5in;
       display: grid;
@@ -101,6 +109,8 @@
       margin: auto;
       border: 1px solid black;
       min-width: 0.5em;
+      padding-block: calc(var(--padding-block) * 1px);
+      font-size: calc(var(--font-size * 1px))
     }
 
     input {
