@@ -12,6 +12,8 @@
       <input type="file" name="files" accept="image/*" id="" multiple /> Width
       (in): <input name="width" type="number" /> Height: (in):
       <input type="number" name="height" id="" />
+      Aspect ratio (width/height)
+      <input type="text" name="aspect-ratio" placeholder="2/3" />
       Font Size: (px):
       <input type="number" name="font-size" id="" />
       Vertical Padding: (px):
@@ -100,7 +102,7 @@
     img {
       width: 100%;
       object-fit: cover;
-      aspect-ratio: 1/1.5;
+      aspect-ratio: var(--aspect-ratio);
     }
 
     p {
