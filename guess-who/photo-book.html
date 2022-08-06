@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Photo Book</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  </head>
+  <body>
+    <form>
+      Printer settings:
+      <ul>
+        <li>Orentation: landscape</li>
+        <li>Margin: none</li>
+      </ul>
+      <input type="file" name="files" accept="image/*" id="" multiple />
+      Color:
+      <input type="color" name="color" value="red" id="" />
+    </form>
+    <output></output>
+  </body>
+  <script>
+    let props = {
+      width: 1,
+      height: 2,
+      color: "red",
+      files: [],
+      data: [],
+    };
+
+    Array.from(document.querySelectorAll("input")).forEach((input) => {
+      input.onchange = onChange;
+    });
+    // runs every time an input changes
+    async function onChange(e) {
+      // props[e.target.name] = e.target.value;
+
+      if (e.target.name === "files") {
+        props.data = [];
+        props.files = e.target.files;
+        for (let i = 0; i < props.files.length; i++) {
+          const element = props.files[i];
+          const file = await getImageFromFile(element);
+          props.data.push(file);
+        }
+      } else {
+        document
+          .querySelector("body")
+          .style.setProperty("--" + e.target.name, e.target.value);
+      }
+      const output = document.querySelector("output");
+      output.innerHTML = "";
+      props.data.forEach((data) => output.appendChild(card(data)));
+    }
+
+    function card(img) {
+      const div = document.createElement("div");
+      div.innerHTML = `<img src="${img}"/>`;
+      return div;
+    }
+
+    async function getImageFromFile(file) {
+      const promise = new Promise((resolve, reject) => {
+        /// Create reader
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          resolve(e.target.result);
+        };
+        // Run reader
+        reader.readAsDataURL(file);
+      });
+      return promise;
+    }
+  </script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      --font-size: 16;
+    }
+
+    output {
+      width: 11in;
+      display: grid;
+      grid-template-columns: 5.5in 5.5in;
+      grid-auto-rows: 4.25in;
+    }
+
+    div:nth-child(4n - 1),
+    div:nth-child(4n - 2) {
+      background-color: blue;
+    }
+
+    div {
+      padding: 0.5in;
+      overflow: hidden;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      aspect-ratio: var(--aspect-ratio);
+    }
+
+    input {
+      width: 100%;
+    }
+
+    input[type="radio"] {
+      width: auto;
+    }
+
+    @media print {
+      form {
+        display: none;
+      }
+
+      body {
+        padding: 0;
+        margin: 0;
+      }
+
+      div:nth-child(4n - 1),
+      div:nth-child(4n - 2) {
+        background-color: blue;
+      }
+    }
+  </style>
+</html>
