@@ -47,11 +47,13 @@ Set up symbolic links to integrate The Chrome OS Downloads and Google Drive fold
 ### [Buc-ee's Animation](./bucees)
 
 A simple puppet of Texas legend Buc-ee.
+
 ---
 
 ### [Cistercian](./cistercian)
 
 Display text in a cipher based on cistercian numbers
+
 ---
 
 ### [PWA Piano](./piano)
