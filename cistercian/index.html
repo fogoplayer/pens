@@ -8,9 +8,14 @@
   </head>
   <body>
     <label>Original</label>
-    <input class="original" placeholder="Place some text here and see what happens"></input>
+    <textarea
+      class="original"
+      placeholder="Place some text here and see what happens"
+    ></textarea>
     <label>Formatted</label>
-    <div class="cistercian">􀀂􀀓􀀂􀀕􀀊􀀂􀀔􀀉􀀂􀀔􀀋􀀂􀀕􀀃􀀂􀀎􀀄􀀂􀀕􀀌􀀇􀀂􀀕􀀌􀀃􀀂􀀕􀀋􀀂􀀕􀀃􀀂􀀎􀀄􀀂􀀕􀀌􀀈􀀂􀀕􀀃􀀂􀀕􀀍􀀂􀀕􀀌􀀈􀀂􀀎􀀄􀀂􀀕􀀆􀀂􀀕􀀃􀀂􀀕􀀌􀀆􀀂􀀕􀀃􀀂􀀎􀀄􀀂􀀔􀀉􀀂􀀕􀀌􀀂􀀕􀀂􀀎􀀄􀀂􀀕􀀌􀀇􀀂􀀕􀀃􀀂􀀕􀀃􀀂􀀎􀀄􀀂􀀕􀀌􀀋􀀂􀀕􀀆􀀂􀀔􀀉􀀂􀀕􀀌􀀈􀀂􀀎􀀄􀀂􀀕􀀆􀀂􀀔􀀉􀀂􀀕􀀌􀀄􀀂􀀕􀀌􀀄􀀂􀀕􀀃􀀂􀀕􀀌􀀂􀀕􀀌􀀇</div>
+    <div class="cistercian">
+      􀀂􀀓􀀂􀀕􀀊􀀂􀀔􀀉􀀂􀀔􀀋􀀂􀀕􀀃􀀂􀀎􀀄􀀂􀀕􀀌􀀇􀀂􀀕􀀌􀀃􀀂􀀕􀀋􀀂􀀕􀀃􀀂􀀎􀀄􀀂􀀕􀀌􀀈􀀂􀀕􀀃􀀂􀀕􀀍􀀂􀀕􀀌􀀈􀀂􀀎􀀄􀀂􀀕􀀆􀀂􀀕􀀃􀀂􀀕􀀌􀀆􀀂􀀕􀀃􀀂􀀎􀀄􀀂􀀔􀀉􀀂􀀕􀀌􀀂􀀕􀀂􀀎􀀄􀀂􀀕􀀌􀀇􀀂􀀕􀀃􀀂􀀕􀀃􀀂􀀎􀀄􀀂􀀕􀀌􀀋􀀂􀀕􀀆􀀂􀀔􀀉􀀂􀀕􀀌􀀈􀀂􀀎􀀄􀀂􀀕􀀆􀀂􀀔􀀉􀀂􀀕􀀌􀀄􀀂􀀕􀀌􀀄􀀂􀀕􀀃􀀂􀀕􀀌􀀂􀀕􀀌􀀇
+    </div>
   </body>
   <style>
     @font-face {
@@ -31,6 +36,7 @@
       font-family: Cistercian;
       display: grid;
       place-items: center;
+      font-size: 10em;
     }
 
     label {
@@ -48,28 +54,34 @@
     function formatText(text) {
       // if contains more than numbers
       if (!text.match(/^[0-9]*$/)) {
-        text = Array.from(text)
-        text = text.map(char => {
-          return String(char.charCodeAt(0)).padStart(4,0);
-        })
-        text = text.join("")
+        text = text.split(/\s/g);
+        text = text.map((word) =>
+          Array.from(word).map((char) => {
+            if (char.match(/\s/)) return char;
+            return String(char.charCodeAt(0)).padStart(4, 0);
+          })
+        );
       }
 
-      text = Array.from(text)
-      
+
       // Break up text that is too long
-      let formattedText = ""
+      let formattedText = "";
       while (text.length > 0) {
-        const sample = text.splice(0,4).join("");
-        console.log(sample);
-        formattedText += number2cistercian(sample)
+        let [word] = text.splice(0, 1);
+        console.log(JSON.stringify(word));
+        while (word.length > 0) {
+          const sample = parseInt(word.splice(0, 1));
+          console.log(sample);
+          formattedText += number2cistercian(sample);
+        }
+        formattedText += " "
       }
-      
+
       return formattedText;
     }
 
-    function resizeText(){
-      output.scrollHeight
+    function resizeText() {
+      output.scrollHeight;
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////
