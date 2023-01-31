@@ -126,15 +126,17 @@
 
     textColor.addEventListener(
       "input",
-      (e) => (output.style.color = e.target.value)
+      (e) => (document.body.style.color = e.target.value)
     );
 
     backgroundColor.addEventListener(
       "input",
-      (e) => (output.style.backgroundColor = e.target.value)
+      (e) => (document.body.style.backgroundColor = e.target.value)
     );
 
     function formatText(text) {
+      const DELIMITER = "\u00A0"
+
       const origText = text;
       text = text.split(/[^\S\r\n]/);
 
@@ -174,10 +176,10 @@
             )}</span>`;
           }
         }
-        formattedText += " . ";
+        formattedText += DELIMITER;
       }
 
-      return formattedText.substring(0, formattedText.lastIndexOf("."));
+      return formattedText.substring(0, formattedText.lastIndexOf(DELIMITER));
     }
 
     function resizeText() {
