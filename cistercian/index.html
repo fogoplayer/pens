@@ -7,7 +7,7 @@
     <title>Cistercian</title>
   </head>
   <body>
-    <label>Original<textarea class="original"></textarea></label>
+    <label>Original<input class="original"></input></label>
     <label
       >Formatted
       <div contenteditable class="font-cistercian">1234</div></label
@@ -15,15 +15,15 @@
   </body>
   <style>
     @font-face {
-      font-family: FRBCistercian;
-      src: local("FRBCistercian"), url(./FRBCistercian.otf) format("opentype");
+      font-family: Cistercian;
+      src: local("Cistercian"), url(./FRBCistercian.woff2);
       font-style: normal;
       font-weight: 400;
       font-display: block;
     }
 
     .font-cistercian {
-      font-family: FRBCistercian;
+      font-family: Cistercian;
     }
   </style>
   <script>
@@ -38,9 +38,26 @@
     });
 
     function formatText(text) {
-      let textInt = parseInt(text);
-      console.log(text, textInt);
-      return number2cistercian(textInt)
+      // if contains more than numbers
+      if (!text.match(/^[0-9]*$/)) {
+        text = Array.from(text)
+        text = text.map(char => {
+          return String(char.charCodeAt(0)).padStart(4,0);
+        })
+        text = text.join("")
+      }
+
+      text = Array.from(text)
+      
+      // Break up text that is too long
+      let formattedText = ""
+      while (text.length > 0) {
+        const sample = text.splice(0,4).join("");
+        console.log(sample);
+        formattedText += number2cistercian(sample)
+      }
+      
+      return formattedText
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////
