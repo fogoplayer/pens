@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cistercian</title>
+  </head>
+  <body>
+    <label>Original<textarea class="original"></textarea></label>
+    <label
+      >Formatted
+      <div contenteditable class="font-cistercian">1234</div></label
+    >
+  </body>
+  <style>
+    @font-face {
+      font-family: FRBCistercian;
+      src: local("FRBCistercian"), url(./FRBCistercian.otf) format("opentype");
+      font-style: normal;
+      font-weight: 400;
+      font-display: block;
+    }
+
+    .font-cistercian {
+      font-family: FRBCistercian;
+    }
+  </style>
+  <script>
+    const source = document.querySelector(".original");
+    const output = document.querySelector(".font-cistercian");
+
+    console.log(source,output);
+
+    source.addEventListener("change", (e) => {
+      console.log(output);
+      output.innerText = formatText(e.target.value);
+    });
+
+    function formatText(text) {
+      let textInt = parseInt(text);
+      console.log(text, textInt);
+      return number2cistercian(textInt)
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////
+    // Adapted from https://github.com/mrled/cistercianjs/blob/master/lib/all/cistercian.ts //
+    //////////////////////////////////////////////////////////////////////////////////////////
+    function getDigit(num, power) {
+      return Math.floor((num / Math.pow(10, power)) % 10);
+    }
+
+    /* Convert a 1-4 digit decimal number to an array of
+     * [thousands, hundreds, tens, ones], also called KHTU.
+     */
+    function khtu(num) {
+      if (num < 0 || num > 9999) {
+        throw "khtu only supports numbers between 0-9999 (inclusive)";
+      }
+      return [
+        getDigit(num, 3),
+        getDigit(num, 2),
+        getDigit(num, 1),
+        getDigit(num, 0),
+      ];
+    }
+
+    function number2cistercian(num) {
+      const digits = khtu(num);
+      let result = [0x100002];
+      if (digits[0] > 0) {
+        result.push(0x10001e + digits[0] - 1);
+      }
+      if (digits[1] > 0) {
+        result.push(0x100015 + digits[1] - 1);
+      }
+      if (digits[2] > 0) {
+        result.push(0x10000c + digits[2] - 1);
+      }
+      if (digits[3] > 0) {
+        result.push(0x100002 + digits[3]);
+      }
+
+      console.log(
+        `number2cistercian(${num}): ${result.map((char) => char.toString(16))}`
+      );
+
+      return String.fromCodePoint(...result);
+    }
+  </script>
+</html>
