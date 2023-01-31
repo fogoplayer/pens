@@ -13,8 +13,28 @@
       placeholder="Place some text here and see what happens"
     ></textarea>
     <label>Formatted</label>
-    <div class="cistercian">
-      􀀂􀀓􀀂􀀕􀀊􀀂􀀔􀀉􀀂􀀔􀀋􀀂􀀕􀀃􀀂􀀎􀀄􀀂􀀕􀀌􀀇􀀂􀀕􀀌􀀃􀀂􀀕􀀋􀀂􀀕􀀃􀀂􀀎􀀄􀀂􀀕􀀌􀀈􀀂􀀕􀀃􀀂􀀕􀀍􀀂􀀕􀀌􀀈􀀂􀀎􀀄􀀂􀀕􀀆􀀂􀀕􀀃􀀂􀀕􀀌􀀆􀀂􀀕􀀃􀀂􀀎􀀄􀀂􀀔􀀉􀀂􀀕􀀌􀀂􀀕􀀂􀀎􀀄􀀂􀀕􀀌􀀇􀀂􀀕􀀃􀀂􀀕􀀃􀀂􀀎􀀄􀀂􀀕􀀌􀀋􀀂􀀕􀀆􀀂􀀔􀀉􀀂􀀕􀀌􀀈􀀂􀀎􀀄􀀂􀀕􀀆􀀂􀀔􀀉􀀂􀀕􀀌􀀄􀀂􀀕􀀌􀀄􀀂􀀕􀀃􀀂􀀕􀀌􀀂􀀕􀀌􀀇
+    <div class="cistercian-container">
+      <span class="cistercian">􀀂􀀓</span><span class="cistercian">􀀂􀀕􀀊</span>
+      <span class="cistercian">􀀂􀀔􀀉</span><span class="cistercian">􀀂􀀔􀀋</span>
+      <span class="cistercian">􀀂􀀕􀀃</span> .
+      <span class="cistercian">􀀂􀀕􀀌􀀇</span> <span class="cistercian">􀀂􀀕􀀌􀀃</span
+      ><span class="cistercian">􀀂􀀕􀀋</span> <span class="cistercian">􀀂􀀕􀀃</span> .
+      <span class="cistercian">􀀂􀀕􀀌􀀈</span> <span class="cistercian">􀀂􀀕􀀃</span
+      ><span class="cistercian">􀀂􀀕􀀍</span>
+      <span class="cistercian">􀀂􀀕􀀌􀀈</span> .
+      <span class="cistercian">􀀂􀀕􀀆</span> <span class="cistercian">􀀂􀀕􀀃</span
+      ><span class="cistercian">􀀂􀀕􀀌􀀆</span>
+      <span class="cistercian">􀀂􀀕􀀃</span> . <span class="cistercian">􀀂􀀔􀀉</span>
+      <span class="cistercian">􀀂􀀕􀀌</span><span class="cistercian">􀀂􀀕</span> .
+      <span class="cistercian">􀀂􀀕􀀌􀀇</span><span class="cistercian">􀀂􀀕􀀃</span>
+      <span class="cistercian">􀀂􀀕􀀃</span> .
+      <span class="cistercian">􀀂􀀕􀀌􀀋</span> <span class="cistercian">􀀂􀀕􀀆</span
+      ><span class="cistercian">􀀂􀀔􀀉</span>
+      <span class="cistercian">􀀂􀀕􀀌􀀈</span> .
+      <span class="cistercian">􀀂􀀕􀀆</span> <span class="cistercian">􀀂􀀔􀀉</span
+      ><span class="cistercian">􀀂􀀕􀀌􀀄</span> <span class="cistercian">􀀂􀀕􀀌􀀄</span
+      ><span class="cistercian">􀀂􀀕􀀃</span> <span class="cistercian">􀀂􀀕􀀌</span
+      ><span class="cistercian">􀀂􀀕􀀌􀀇</span>
     </div>
   </body>
   <style>
@@ -32,10 +52,11 @@
       align-items: stretch;
     }
 
-    .cistercian {
+    .cistercian-container {
       font-family: Cistercian;
-      display: grid;
-      place-items: center;
+      /* display: grid; */
+      /* place-items: center; */
+      /* grid-template-columns: repeat(auto-fit, .6em); */
       font-size: 10em;
     }
 
@@ -45,15 +66,15 @@
   </style>
   <script>
     const source = document.querySelector(".original");
-    const output = document.querySelector(".cistercian");
+    const output = document.querySelector(".cistercian-container");
 
     source.addEventListener("input", (e) => {
-      output.innerText = formatText(e.target.value);
+      output.innerHTML = formatText(e.target.value);
     });
 
     function formatText(text) {
       const origText = text;
-      text = text.split(/\s/g);
+      text = text.split(/[^\S\r\n]/);
 
       // if contains more than numbers
       if (!origText.match(/^[0-9\s]*$/)) {
@@ -81,14 +102,20 @@
         let [word] = text.splice(0, 1);
         console.log(JSON.stringify(word));
         while (word.length > 0) {
-          const sample = parseInt(word.splice(0, 1));
-          console.log(sample);
-          formattedText += number2cistercian(sample);
+          let [sample] = word.splice(0, 1)
+          if (sample.match(/\n/)) {
+            formattedText += "<br>";
+          } else {
+            sample = parseInt(sample);
+            formattedText += `<span class="cistercian">${number2cistercian(
+              sample
+            )}</span>`;
+          }
         }
-        formattedText += ".";
+        formattedText += " . ";
       }
 
-      return formattedText.substring(0, formattedText.length-1);
+      return formattedText.substring(0, formattedText.lastIndexOf("."));
     }
 
     function resizeText() {
