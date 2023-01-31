@@ -101,6 +101,12 @@
       font-size: 10em;
       flex: 1
     }
+
+    @media print {
+      form {
+        display: none;
+      }
+    }
   </style>
   <script>
     const source = document.querySelector("#original");
