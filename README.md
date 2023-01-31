@@ -49,6 +49,11 @@ Set up symbolic links to integrate The Chrome OS Downloads and Google Drive fold
 A simple puppet of Texas legend Buc-ee.
 ---
 
+### [Cistercian](./cistercian)
+
+Display text in a cipher based on cistercian numbers
+---
+
 ### [PWA Piano](./piano)
 
 There are lots of online pianos out there, but they have issues--no offline support, and they're slow. So I built my own.
