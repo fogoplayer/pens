@@ -52,17 +52,28 @@
     });
 
     function formatText(text) {
+      const origText = text;
+      text = text.split(/\s/g);
+
       // if contains more than numbers
-      if (!text.match(/^[0-9]*$/)) {
-        text = text.split(/\s/g);
+      if (!origText.match(/^[0-9]*$/)) {
         text = text.map((word) =>
           Array.from(word).map((char) => {
             if (char.match(/\s/)) return char;
             return String(char.charCodeAt(0)).padStart(4, 0);
           })
         );
-      }
+      } else {
+        text = text.map((word) => {
+          let retVal = [];
+          word = Array.from(word);
 
+          while (word.length > 0) {
+            retVal.push(word.splice(0, 4).join(""));
+          }
+          return retVal;
+        });
+      }
 
       // Break up text that is too long
       let formattedText = "";
@@ -74,7 +85,7 @@
           console.log(sample);
           formattedText += number2cistercian(sample);
         }
-        formattedText += " "
+        formattedText += " ";
       }
 
       return formattedText;
