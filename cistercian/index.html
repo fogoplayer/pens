@@ -56,7 +56,7 @@
       text = text.split(/\s/g);
 
       // if contains more than numbers
-      if (!origText.match(/^[0-9]*$/)) {
+      if (!origText.match(/^[0-9\s]*$/)) {
         text = text.map((word) =>
           Array.from(word).map((char) => {
             if (char.match(/\s/)) return char;
@@ -85,10 +85,10 @@
           console.log(sample);
           formattedText += number2cistercian(sample);
         }
-        formattedText += " ";
+        formattedText += ".";
       }
 
-      return formattedText;
+      return formattedText.substring(0, formattedText.length-1);
     }
 
     function resizeText() {
