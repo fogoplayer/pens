@@ -14,11 +14,21 @@
         placeholder="Place some text here and see what happens"
       ></textarea>
 
-      <label for="size">Font size</label>
-      <input id="size" type="range" value="10" min="0" max="30" step="0.5"/>
+      <label for="size"
+        >
+        Font Size
+        <input id="size" type="range" value="10" min="0" max="30" step="0.5" />
+      </label>
 
-      <label for="color">Font size</label>
-      <input id="color" type="color" />
+      <label for="text-color">
+        Text Color
+        <input id="text-color" type="color" />
+      </label>
+
+      <label for="background-color">
+        Background Color
+        <input id="background-color" type="color" />
+      </label>
     </form>
     <div class="cistercian-container">
       <span class="cistercian">􀀂􀀓</span> <span class="cistercian">􀀂􀀕􀀊</span>
@@ -57,15 +67,30 @@
       display: flex;
       flex-flow: column nowrap;
       align-items: stretch;
+      
+      height: 100vh;
+      height: 100dvh;
+      margin: 0;
     }
 
     form {
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: 1fr auto auto;
+      column-gap: 1rem;
+
+      padding: 1rem;
     }
 
     form textarea {
       grid-column: 1/ -1;
+    }
+
+    label {
+      display: flex;
+    }
+
+    input {
+      flex: 1
     }
 
     .cistercian-container {
@@ -74,12 +99,14 @@
       /* place-items: center; */
       /* grid-template-columns: repeat(auto-fit, .6em); */
       font-size: 10em;
+      flex: 1
     }
   </style>
   <script>
     const source = document.querySelector("#original");
     const size = document.querySelector("#size");
-    const color = document.querySelector("#color");
+    const textColor = document.querySelector("#text-color");
+    const backgroundColor = document.querySelector("#background-color");
     const output = document.querySelector(".cistercian-container");
 
     source.addEventListener("input", (e) => {
@@ -91,9 +118,14 @@
       (e) => (output.style.fontSize = e.target.value + "em")
     );
 
-    color.addEventListener(
+    textColor.addEventListener(
       "input",
       (e) => (output.style.color = e.target.value)
+    );
+
+    backgroundColor.addEventListener(
+      "input",
+      (e) => (output.style.backgroundColor = e.target.value)
     );
 
     function formatText(text) {
