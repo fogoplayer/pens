@@ -1,5 +1,11 @@
 ## Pages
 
+### [Golang Prime Factor Frequency](./golang-prime-factor-frequency/main.go)
+I wanted a graph showing the relative frequency of prime factors. This seemed like a great opportunity to finally dip my
+toes into Golang--so many of the problems I'm interested in start with "build a web app that..." and so I don't get many
+opportunities to branch out beyond JS. I googled my way through a quick [script](./golang-prime-factor-frequency/main.go)
+and was quite happy with the [output](./golang-prime-factor-frequency/output300.txt).
+
 ### [AirOS Desktop](https://github.com/fogoplayer/pens/tree/main/air-os)
 
 When I was a teenager, I started drawing up mockups of a desktop interface designed to look clean and futuristic. When I learned about `transform: skew()`, I recognized that it allowed me to make the parallelograms that formed the core of AirOS's design language, so I whipped up a quick mockup. It doesn't look good, and it's not supposed to--this was a gleeful reaction to the discovery of new possibilities.
