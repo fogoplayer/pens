@@ -1,0 +1,4 @@
+## Monkey Bread {#monkey-bread}
+
+Melt 2 sticks of butter/margarine and add 1/2 cup brown sugar, boil for a minute or two, then let cool while you move to the next step. Thaw a loaf of Rhodes frozen dough (or a few cans of refrigerator biscuits) and tear it into little balls in a large ziploc bag with 1 cup sugar and 2-3 teaspoons of cinnamon. Shake the bag as you fill it with dough so the balls get coated and don't just stick back together. Dump the bag into a baking pan (let it rise if using bread dough) and pour the butter/sugar sauce over it. Bake for 20-30 minutes depending on the size and shape of your pan, shorter if it's flat, longer if it's deep let cool for just a few minutes, then turn upside down on a plate so the sauce runs all over. Devour. Wish I could send you some, but it doesn't keep or travel well.
+
